@@ -1,14 +1,19 @@
-# Nombre grupo
+# Buscador de rutas
+
+## Nombre grupo
+
 Grupo 3
 
-# Roles
+## Roles
+
 **CEO** - Iago Domínguez Cameán  
 **COO** - Diego Villodas Zapata  
 **CTO** - Pablo Mariño Boga  
 **CXO** - Dennimar Gil Ortega  
 
-# Proyecto
-## Buscador de rutas
+## Proyecto
+
+### Caracteristicas de la aplicación Buscador de rutas
 
 1. **Creación de rutas entre varios puntos:**
    - Permitir a los usuarios seleccionar múltiples puntos de partida y destino para crear una ruta personalizada.
@@ -43,8 +48,15 @@ Grupo 3
 8. **Función de guía de audio:**
    - Ofrecer guías de audio narrativas proporcionando información histórica, cultural y práctica sobre los lugares visitados.
 
-# Target
+9. **Mapas sin conexión:**
+   - Permitir a los usuarios descargar mapas y rutas para su uso sin conexión a internet, facilitando la exploración de destinos remotos o la reducción de costes de roaming.
 
-# Estudio de mercado
+10. **Integración con redes sociales:**
+    - Facilitar compartir las rutas planeadas y las experiencias de viaje en redes sociales, permitiendo a otros usuarios descubrir nuevas rutas y destinos.
+    
 
-# Diseño de la arquitectura de comunicaciones
+## Target
+
+## Estudio de mercado
+
+## Diseño de la arquitectura de comunicaciones
