@@ -57,6 +57,16 @@ Grupo 3
 
 ## Target
 
+Nuestro público objetivo abarca una amplia gama de personas que disfrutan de la experiencia de viajar, aprovechando la accesibilidad que existe en la actualidad para todos los presupuestos. Aun teniendo un objetivo de masas, en particular, **el público joven**, encontrará en nuestra aplicación una herramienta para mejorar su experiencia turística con propuestas interesantes que les permiten recibir sugerencias sobre lugares para tomar fotografías y compartirlas con sus seguidores en redes sociales.
+
+Además, nuestra aplicación ofrece **rutas predefinidas** que brindan apoyo a personas con menos experiencia en este tipo de viajes, proporcionando una alternativa a las visitas guiadas convencionales, con la **libertad** que esto supone. También a nivel **económico** puede suponer una alternativa, ya que elimina la necesidad de contratar guías adicionales, lo que implica un ahorro significativo para los usuarios.
+
+En el ámbito **cultural**, además de ofrecer **playlists personalizadas** adecuadas a la duración del viaje, también proporcionamos la oportunidad de descubrir y disfrutar de la música de **artistas locales**. Esto enriquece la experiencia al combinar funcionalidades que generalmente no se encuentran integradas en las aplicaciones de uso común, resultando especialmente atractivo para aquellos que desean sumergirse culturalmente en su lugar de destino.
+
+Todo esto nos hace conscientes de que nuestra propuesta debe estar diseñada para satisfacer las necesidades de un **volumen notable de usuarios**, asegurando una experiencia de usuario fluida y satisfactoria para todos.
+
+En resumen, buscamos a personas apasionadas por viajar y compartir sus experiencias, interesadas en hacer de cada viaje una experiencia completa y enriquecedora. Este **usuario ideal** valora tanto la exploración de nuevos lugares como la inmersión cultural en cada destino.
+
 ## Estudio de mercado
 
 ## Diseño de la arquitectura de comunicaciones
