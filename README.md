@@ -42,3 +42,9 @@ Grupo 3
 
 8. **Función de guía de audio:**
    - Ofrecer guías de audio narrativas proporcionando información histórica, cultural y práctica sobre los lugares visitados.
+
+# Target
+
+# Estudio de mercado
+
+# Diseño de la arquitectura de comunicaciones
