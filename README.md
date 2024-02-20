@@ -70,7 +70,7 @@ En resumen, buscamos a personas apasionadas por viajar y compartir sus experienc
 
 ## Diseño de la arquitectura de comunicaciones
 
-[Diagrama de comunicación](assets/comm_diag.png)
+![Diagrama de comunicación](assets/comm_diag.png)
 
 Involucra el uso de múltiples APIs y servicios online que la aplicación consume como cliente.
 
