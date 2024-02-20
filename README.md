@@ -70,20 +70,20 @@ En resumen, buscamos a personas apasionadas por viajar y compartir sus experienc
 
 ## Diseño de la arquitectura de comunicaciones
 
-![Diagrama de comunicación](assets/comm_diag.png)
-
 Involucra el uso de múltiples APIs y servicios online que la aplicación consume como cliente.
 
-1. **Google Places, Routes y Maps APIs**: APIs utilizadas para generar rutas, buscar lugares y visualizar mapas.
+- **Google Places, Routes y Maps APIs**: APIs utilizadas para generar rutas, buscar lugares y visualizar mapas.
 
-2. **Spotify API**: Se utiliza para interactuar con Spotify y crear listas de reproducción.
+- **Spotify API**: Se utiliza para interactuar con Spotify y crear listas de reproducción.
 
-3. **Google IAM (Identity and Access Management)**: Esta API se utiliza para gestionar la autenticación y autorización de los usuarios en la aplicación.
+- **Google IAM (Identity and Access Management)**: Esta API se utiliza para gestionar la autenticación y autorización de los usuarios en la aplicación.
 
-4. **Foursquare, Wikimedia Commons y OpenWeather APIs**: Estas APIs se utilizan para obtener información sobre los lugares por los que pasa la ruta. La aplicación envía solicitudes para obtener detalles sobre puntos de interés, imágenes de lugares y datos meteorológicos locales.
+- **Foursquare, Wikimedia Commons y OpenWeather APIs**: Estas APIs se utilizan para obtener información sobre los lugares por los que pasa la ruta. La aplicación envía solicitudes para obtener detalles sobre puntos de interés, imágenes de lugares y datos meteorológicos locales.
 
-5. **Sensores GPS y magnetómetro**: La aplicación utiliza los sensores del dispositivo (GPS y magnetómetro) para hacer el seguimiento de la ruta del usuario y proporcionar información precisa sobre la ubicación y la orientación.
+- **Sensores GPS y magnetómetro**: La aplicación utiliza los sensores del dispositivo (GPS y magnetómetro) para hacer el seguimiento de la ruta del usuario y proporcionar información precisa sobre la ubicación y la orientación.
 
-6. **Almacenamiento interno**: Se utiliza para almacenar fotografías y datos de la aplicación y configuraciones de manera local en el dispositivo del usuario.
+- **Almacenamiento interno**: Se utiliza para almacenar fotografías y datos de la aplicación y configuraciones de manera local en el dispositivo del usuario.
 
-7. **Compartir**: Este módulo permite a los usuarios compartir sus rutas, listas de reproducción u otra información generada por la aplicación a través de plataformas de redes sociales, correo electrónico u otras aplicaciones instaladas en el dispositivo.
+- **Compartir**: Este módulo permite a los usuarios compartir sus rutas, listas de reproducción u otra información generada por la aplicación a través de plataformas de redes sociales, correo electrónico u otras aplicaciones instaladas en el dispositivo.
+
+![Diagrama de comunicación](assets/comm_diag.png)
