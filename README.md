@@ -121,7 +121,12 @@ Es la que más se acerca a nuestra idea, aunque solo funciona con mapas sin cone
 </p>
 Como podemos ver también disponde de filtros predefinidos, pero no podemos crear los nuestros propios, a diferencia de la anterior.
 
-###
+### Conclusiones
+Como hemos visto ningua de las aplicaciones hace todo lo que nosotros tenemos pensado, CityMaps2Go no genera rutas entre los POI pero si guarda los viajes que has hecho o que quieres hacer. Maps.me, por el contrario si genera la ruta entre puntos de interés, pero no se guarda en ningún lado, además de que solo funciona con mapas sin conexión.  
+
+En cambio nuestra aplicación pretenede generar y guardar las rutas entre los puntos de interés. Además de añadir otras funcionalidades como mostrar otros puntos de interés durante la ruta que podrían interesar al usuario, incluso indicarle cual sería una buena zona para sacarse fotos en los diferentes lugares que visite o artista relacionados con la localidad en la que se encuentra.
+
+En definitiva, nuestra app compactaría las funcionalidades de las otras aplicaciones y añadiríamos otras que permitan diferenciar a la aplicación.  
 ## Diseño de la arquitectura de comunicaciones
 
 Involucra el uso de múltiples APIs y servicios online que la aplicación consume como cliente.
