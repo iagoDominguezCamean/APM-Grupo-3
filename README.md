@@ -70,63 +70,62 @@ En resumen, buscamos a personas apasionadas por viajar y compartir sus experienc
 
 ### Aplicaciones similares
 
-**CityMaps2Go**:  
-   Dispone de mapas con/sin conexión y la propia aplicación te recomienda que mapas descargar. Solo los recomendará si haces el zoom suficiente en el mapa de la aplicación.  
+**CityMaps2Go** :  
+Dispone de mapas con/sin conexión y la propia aplicación te recomienda que mapas descargar. Solo los recomendará si haces el zoom suficiente en el mapa de la aplicación.  
    
-   <p align="center">
+<p align="center">
    <img src="assets/cm2go_mapas_sugeridos.jpg" alt="CityMaps2Go mapas recomendados" width="200"/>
-   </p>
+</p>
 
-   Con la función **Descubrir** te muestra listas de POI en base a unos filtros predefinidos o filtros personalizados por el usuario.  
+Con la función **Descubrir** te muestra listas de POI en base a unos filtros predefinidos o filtros personalizados por el usuario.  
    
-   <p align="center">
+<p align="center">
    <img src="assets/cm2go_filtros.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
-   </p>
+</p>
 
-   Por ejemplo al seleccionar London sightseeing highlights, se nos muestran una serie de POI relacionados con ese filtro. Si seleccionamos una ciudad de la que aparecen arriba nos saldrán filtros como este. También es posible usar otro tipo de filtros como hoteles, restaurantes, etc.  
+Por ejemplo al seleccionar London sightseeing highlights, se nos muestran una serie de POI relacionados con ese filtro. Si seleccionamos una ciudad de la que aparecen arriba nos saldrán filtros como este. También es posible usar otro tipo de filtros como hoteles, restaurantes, etc.  
 
-   <p align="center">
+<p align="center">
    <img src="assets/cm2go_resultado_filtro.jpg" alt="CityMaps2Go resultado filtros de puntos de interés" width="200"/>
-   </p>
+</p>
 
-   Al seleccionar uno  de los POI que se nos recomienda con los filtros se nos muestra una descripción de este e información adicional, como sitios para dormir cercanos y fotos populares de dicho lugar. Además de darnos una valoración numérica del POI.  
+Al seleccionar uno  de los POI que se nos recomienda con los filtros se nos muestra una descripción de este e información adicional, como sitios para dormir cercanos y fotos populares de dicho lugar. Además de darnos una valoración numérica del POI.  
 
-   <p align="center">
+<p align="center">
    <img src="assets/cm2go_info_poi_1.jpg" alt="CityMaps2Go info punto de interés" width="200"/>
-   </p>
-
-   <p align="center">
    <img src="assets/cm2go_info_poi_2.jpg" alt="CityMaps2Go info puntos de interés" width="200"/>
-   </p>
+</p>
 
-   Estos POI los puedes añadir a una lista, las listas representan los viajes que hayas hecho y cada una tiene un nombre único para cada usuario. Una vez que añades un POI a una lista este aparecerá marcado en el mapa. Las listas se pueden editar, cambiar el color del icono de los POI en el mapa y su forma para diferenciar cada lista, también puedes cambiar el nombre de la lista.
+Estos POI los puedes añadir a una lista, las listas representan los viajes que hayas hecho y cada una tiene un nombre único para cada usuario. Una vez que añades un POI a una lista este aparecerá marcado en el mapa. Las listas se pueden editar, cambiar el color del icono de los POI en el mapa y su forma para diferenciar cada lista, también puedes cambiar el nombre de la lista.
 
-   <p align="center">
+<p align="center">
    <img src="assets/cm2go_mapa.jpg" alt="CityMaps2Go mapa con listas de puntos de interés" width="200"/>
-   </p>
+</p>
 
-**Maps.me**:  
+**Maps.me** :  
 Es la que más se acerca a nuestra idea, aunque solo funciona con mapas sin conexión. También te permite descargar los mapas si haces el suficiente zoom. Creas una lista de POI a los que quieres ir oredenados por ti y te genera una ruta en base al orden que hayas indicado. Genera la ruta más rapida andando, en coche, transporte público. 
 
 <p align="center">
    <img src="assets/mapsme_buscar_poi.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
-</p>
-
-<p align="center">
    <img src="assets/mapsme_ruta_pois.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
-</p>
-
-<p align="center">
    <img src="assets/mapsme_ruta_pois_2.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
-</p>
-Como podemos ver también disponde de filtros predefinidos, pero no podemos crear los nuestros propios, a diferencia de la anterior.
+</p>  
 
+Como podemos ver también disponde de filtros predefinidos, pero no podemos crear los nuestros propios, a diferencia de la anterior.  
+
+**Wikiloc** :  
+Diseñada para entusiastas del senderismo, ciclismo, trail running. Puede realizar exploración, grabación y compartir de rutas, Descarga de mapas offline, proporciona información detallada de la ruta y creación de fotos.  
+
+
+**Here WeGo** :  
+La aplicación permite a los usuarios planificar sus rutas, la capacidad de descargar mapas para usarlos sin conexión, proporciona información detallada sobre puntos de interés cercanos, como restaurantes, áreas de descanso, miradores y lugares históricos, alertas en tiempo real sobre el tráfico, las condiciones del camino y los peligros potenciales en la ruta.
 ### Conclusiones
-Como hemos visto ningua de las aplicaciones hace todo lo que nosotros tenemos pensado, CityMaps2Go no genera rutas entre los POI pero si guarda los viajes que has hecho o que quieres hacer. Maps.me, por el contrario si genera la ruta entre puntos de interés, pero no se guarda en ningún lado, además de que solo funciona con mapas sin conexión.  
+Para diferenciarnos de la competencia ofrecemos opciones de personalización avanzadas para las preferencias del usuario. 
 
-En cambio nuestra aplicación pretenede generar y guardar las rutas entre los puntos de interés. Además de añadir otras funcionalidades como mostrar otros puntos de interés durante la ruta que podrían interesar al usuario, incluso indicarle cual sería una buena zona para sacarse fotos en los diferentes lugares que visite o artista relacionados con la localidad en la que se encuentra.
+Basándonos en el estudio realizado anteriormente podemos dar ejemplo de cómo la capacidad de ajustar las notificaciones, las sugerencias de fotografías y las listas de reproducción según los gustos individuales. A su vez ofrecer rutas más precisas y eficientes entre varios puntos y que en cada ubicación, mostrar artistas locales, así como una navegación fluida y sin problemas con realidad aumentada. 
 
-En definitiva, nuestra app compactaría las funcionalidades de las otras aplicaciones y añadiríamos otras que permitan diferenciar a la aplicación.  
+Se mantendrá la aplicación actualizada con nuevas funciones, correcciones de errores y mejoras basadas en los comentarios de los usuarios. Para así tener un compromiso con la satisfacción del cliente a largo plazo, de esta forma se estaría fidelizando al cliente.  
+
 ## Diseño de la arquitectura de comunicaciones
 
 Involucra el uso de múltiples APIs y servicios online que la aplicación consume como cliente.
