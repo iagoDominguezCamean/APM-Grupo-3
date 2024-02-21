@@ -68,6 +68,60 @@ En resumen, buscamos a personas apasionadas por viajar y compartir sus experienc
 
 ## Estudio de mercado
 
+### Aplicaciones similares
+
+**CityMaps2Go**:  
+   Dispone de mapas con/sin conexión y la propia aplicación te recomienda que mapas descargar. Solo los recomendará si haces el zoom suficiente en el mapa de la aplicación.  
+   
+   <p align="center">
+   <img src="assets/cm2go_mapas_sugeridos.jpg" alt="CityMaps2Go mapas recomendados" width="200"/>
+   </p>
+
+   Con la función **Descubrir** te muestra listas de POI en base a unos filtros predefinidos o filtros personalizados por el usuario.  
+   
+   <p align="center">
+   <img src="assets/cm2go_filtros.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+   </p>
+
+   Por ejemplo al seleccionar London sightseeing highlights, se nos muestran una serie de POI relacionados con ese filtro. Si seleccionamos una ciudad de la que aparecen arriba nos saldrán filtros como este. También es posible usar otro tipo de filtros como hoteles, restaurantes, etc.  
+
+   <p align="center">
+   <img src="assets/cm2go_resultado_filtro.jpg" alt="CityMaps2Go resultado filtros de puntos de interés" width="200"/>
+   </p>
+
+   Al seleccionar uno  de los POI que se nos recomienda con los filtros se nos muestra una descripción de este e información adicional, como sitios para dormir cercanos y fotos populares de dicho lugar. Además de darnos una valoración numérica del POI.  
+
+   <p align="center">
+   <img src="assets/cm2go_info_poi_1.jpg" alt="CityMaps2Go info punto de interés" width="200"/>
+   </p>
+
+   <p align="center">
+   <img src="assets/cm2go_info_poi_2.jpg" alt="CityMaps2Go info puntos de interés" width="200"/>
+   </p>
+
+   Estos POI los puedes añadir a una lista, las listas representan los viajes que hayas hecho y cada una tiene un nombre único para cada usuario. Una vez que añades un POI a una lista este aparecerá marcado en el mapa. Las listas se pueden editar, cambiar el color del icono de los POI en el mapa y su forma para diferenciar cada lista, también puedes cambiar el nombre de la lista.
+
+   <p align="center">
+   <img src="assets/cm2go_mapa.jpg" alt="CityMaps2Go mapa con listas de puntos de interés" width="200"/>
+   </p>
+
+**Maps.me**:  
+Es la que más se acerca a nuestra idea, aunque solo funciona con mapas sin conexión. También te permite descargar los mapas si haces el suficiente zoom. Creas una lista de POI a los que quieres ir oredenados por ti y te genera una ruta en base al orden que hayas indicado. Genera la ruta más rapida andando, en coche, transporte público. 
+
+<p align="center">
+   <img src="assets/mapsme_buscar_poi.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+</p>
+
+<p align="center">
+   <img src="assets/mapsme_ruta_pois.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+</p>
+
+<p align="center">
+   <img src="assets/mapsme_ruta_pois_2.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+</p>
+Como podemos ver también disponde de filtros predefinidos, pero no podemos crear los nuestros propios, a diferencia de la anterior.
+
+###
 ## Diseño de la arquitectura de comunicaciones
 
 Involucra el uso de múltiples APIs y servicios online que la aplicación consume como cliente.
