@@ -119,6 +119,8 @@ Diseñada para entusiastas del senderismo, ciclismo, trail running. Puede realiz
 <p align="center">
    <img src="assets/4-mapaWi.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
    <img src="assets/5-mapaWi.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+   <img src="assets/6-mapaWi.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+   <img src="assets/7-mapaWi.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
 </p>  
 
 **Here WeGo** :  
