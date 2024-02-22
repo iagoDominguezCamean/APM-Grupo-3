@@ -116,6 +116,12 @@ Como podemos ver también disponde de filtros predefinidos, pero no podemos crea
 **Wikiloc** :  
 Diseñada para entusiastas del senderismo, ciclismo, trail running. Puede realizar exploración, grabación y compartir de rutas, Descarga de mapas offline, proporciona información detallada de la ruta y creación de fotos.  
 
+<p align="center">
+   <img src="assets/1-aquiWeGo.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+   <img src="assets/2-aquiWeGo.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+   <img src="assets/3-aquiWeGo.jpg" alt="CityMaps2Go filtros de puntos de interés" width="200"/>
+</p>  
+
 
 **Here WeGo** :  
 La aplicación permite a los usuarios planificar sus rutas, la capacidad de descargar mapas para usarlos sin conexión, proporciona información detallada sobre puntos de interés cercanos, como restaurantes, áreas de descanso, miradores y lugares históricos, alertas en tiempo real sobre el tráfico, las condiciones del camino y los peligros potenciales en la ruta.
