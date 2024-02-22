@@ -133,9 +133,9 @@ La aplicación permite a los usuarios planificar sus rutas, la capacidad de desc
 ### Conclusiones
 Para diferenciarnos de la competencia ofrecemos opciones de personalización avanzadas para las preferencias del usuario. 
 
-Basándonos en el estudio realizado anteriormente podemos dar ejemplo de cómo la capacidad de ajustar las notificaciones, las sugerencias de fotografías y las listas de reproducción según los gustos individuales. A su vez ofrecer rutas más precisas y eficientes entre varios puntos y que en cada ubicación, mostrar artistas locales, así como una navegación fluida y sin problemas con realidad aumentada. 
+Basándonos en el estudio realizado anteriormente podemos dar ejemplo de cómo la capacidad de ajustar las notificaciones, las sugerencias de fotografías y las listas de reproducción según los gustos individuales. A su vez ofrecer rutas más precisas y eficientes entre varios puntos y que en cada ubicación, mostrar artistas locales, así como una navegación fluida y sin problemas con realidad aumentada.
 
-Se mantendrá la aplicación actualizada con nuevas funciones, correcciones de errores y mejoras basadas en los comentarios de los usuarios. Para así tener un compromiso con la satisfacción del cliente a largo plazo, de esta forma se estaría fidelizando al cliente.  
+Por consiguiente se mantendrá la aplicación actualizada con nuevas funciones, correcciones de errores y mejoras basadas en los comentarios de los usuarios. Para así tener un compromiso con la satisfacción del cliente a largo plazo, de esta forma se estaría fidelizando al cliente.  
 
 ## Diseño de la arquitectura de comunicaciones
 
