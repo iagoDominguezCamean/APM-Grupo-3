@@ -147,7 +147,7 @@ Involucra el uso de múltiples APIs y servicios online que la aplicación consum
 
 - **Spotify API**: Se utiliza para interactuar con Spotify y crear listas de reproducción.
 
-- **Google Sign-In API o Google OAuth 2.0**: Esta API se utiliza para gestionar la autenticación y autorización de los usuarios en la aplicación.
+- **Google Sign-In API o Google OAuth 2.0**: Esta API se utiliza para gestionar la autenticación y autorización de los usuarios en la aplicación obteniendo información como Nombre completo, Dirección de correo electrónico, Foto de perfil e información de contactos.
 
 - **Foursquare, Wikimedia Commons y OpenWeather APIs**: Estas APIs se utilizan para obtener información sobre los lugares por los que pasa la ruta. La aplicación envía solicitudes para obtener detalles sobre puntos de interés, imágenes de lugares y datos meteorológicos locales.
 
