@@ -167,6 +167,6 @@ Al seleccionar una ruta, los usuarios son dirigidos al mapa con la ruta ya carga
 
 Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya compartido fotografías de lugares de interés cercanos, permitiendo a los usuarios visualizar y disfrutar de estas imágenes.
 
-<img src="assets/mockup.jpg" alt="Mockup" width="200"/>
+<img src="assets/mockup.jpg" alt="Mockup" width="100%"/>
 
 
