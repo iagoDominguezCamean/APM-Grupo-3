@@ -158,3 +158,20 @@ Involucra el uso de múltiples APIs y servicios online que la aplicación consum
 - **Compartir**: Este módulo permite a los usuarios compartir sus rutas, listas de reproducción u otra información generada por la aplicación a través de plataformas de redes sociales, correo electrónico u otras aplicaciones instaladas en el dispositivo.
 
 ![Diagrama de comunicación](assets/comm_diag.png)
+
+## Mockups
+
+<p align="center">
+   <img src="assets/Inicio-app.png" alt="Pantalla inicial" width="200"/>
+</p>
+
+Después de haber creado la cuenta si no se tenía una o haber iniciado sesión, saldrá esta pantalla.
+
+![Pantallas siguientes](assets/Rutas-mapa-RA.jpeg)
+Desde la pantalla inicial se puede buscar por lugares destacados/filtros/rutas recomendadas o que el usuario busque manualmente. Una vez terminada la busqueda nos saldran diferentes rutas predefinidas y si seleccionamos una de estas, se nos abrirá el mapa con  la ruta ya cargada. Con un boton se podrá acceder a la vista en RA.
+
+<p align="center">
+   <img src="assets/Buscar-rutas.png" alt="Pantalla inicial" width="200"/>
+</p>
+
+Desde cualquier pantalla, si pulsas en el icono del mapa te llevará a la pantalle de este. Aquí podrás crear tu propia ruta y se mostrará la pantalla anterior.
