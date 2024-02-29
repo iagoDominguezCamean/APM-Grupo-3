@@ -161,17 +161,12 @@ Involucra el uso de múltiples APIs y servicios online que la aplicación consum
 
 ## Mockups
 
-<p align="center">
-   <img src="assets/Inicio-app.png" alt="Pantalla inicial" width="200"/>
-</p>
+Desde la pantalla inicial se puede buscar por lugares destacados/filtros/rutas recomendadas o que el usuario busque manualmente. Podemos por un lado, crear rutas desde un punto origen y un punto destino, y por otro lado, directamente buscar destinos. En el segundo caso, seleccionaremos una de las rutas disponibles para ese destino.
 
-Después de haber creado la cuenta si no se tenía una o haber iniciado sesión, saldrá esta pantalla.
+Al seleccionar una ruta, los usuarios son dirigidos al mapa con la ruta ya cargada, donde tienen la opción de acceder a la vista en realidad aumentada o a una audioguía, según sus preferencias. Además, desde cualquier pantalla, pueden acceder rápidamente al mapa haciendo clic en el icono correspondiente.
 
-![Pantallas siguientes](assets/Rutas-mapa-RA.jpeg)
-Desde la pantalla inicial se puede buscar por lugares destacados/filtros/rutas recomendadas o que el usuario busque manualmente. Una vez terminada la busqueda nos saldran diferentes rutas predefinidas y si seleccionamos una de estas, se nos abrirá el mapa con  la ruta ya cargada. Con un boton se podrá acceder a la vista en RA.
+Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya compartido fotografías de lugares de interés cercanos, permitiendo a los usuarios visualizar y disfrutar de estas imágenes.
 
-<p align="center">
-   <img src="assets/Buscar-rutas.png" alt="Pantalla inicial" width="200"/>
-</p>
+<img src="assets/mockup.jpg" alt="Mockup" width="200"/>
 
-Desde cualquier pantalla, si pulsas en el icono del mapa te llevará a la pantalle de este. Aquí podrás crear tu propia ruta y se mostrará la pantalla anterior.
+
