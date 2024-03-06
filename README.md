@@ -169,4 +169,15 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 
 <img src="assets/mockup.jpg" alt="Mockup" width="100%"/>
 
+#### Versión de Diego Villodas Zapata Android Studio
+
+<img src="assets/as_dvz.jpg" alt="Mockup - Diego" width="100%"/>
+
+1. Home de la aplicación
+2. Detalle de ruta
+3. Detalle de punto de interés
+4. Detalle de destino
+5. Detalle de ruta iniciada
+6. Crear ruta
+
 
