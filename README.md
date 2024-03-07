@@ -169,7 +169,7 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 
 <img src="assets/mockup.jpg" alt="Mockup" width="100%"/>
 
-#### Versión de Diego Villodas Zapata Android Studio
+### Versión de Diego Villodas Zapata Android Studio
 
 <img src="assets/as_dvz.jpg" alt="Mockup - Diego" width="100%"/>
 
@@ -180,4 +180,8 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 5. Detalle de ruta iniciada
 6. Crear ruta
 
+### Pablo Mariño Boga
 
+|Menú|Home|Ruta|busqueda de Rutas|
+|---|---|---|---|
+| !(menu)[assets/mock_p_menu.gif]| !(home)[assets/mock_p_home.png] | !(ruta)[assets/mock_p_route.png] | !(search)[assets/mock_p_search.png] |
