@@ -180,9 +180,9 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 5. Detalle de ruta iniciada
 6. Crear ruta
 
-### Pablo Mariño Boga
+### Versión de Pablo Mariño Boga
 
-|Base layout|Menú|Home|Ruta|busqueda de Rutas|
+|Layout base|Menú|Home|Ruta|busqueda de Rutas|
 |---|---|---|---|---|
 | ![layout base](assets/mock_p_layout.PNG) | ![menu](assets/mock_p_menu.gif) | ![home](assets/mock_p_home.PNG) | ![ruta](assets/mock_p_route.PNG) | ![search](assets/mock_p_search.PNG) |
 | | ![menu](assets/mock_p_menu.PNG) | | | |
