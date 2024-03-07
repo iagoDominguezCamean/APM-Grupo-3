@@ -169,7 +169,7 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 
 <img src="assets/mockup.jpg" alt="Mockup" width="100%"/>
 
-### Versión de Diego Villodas Zapata Android Studio
+### Versión 1 Android Studio
 
 <img src="assets/as_dvz.jpg" alt="Mockup - Diego" width="100%"/>
 
