@@ -184,4 +184,4 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 
 |Menú|Home|Ruta|busqueda de Rutas|
 |---|---|---|---|
-| !(menu)[assets/mock_p_menu.gif]| !(home)[assets/mock_p_home.png] | !(ruta)[assets/mock_p_route.png] | !(search)[assets/mock_p_search.png] |
+| ![menu](assets/mock_p_menu.gif)| ![home](assets/mock_p_home.png) | ![ruta](assets/mock_p_route.png) | ![search](assets/mock_p_search.png) |
