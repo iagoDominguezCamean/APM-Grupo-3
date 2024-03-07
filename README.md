@@ -1,4 +1,4 @@
-# Buscador de rutas
+# TravelMate
 
 ## Nombre grupo
 
