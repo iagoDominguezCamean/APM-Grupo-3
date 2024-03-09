@@ -11,10 +11,10 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-//        val image2: ImageView = findViewById(R.id.image2)
-//        image2.setOnClickListener {
-//            val intent = Intent(this@Home, SearchView::class.java)
-//            startActivity(intent)
-//        }
+        val image2: ImageView = findViewById(R.id.image2)
+        image2.setOnClickListener {
+            val intent = Intent(this@Home, SearchView::class.java)
+            startActivity(intent)
+        }
     }
 }
