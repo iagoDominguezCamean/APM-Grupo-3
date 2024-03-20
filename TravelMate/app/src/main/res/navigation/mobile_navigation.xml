@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-git <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_auth">
 
     <fragment
-        android:id="@+id/navigation_auth"
-        android:name="com.muei.travelmate.ui.auth.AuthFragment"
-        android:label="Auth"
-        tools:layout="@layout/fragment_auth" />
-
-    <fragment
         android:id="@+id/navigation_home"
         android:name="com.muei.travelmate.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_auth"
+        android:name="com.muei.travelmate.ui.auth.AuthFragment"
+        android:label="@string/title_auth"
+        tools:layout="@layout/fragment_auth" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
