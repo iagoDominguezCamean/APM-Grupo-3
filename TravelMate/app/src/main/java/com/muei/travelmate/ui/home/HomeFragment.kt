@@ -1,6 +1,7 @@
 package com.muei.travelmate.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         binding.searchBar.setOnClickListener {
+            Log.d("HomeFragment", "Busqueda iniciada")
             findNavController().navigate(R.id.nav_search)
         }
 

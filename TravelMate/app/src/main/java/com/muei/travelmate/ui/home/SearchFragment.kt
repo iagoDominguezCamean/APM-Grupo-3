@@ -2,6 +2,7 @@ package com.muei.travelmate.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,9 @@ class SearchFragment : Fragment() {
             ViewModelProvider(this).get(SearchViewModel::class.java)
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        binding.arrowIcon.setOnClickListener { findNavController().navigate(R.id.nav_home) }
+        binding.arrowIcon.setOnClickListener {
+            Log.d("SearchFragment", "Flecha para volver pulsada")
+            findNavController().navigate(R.id.nav_home) }
         return binding.root
     }
 

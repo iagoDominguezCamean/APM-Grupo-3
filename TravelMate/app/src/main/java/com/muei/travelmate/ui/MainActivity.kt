@@ -25,25 +25,25 @@ class MainActivity : AppCompatActivity() {
         navView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    Log.d("MainActivity", "Home clicked")
+                    Log.d("MainActivity", "Home pulsado")
                     navController.navigate(R.id.nav_home)
                     true
                 }
 
                 R.id.nav_fav -> {
-                    Log.d("MainActivity", "Fav clicked")
+                    Log.d("MainActivity", "Fav pulsado")
                     navController.navigate(R.id.nav_fav)
                     true
                 }
 
                 R.id.nav_map -> {
-                    Log.d("MainActivity", "Map clicked")
+                    Log.d("MainActivity", "Map pulsado")
                     navController.navigate(R.id.nav_map)
                     true
                 }
 
                 R.id.nav_user -> {
-                    Log.d("MainActivity", "User clicked")
+                    Log.d("MainActivity", "User pulsado")
                     navController.navigate(R.id.nav_user)
                     true
                 }
