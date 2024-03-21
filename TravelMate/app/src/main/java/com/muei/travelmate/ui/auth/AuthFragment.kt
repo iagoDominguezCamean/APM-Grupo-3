@@ -10,6 +10,7 @@ import com.muei.travelmate.R
 import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationException
@@ -18,6 +19,7 @@ import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
 import com.google.android.material.snackbar.Snackbar
 import com.muei.travelmate.databinding.FragmentAuthBinding
+import kotlinx.coroutines.*
 
 
 class AuthFragment : Fragment() {
@@ -67,7 +69,20 @@ class AuthFragment : Fragment() {
 
         validateLocalJWT()
         updateViewOnLogAction()
+
         return root
+    }
+
+    fun Fragment.navigateToHome() {
+        // Use findNavController to get the NavController associated with this Fragment
+        val navController = findNavController()
+        // Start a coroutine to introduce a delay
+        CoroutineScope(Dispatchers.Main).launch {
+            // Delay for 5 seconds
+            delay(3000L)
+            // Navigate to the destination with id navigation_home
+            navController.navigate(R.id.navigation_home)
+        }
     }
 
     private fun validateLocalJWT(){
@@ -105,6 +120,9 @@ class AuthFragment : Fragment() {
 
                     user = User(idToken)
                     updateViewOnLogAction()
+
+                    // Temp : Opens the home fragment
+                    navigateToHome()
 
                 }
             })
