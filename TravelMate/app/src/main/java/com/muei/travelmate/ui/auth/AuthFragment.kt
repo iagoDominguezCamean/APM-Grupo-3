@@ -94,6 +94,8 @@ class AuthFragment : Fragment() {
             if(!user.expired) {
                 // I can use this local token to login
                 userIsAuthenticated = true
+                // Temp : Opens the home fragment
+                navigateToHome()
             }
         }
     }
