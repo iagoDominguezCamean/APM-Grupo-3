@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.muei.travelmate.R
-import com.muei.travelmate.databinding.FragmentMapBinding
-import com.muei.travelmate.databinding.FragmentUserBinding
+import com.muei.travelmate.databinding.FragmentRouteBinding
+import com.muei.travelmate.databinding.FragmentSearchBinding
 
-class MapFragment : Fragment() {
+class RouteFragment : Fragment() {
 
-    private var _binding: FragmentMapBinding? = null
+    private var _binding: FragmentRouteBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,13 +26,12 @@ class MapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val homeViewModel =
-            ViewModelProvider(this).get(MapViewModel::class.java)
+            ViewModelProvider(this).get(RouteViewModel::class.java)
 
-        _binding = FragmentMapBinding.inflate(inflater, container, false)
-        binding.searchIcon.setOnClickListener {
-            Log.d("MapFragment", "Pulsado boton buscar en mapa")
-            findNavController().navigate(R.id.nav_route)
-        }
+        _binding = FragmentRouteBinding.inflate(inflater, container, false)
+        binding.arrowIcon.setOnClickListener {
+            Log.d("RouteFragment", "Flecha para volver pulsada")
+            findNavController().navigate(R.id.nav_map) }
         return binding.root
     }
 

@@ -36,12 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="City route (Paris)"
+            android:text="Route searh"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <!-- Emoticono de la lupa -->
-        <ImageView
+        <ImageButton
             android:id="@+id/search_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,6 +57,7 @@
         android:id="@+id/info_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/rounded_white_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

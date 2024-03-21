@@ -159,44 +159,4 @@
             </RelativeLayout>
         </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bar_menu"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/anterior"
-        android:background="#323232"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <!-- Aquí van los elementos de tu barra de menú -->
-        <ImageButton
-            android:id="@+id/menu_item1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_home_white" />
-
-        <ImageButton
-            android:id="@+id/menu_item2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_favourite" />
-
-        <ImageButton
-            android:id="@+id/menu_item3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_explore" />
-
-        <ImageButton
-            android:id="@+id/menu_item4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_user" />
-    </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

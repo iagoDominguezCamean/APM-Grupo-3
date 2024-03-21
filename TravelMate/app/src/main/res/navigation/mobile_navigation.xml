@@ -34,4 +34,10 @@
         android:name="com.muei.travelmate.ui.home.SearchFragment"
         android:label="@string/search"
         tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/nav_route"
+        android:name="com.muei.travelmate.ui.home.RouteFragment"
+        android:label="@string/route"
+        tools:layout="@layout/fragment_route" />
 </navigation>
