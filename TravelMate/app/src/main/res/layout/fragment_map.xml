@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Route searh"
+            android:text="@string/route_searh"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -99,7 +99,7 @@
             android:id="@+id/start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Iniciar"
+            android:text="@string/iniciar"
             android:textSize="14sp"
             android:padding="4dp"
             android:background="@drawable/rounded_background"
@@ -126,7 +126,7 @@
             android:layout_below="@id/time_distance"
             android:layout_marginStart="24dp"
             android:layout_marginBottom="24dp"
-            android:text="Más detalles..."
+            android:text="@string/m_s_detalles"
             android:textColor="#bf1d65"
             android:textSize="12sp" />
 

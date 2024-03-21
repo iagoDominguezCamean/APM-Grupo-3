@@ -7,4 +7,19 @@
     <string name="search">search</string>
     <string name="Configuración">Configuración</string>
     <string name="route">route</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="m_s_detalles">Más detalles...</string>
+    <string name="route_searh">Route searh</string>
+    <string name="categor_as">Categorías</string>
+    <string name="music_category">Music category</string>
+    <string name="m_sica">Música</string>
+    <string name="history_category">History category</string>
+    <string name="historia">Historia</string>
+    <string name="art_category">Art category</string>
+    <string name="arte">Arte</string>
+    <string name="nature_section">Nature section</string>
+    <string name="naturaleza">Naturaleza</string>
+    <string name="leisure_category">Leisure category</string>
+    <string name="ocio">Ocio</string>
+    <string name="rutas_recomendadas">Rutas recomendadas</string>
 </resources>

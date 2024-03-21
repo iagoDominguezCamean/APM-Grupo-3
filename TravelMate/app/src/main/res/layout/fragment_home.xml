@@ -116,7 +116,7 @@
                 android:id="@+id/section2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Categorías"
+                android:text="@string/categor_as"
                 android:textSize="24sp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/category_layout"
@@ -148,7 +148,7 @@
 
                     <ImageButton
                         android:id="@+id/music_chip"
-                        android:contentDescription="Music category"
+                        android:contentDescription="@string/music_category"
                         android:layout_width="58dp"
                         android:layout_height="58dp"
                         android:background="@drawable/chip_background"
@@ -158,7 +158,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Música"
+                        android:text="@string/m_sica"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -172,7 +172,7 @@
 
                     <ImageButton
                         android:id="@+id/history_chip"
-                        android:contentDescription="History category"
+                        android:contentDescription="@string/history_category"
                         android:layout_width="58dp"
                         android:layout_height="58dp"
                         android:background="@drawable/chip_background"
@@ -182,7 +182,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Historia"
+                        android:text="@string/historia"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -196,7 +196,7 @@
 
                     <ImageButton
                         android:id="@+id/art_chip"
-                        android:contentDescription="Art category"
+                        android:contentDescription="@string/art_category"
                         android:layout_width="58dp"
                         android:layout_height="58dp"
                         android:background="@drawable/chip_background"
@@ -206,7 +206,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Arte"
+                        android:text="@string/arte"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -220,7 +220,7 @@
 
                     <ImageButton
                         android:id="@+id/nature_chip"
-                        android:contentDescription="Nature section"
+                        android:contentDescription="@string/nature_section"
                         android:layout_width="58dp"
                         android:layout_height="58dp"
                         android:background="@drawable/chip_background"
@@ -230,7 +230,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Naturaleza"
+                        android:text="@string/naturaleza"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -243,7 +243,7 @@
 
                     <ImageButton
                         android:id="@+id/leisure_chip"
-                        android:contentDescription="Leisure category"
+                        android:contentDescription="@string/leisure_category"
                         android:layout_width="58dp"
                         android:layout_height="58dp"
                         android:background="@drawable/chip_background"
@@ -253,7 +253,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ocio"
+                        android:text="@string/ocio"
                         android:textSize="10sp" />
                 </LinearLayout>
 
@@ -263,7 +263,7 @@
                 android:id="@+id/section3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rutas recomendadas"
+                android:text="@string/rutas_recomendadas"
                 android:textSize="24sp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/gridLayout"
