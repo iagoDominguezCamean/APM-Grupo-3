@@ -81,7 +81,7 @@ class AuthFragment : Fragment() {
             // Delay for 5 seconds
             delay(3000L)
             // Navigate to the destination with id navigation_home
-            navController.navigate(R.id.navigation_home)
+            navController.navigate(R.id.nav_home)
         }
     }
 
