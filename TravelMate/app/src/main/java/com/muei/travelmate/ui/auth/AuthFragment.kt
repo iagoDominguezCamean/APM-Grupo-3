@@ -1,5 +1,6 @@
 package com.muei.travelmate.ui.auth
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,19 +40,11 @@ class AuthFragment : Fragment() {
 
         // Set up the account object with the Auth0 application details
         account = Auth0(
-            getString(R.string.auth0_client_id),//"@string/auth0_client_id",
-            getString(R.string.auth0_domain)//"@string/auth0_domain"
+            getString(R.string.auth0_client_id),
+            getString(R.string.auth0_domain)
         )
     }
 
-    /*
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_auth, container, false)
-    }
-    */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -70,33 +63,24 @@ class AuthFragment : Fragment() {
 
         logoutButton.setOnClickListener {
             logout()
-        }/*
-                loginButton.setOnClickListener {
-                    onLoginButtonClick()
-                }
+        }
 
-                logoutButton.setOnClickListener {
-                    onLogoutButtonClick()
-                }
-
-                // Cargo datos almacenados localmente
-                homeViewModel.user = readFromSharedPreferences(requireContext(), "user", "")
-                showToast(homeViewModel.user)
-
-                // Actualizo UI
-                updateViewOnLogAction()
-                //
-
-                val textView: TextView = binding.textHome
-                homeViewModel.text.observe(viewLifecycleOwner) {
-                    textView.text = it
-                }
-
-
-             */
-
+        validateLocalJWT()
         updateViewOnLogAction()
         return root
+    }
+
+    private fun validateLocalJWT(){
+        val _idToken = readFromSharedPreferences(requireContext(), "id_token", "")
+        // If there is a JWT id stored
+        if(_idToken!=""){
+            // check if the token has expired
+            user = User(_idToken)
+            if(!user.expired) {
+                // I can use this local token to login
+                userIsAuthenticated = true
+            }
+        }
     }
 
     private fun login() {
@@ -113,9 +97,13 @@ class AuthFragment : Fragment() {
                 // Called when authentication completed successfully
                 override fun onSuccess(credentials: Credentials) {
                     userIsAuthenticated = true
-                    //val accessToken = credentials.accessToken
 
-                    user = User(credentials.idToken)
+                    val idToken: String = credentials.idToken
+
+                    // store idToken on SharedPreferences
+                    writeToSharedPreferences(requireContext(), "id_token", idToken)
+
+                    user = User(idToken)
                     updateViewOnLogAction()
 
                 }
@@ -135,6 +123,7 @@ class AuthFragment : Fragment() {
                 // Called when authentication completed successfully
                 override fun onSuccess(result: Void?) {
                     userIsAuthenticated = false
+                    writeToSharedPreferences(requireContext(), "id_token", "")
                     updateViewOnLogAction()
                 }
             })
@@ -149,6 +138,20 @@ class AuthFragment : Fragment() {
 
     fun showSnackbar(message: String?) {
         Snackbar.make(binding.root, message as CharSequence, Snackbar.LENGTH_SHORT).show()
+    }
+
+    fun writeToSharedPreferences(context: Context, key: String, value: String) {
+        val sharedPref = context.getSharedPreferences("travelmate_prefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putString(key, value)
+            apply()
+        }
+    }
+
+    // Función para leer desde SharedPreferences
+    fun readFromSharedPreferences(context: Context, key: String, defaultValue: String): String {
+        val sharedPref = context.getSharedPreferences("travelmate_prefs", Context.MODE_PRIVATE)
+        return sharedPref.getString(key, defaultValue) ?: defaultValue
     }
 
     fun updateViewOnLogAction(){
@@ -167,5 +170,4 @@ class AuthFragment : Fragment() {
             logoutButton.isEnabled = false
         }
     }
-
 }
