@@ -14,13 +14,14 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
         // auth0 config
         manifestPlaceholders.clear()
         manifestPlaceholders["auth0Domain"] = "@string/auth0_domain"
         manifestPlaceholders["auth0Scheme"] = "@string/auth0_scheme"
         //
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -45,7 +46,6 @@ android {
 }
 
 dependencies {
-    implementation("com.auth0.android:auth0:2.10.2")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
@@ -59,4 +59,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation("com.auth0.android:auth0:2.10.2")
+    implementation("com.auth0.android:jwtdecode:2.+")
 }

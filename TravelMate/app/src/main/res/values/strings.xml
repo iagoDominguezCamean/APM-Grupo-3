@@ -5,6 +5,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_Map">Map</string>
     <string name="title_auth">Login</string>
-    <string name="login_button">Login</string>
-    <string name="logout_button">Logout</string>
+
+    <string name="login_welcome">Welcome to TravelMate</string>
+    <string name="login_button">LOG IN</string>
+    <string name="logout_button">LOG OUT</string>
+    <string name="login_message">You\'re logged in</string>
+    <string name="logout_message">You\'re logged out</string>
 </resources>
