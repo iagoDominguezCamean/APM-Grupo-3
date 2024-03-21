@@ -41,7 +41,7 @@
             android:textStyle="bold" />
 
         <!-- Emoticono de la lupa -->
-        <ImageButton
+        <ImageView
             android:id="@+id/search_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
