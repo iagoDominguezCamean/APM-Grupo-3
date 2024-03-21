@@ -1,17 +1,12 @@
 package com.muei.travelmate.ui.auth
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.muei.travelmate.R
-import android.content.Context
-import android.content.SharedPreferences
-import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 
@@ -20,8 +15,8 @@ import com.auth0.android.authentication.AuthenticationException
 import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
+import com.google.android.material.snackbar.Snackbar
 import com.muei.travelmate.databinding.FragmentAuthBinding
-import java.lang.Error
 
 
 class AuthFragment : Fragment() {
@@ -36,6 +31,7 @@ class AuthFragment : Fragment() {
     private lateinit var logoutButton: Button
     private lateinit var authViewModel: AuthViewModel;
     private var userIsAuthenticated: Boolean = false
+    private lateinit var user : User;
     // private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,6 +94,8 @@ class AuthFragment : Fragment() {
 
 
              */
+
+        updateViewOnLogAction()
         return root
     }
 
@@ -109,20 +107,17 @@ class AuthFragment : Fragment() {
             .start(requireContext(), object : Callback<Credentials, AuthenticationException> {
                 // Called when there is an authentication failure
                 override fun onFailure(exception: AuthenticationException) {
-                    showToast("Error")
-                    Log.d("debug","onFailure", exception )
-                    // TODO: Not yet implemented
+                    showSnackbar(exception.message)
                 }
 
                 // Called when authentication completed successfully
                 override fun onSuccess(credentials: Credentials) {
-                    // Get the access token from the credentials object. This can be used to call APIs
-                    val accessToken = credentials.accessToken
                     userIsAuthenticated = true
+                    //val accessToken = credentials.accessToken
+
+                    user = User(credentials.idToken)
                     updateViewOnLogAction()
-                    Log.d("debug","onSuccess" )
-                    // TODO: Not yet implemented
-                    showToast("Done")
+
                 }
             })
     }
@@ -133,29 +128,33 @@ class AuthFragment : Fragment() {
             .start(requireContext(), object : Callback<Void?, AuthenticationException> {
                 // Called when there is a failure
                 override fun onFailure(error: AuthenticationException) {
-                    showToast("Error")
-                    // TODO: Not yet implemented
+                    showSnackbar(getString(R.string.logout_failure_message,
+                                            error.getCode()))
                 }
 
                 // Called when authentication completed successfully
                 override fun onSuccess(result: Void?) {
                     userIsAuthenticated = false
                     updateViewOnLogAction()
-                    // TODO: Not yet implemented
-                    showToast("Done")
                 }
             })
 
     }
 
-    fun showToast(message: String) {
+    fun showToast(message: String?) {
 
         val context = context ?: return // Check if context is null
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
+    fun showSnackbar(message: String?) {
+        Snackbar.make(binding.root, message as CharSequence, Snackbar.LENGTH_SHORT).show()
+    }
+
     fun updateViewOnLogAction(){
         if(userIsAuthenticated) {
+            binding.loginviewText.text=getString(R.string.login_success_message,
+                user.name?:"");
             //loginButton.visibility = View.GONE
             //logoutButton.visibility = View.VISIBLE
             loginButton.isEnabled = false
@@ -163,10 +162,10 @@ class AuthFragment : Fragment() {
         }else{
             //logoutButton.visibility = View.GONE
             //loginButton.visibility = View.VISIBLE
+            binding.loginviewText.text=getString(R.string.login_welcome)
             loginButton.isEnabled = true
             logoutButton.isEnabled = false
         }
-
     }
 
 }

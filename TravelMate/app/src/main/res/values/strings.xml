@@ -8,7 +8,10 @@
 
     <string name="login_welcome">Welcome to TravelMate</string>
     <string name="login_button">LOG IN</string>
-    <string name="logout_button">LOG OUT</string>
-    <string name="login_message">You\'re logged in</string>
-    <string name="logout_message">You\'re logged out</string>
+    <string name="logout_button">LOG OUT</string>¡
+
+    <string name="login_success_message">Succesfully logged in! %1$s</string>
+    <string name="logout_failure_message">Something went wrong! %1$s</string>
+    <string name="logout_success_message">Logged out.---</string>
+
 </resources>
