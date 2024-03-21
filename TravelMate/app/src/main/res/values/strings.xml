@@ -22,4 +22,18 @@
     <string name="leisure_category">Leisure category</string>
     <string name="ocio">Ocio</string>
     <string name="rutas_recomendadas">Rutas recomendadas</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_Map">Map</string>
+    <string name="title_auth">Login</string>
+
+    <string name="login_welcome">Welcome to TravelMate</string>
+    <string name="login_button">LOG IN</string>
+    <string name="logout_button">LOG OUT</string>¡
+
+    <string name="login_success_message">Succesfully logged in! %1$s</string>
+    <string name="logout_failure_message">Something went wrong! %1$s</string>
+    <string name="logout_success_message">Logged out.---</string>
+
 </resources>
