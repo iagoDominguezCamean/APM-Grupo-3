@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth0_scheme">app</string>
+    <string name="auth0_domain">dev-zuy5mq06ucufds4c.eu.auth0.com</string>
+    <string name="auth0_client_id">Z6xEOmlN66JUBvGrohaTQKE5WjUQFNee</string>
+</resources>
