@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:padding="50dp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -22,6 +23,7 @@
             android:layout_marginBottom="20dp"
             />
         <TextView
+            android:id="@+id/loginview_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login_welcome"
@@ -43,7 +45,7 @@
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
-            android:text="@string/logout_button" />
+            android:text="@string/logout_button"/>
 
     </LinearLayout>
 </FrameLayout>

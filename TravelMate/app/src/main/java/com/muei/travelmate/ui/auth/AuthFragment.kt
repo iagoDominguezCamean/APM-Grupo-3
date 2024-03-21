@@ -119,7 +119,7 @@ class AuthFragment : Fragment() {
                     // Get the access token from the credentials object. This can be used to call APIs
                     val accessToken = credentials.accessToken
                     userIsAuthenticated = true
-
+                    updateViewOnLogAction()
                     Log.d("debug","onSuccess" )
                     // TODO: Not yet implemented
                     showToast("Done")
@@ -140,6 +140,7 @@ class AuthFragment : Fragment() {
                 // Called when authentication completed successfully
                 override fun onSuccess(result: Void?) {
                     userIsAuthenticated = false
+                    updateViewOnLogAction()
                     // TODO: Not yet implemented
                     showToast("Done")
                 }
@@ -151,6 +152,21 @@ class AuthFragment : Fragment() {
 
         val context = context ?: return // Check if context is null
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun updateViewOnLogAction(){
+        if(userIsAuthenticated) {
+            //loginButton.visibility = View.GONE
+            //logoutButton.visibility = View.VISIBLE
+            loginButton.isEnabled = false
+            logoutButton.isEnabled = true
+        }else{
+            //logoutButton.visibility = View.GONE
+            //loginButton.visibility = View.VISIBLE
+            loginButton.isEnabled = true
+            logoutButton.isEnabled = false
+        }
+
     }
 
 }
