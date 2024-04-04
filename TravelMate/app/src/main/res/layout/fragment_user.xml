@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:inputType="text"
-            android:text="@string/Configuración"
+            android:text="@string/rutas_guardadas"
             android:textColor="@color/white" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:inputType="text"
-            android:text="@string/Configuración"
+            android:text="@string/edit_profile"
             android:textColor="@color/white" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:inputType="text"
-            android:text="@string/Configuración"
+            android:text="@string/Ajustes"
             android:textColor="@color/white" />
 
 
