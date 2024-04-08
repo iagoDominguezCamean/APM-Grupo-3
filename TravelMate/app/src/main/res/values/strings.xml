@@ -35,5 +35,8 @@
     <string name="login_success_message">Succesfully logged in! %1$s</string>
     <string name="logout_failure_message">Something went wrong! %1$s</string>
     <string name="logout_success_message">Logged out.---</string>
+    <string name="Ajustes">Ajustes</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="rutas_guardadas">Rutas Guardadas</string>
 
 </resources>
