@@ -31,8 +31,16 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         binding.searchBar.setOnClickListener {
-            Log.d("HomeFragment", "Busqueda iniciada")
-            findNavController().navigate(R.id.nav_search)
+            val searchTerm = binding.searchBar.text.toString().trim()
+            if (searchTerm.isNotBlank()) {
+                val bundle = Bundle().apply {
+                    putString("searchTerm", searchTerm)
+                }
+                Log.d("HomeFragment", "Busqueda iniciada")
+                findNavController().navigate(R.id.nav_list_search, bundle)
+            } else {
+                Log.d("HomeFragment", "No se permitió la búsqueda porque el término de búsqueda está vacío.")
+            }
         }
 
         return binding.root
