@@ -179,3 +179,32 @@ Adicionalmente, ofrecemos la opción de explorar zonas donde la comunidad haya c
 4. Detalle de destino
 5. Detalle de ruta iniciada
 6. Crear ruta
+
+## Componentes de la App
+
+**¿Qué se pretende implementar como actividad?**
+
+En nuestra aplicación, pretendemos implementar el inicio de sesión como una actividad principal, donde la función principal sea proporcionar al usuario una experiencia de autenticación segura y confiable basada en OAuth, mediante los elementos globales de la actividad.
+
+**¿Qué se va a implementar como un servicio?**
+
+Las llamadas interactivas a las APIs externas de Google Maps y Spotify se implementarán como servicios con el fin de garantizar que todas las funciones requeridas estén integradas y funcionando correctamente en diferentes dispositivos, a través de la lógica proporcionada por las APIs, de manera que sea transparente al diseño de la aplicación.
+
+**¿Qué se va a implementar con Fragments?**
+
+En nuestra aplicación, se implementarán los siguientes fragments: HomeFragment, UserFragment, MapFragment, SearchFragment y RouteFragment. Estos fragments ayudarán en la comunicación entre sí y con la actividad principal, para facilitar la navegabilidad entre pantallas.
+
+**Cómo se lanzan los fragments y servicios**
+
+El HomeFragment enlaza con: 
+* SearchFragment
+* UserFragment
+
+El MapFragment enlaza con:
+* GoogleMapsService
+* SearchFragment
+     * Spotify Service
+
+El SearchFragment enlaza con:
+* HomeFragment
+* RouteFragment
