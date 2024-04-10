@@ -1,162 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/anterior"
+    <LinearLayout
+        android:id="@+id/anterior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- Aquí va tu contenido anterior -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+            <!-- Emoticono de la flecha -->
+            <ImageView
+                android:id="@+id/arrow_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Buscar rutas"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Emoticono de la lupa -->
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_search" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <!-- Aquí va tu contenido anterior -->
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="0dp"
+            android:padding="8px">
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp">
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_background"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="16dp">
 
-                <!-- Emoticono de la flecha -->
-                <ImageView
-                    android:id="@+id/arrow_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:src="@drawable/ic_arrow_back" />
-
-                <!-- Título -->
-                <TextView
-                    android:id="@+id/title_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="Buscar rutas"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <!-- Emoticono de la lupa -->
-                <ImageView
-                    android:id="@+id/search_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_search" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="0dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:padding="8px">
-
-
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerRouteSearch"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <Button
+                    android:id="@+id/buttonAddStop"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/rounded_background"
-                    android:orientation="vertical"
-                    android:paddingStart="24dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="24dp"
-                    android:paddingBottom="16dp">
-
-                    <TextView
-                        android:id="@+id/textViewOrigin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:text="Origen"
-                        android:textSize="18sp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp">
-
-                        <EditText
-                            android:id="@+id/editTextOrigin"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toStartOf="@+id/imageViewOriginPin"
-                            android:hint="Ingrese origen..."
-                            android:inputType="text"
-                            android:textSize="18sp" />
-
-                        <ImageView
-                            android:id="@+id/imageViewOriginPin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_explore" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/textViewDestination"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginTop="16dp"
-                        android:text="Destino"
-                        android:textSize="18sp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp">
-
-                        <EditText
-                            android:id="@+id/editTextDestination"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toStartOf="@+id/imageViewDestinationPin"
-                            android:hint="Ingrese destino..."
-                            android:inputType="text"
-                            android:textSize="18sp" />
-
-                        <ImageView
-                            android:id="@+id/imageViewDestinationPin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_explore" />
-                    </RelativeLayout>
-
-                    <Button
-                        android:id="@+id/buttonAddStop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginTop="16dp"
-                        android:text="+ Añadir Parada..."
-                        android:textSize="12dp" />
+                    android:layout_gravity="start"
+                    android:layout_marginTop="16dp"
+                    android:text="+ Añadir Parada..."
+                    android:textSize="12dp" />
 
 
-                    <Button
-                        android:id="@+id/buttonSearchMap"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/black"
-                        android:text="Buscar Ruta"
-                        android:textSize="16sp" />
-                </LinearLayout>
+                <Button
+                    android:id="@+id/buttonSearchMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black"
+                    android:text="Buscar Ruta"
+                    android:textSize="16sp" />
 
+            </LinearLayout>
 
-
-            </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
