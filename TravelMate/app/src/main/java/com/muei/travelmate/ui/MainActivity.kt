@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.muei.travelmate.R
 import com.muei.travelmate.databinding.ActivityMainBinding
+import com.muei.travelmate.ui.home.MapActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_map -> {
                     Log.d("MainActivity", "Map pulsado")
-                    navController.navigate(R.id.nav_map)
+                    val intent = Intent(this@MainActivity, MapActivity::class.java)
+                    startActivity(intent)
                     true
                 }
 
