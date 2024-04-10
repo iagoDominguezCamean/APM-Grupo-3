@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.muei.travelmate.R
 
-class RouteAdapter(private val routeList: List<Location>) : RecyclerView.Adapter<RouteViewHolder>(){
+class RouteAdapter(private val routeList: List<Location>, private val onRemoveListener:()-> Unit) : RecyclerView.Adapter<RouteViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RouteViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -18,6 +18,6 @@ class RouteAdapter(private val routeList: List<Location>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: RouteViewHolder, position: Int) {
         val item = routeList[position]
-        holder.render(item, position)
+        holder.render(item, position, onRemoveListener)
     }
 }

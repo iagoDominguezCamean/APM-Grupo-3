@@ -41,22 +41,9 @@ class RouteFragment : Fragment() {
         init_recycler_route_search()
         // asigno accion al boton de añadir destino
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
-        println("------------------------"+LocationProvider.routeList)
         buttonAdd.setOnClickListener {
-            println("------------------------"+LocationProvider.routeList)
-
             LocationProvider.routeList.add(Location(""))
-
-            println(LocationProvider.routeList)
-
-            val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
-
-
-
-            recyclerView.adapter?.notifyDataSetChanged()
-
-            println("----"+LocationProvider.routeList+"  "+LocationProvider.routeList.size)
-            //Toast.makeText(requireContext(), "Button Clicked", Toast.LENGTH_SHORT).show()
+            updateRecycler()
         }
 
         return binding.root
@@ -70,6 +57,11 @@ class RouteFragment : Fragment() {
     fun init_recycler_route_search(){
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter = RouteAdapter(LocationProvider.routeList)
+        recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { updateRecycler() })
+    }
+
+    fun updateRecycler(){
+        val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }
