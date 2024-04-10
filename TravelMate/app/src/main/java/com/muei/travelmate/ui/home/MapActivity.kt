@@ -1,6 +1,5 @@
 package com.muei.travelmate.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,16 +8,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.muei.travelmate.R
 import com.muei.travelmate.databinding.ActivityMapBinding
 
@@ -32,58 +28,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.bottomNavigation
-        val navController = findNavController(R.id.nav_host_fragment)
-        navView.setupWithNavController(navController)
-
-        navView.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    Log.d("MapActivity", "Home pulsado")
-                    navController.navigate(R.id.nav_home)
-                    finish()
-
-                    true
-                }
-
-                R.id.nav_fav -> {
-                    Log.d("MapActivity", "Fav pulsado")
-                    navController.navigate(R.id.nav_fav)
-                    finish()
-
-                    true
-                }
-
-                R.id.nav_map -> {
-                    Log.d("MapActivity", "Ya estás en el mapa")
-                    true
-                }
-
-                R.id.nav_user -> {
-                    Log.d("MapActivity", "User pulsado")
-                    navController.navigate(R.id.nav_user)
-                    finish()
-
-                    true
-                }
-                else -> false
-            }
-        }
-
+        val homeViewModel = ViewModelProvider(this).get(MapViewModel::class.java)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
         mapFragment.getMapAsync(this)
 
         binding.searchIcon.setOnClickListener {
-            Log.d("MapActivity", "Icono de busqueda pulsado")
-            navController.navigate(R.id.nav_route)
+            Log.d("MapActivity", "Search button clicked on the map")
+            // Navigate to the desired destination
+            // Example: findNavController().navigate(R.id.nav_route)
         }
-
-        binding.arrowIcon.setOnClickListener{
-            Log.d("MapActivity", "Flecha para volver pulsada")
-            finish()
-        }
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
