@@ -42,6 +42,12 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
+        android:id="@+id/nav_list_search"
+        android:name="com.muei.travelmate.ui.home.ListSearchFragment"
+        android:label="list_search"
+        tools:layout="@layout/fragment_list_search" />
+
+    <fragment
         android:id="@+id/nav_route"
         android:name="com.muei.travelmate.ui.home.RouteFragment"
         android:label="@string/route"
