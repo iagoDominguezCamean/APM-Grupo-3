@@ -25,27 +25,29 @@
             android:id="@+id/location_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/delete_button"
+            android:layout_toStartOf="@+id/imageViewOriginPin"
             android:inputType="text"
             android:textSize="18sp" />
 
-        <!--
-        <ImageView
+
+        <ImageButton
             android:id="@+id/imageViewOriginPin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_explore" />
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_explore"
+            android:layout_toStartOf="@+id/delete_button"/>
 
-        -->
 
         <ImageButton
             android:id="@+id/delete_button"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:src="@android:drawable/ic_delete"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            android:background="#00FFFFFF"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_delete" />
         <!--android:layout_toStartOf="@+id/arrange"
 
 
