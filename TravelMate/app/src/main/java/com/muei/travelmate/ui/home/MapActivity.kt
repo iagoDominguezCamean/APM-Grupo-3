@@ -32,14 +32,51 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val navView: BottomNavigationView = binding.bottomNavigation
+        val navController = findNavController(R.id.nav_host_fragment)
+        navView.setupWithNavController(navController)
 
+        navView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    Log.d("MapActivity", "Home pulsado")
+                    navController.navigate(R.id.nav_home)
+                    finish()
+
+                    true
+                }
+
+                R.id.nav_fav -> {
+                    Log.d("MapActivity", "Fav pulsado")
+                    navController.navigate(R.id.nav_fav)
+                    finish()
+
+                    true
+                }
+
+                R.id.nav_map -> {
+                    Log.d("MapActivity", "Ya estás en el mapa")
+                    true
+                }
+
+                R.id.nav_user -> {
+                    Log.d("MapActivity", "User pulsado")
+                    navController.navigate(R.id.nav_user)
+                    finish()
+
+                    true
+                }
+                else -> false
+            }
+        }
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 
         mapFragment.getMapAsync(this)
 
         binding.searchIcon.setOnClickListener {
-            Log.d("MapActivity", "Search button clicked on the map")
-
+            Log.d("MapActivity", "Icono de busqueda pulsado")
+            navController.navigate(R.id.nav_route)
         }
 
         binding.arrowIcon.setOnClickListener{
