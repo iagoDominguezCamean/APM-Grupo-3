@@ -208,3 +208,8 @@ El MapFragment enlaza con:
 El SearchFragment enlaza con:
 * HomeFragment
 * RouteFragment
+
+**Tareas en segundo plano**  
+El seguimiento con google maps y la actividad del mapa necesitarían estar ejecutandose en segundo plano.
+
+Hace falta actualizar el MapFragment a MapActivity para poder interactuar con el mapa, no se ha encontrado como hacer que el fragment haga que se pueda interactuar con el mapa y revisar la navegación para poder acceder al RouteFragment.
