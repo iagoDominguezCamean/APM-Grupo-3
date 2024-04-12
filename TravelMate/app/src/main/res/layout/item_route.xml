@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/imageViewOriginPin"
-            android:inputType="text"
+            android:inputType="text|textCapWords"
             android:textSize="18sp" />
 
 
