@@ -35,17 +35,17 @@ class RouteViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 LocationProvider.routeList[position]=Location(s.toString())
-                println("---------------%%%%%%%%%% atc"+LocationProvider.routeList+" "+ position)
+                println("%%%%%%%%%% Introduce localidad: "+position+", lista:"+LocationProvider.routeList)
             }
         }
-
         location_name.addTextChangedListener(txtWatcher)
+
 
         // Accion de boton eliminar
         delete_button.setOnClickListener {
             location_name.text=""
             LocationProvider.routeList.removeAt(position)
-            println("---------------%%%%%%%%%% "+LocationProvider.routeList)
+            println("%%%%%%%%%% Elimina posicion: "+position+", lista:"+LocationProvider.routeList)
             onRemoveListener()
         }
 

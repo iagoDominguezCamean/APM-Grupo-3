@@ -43,7 +43,7 @@ class RouteFragment : Fragment() {
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
         buttonAdd.setOnClickListener {
             LocationProvider.routeList.add(Location(""))
-            println("---------------%%%%%%%%%% "+LocationProvider.routeList)
+            println("%%%%%%%%%% Añade localidad a la lista:"+LocationProvider.routeList)
             //recyclerItemAdded(LocationProvider.routeList.size-1)
             recyclerItemChanged()
 
@@ -54,6 +54,7 @@ class RouteFragment : Fragment() {
         buttonSearch.setOnClickListener {
             recyclerItemChanged()
             val result = LocationProvider.routeList.joinToString(",") { it.toString() }
+            println("%%%%%%%%%% Busqueda con la lista:"+LocationProvider.routeList)
             showToast("Buscar ruta -> "+result)
         }
 
