@@ -20,6 +20,11 @@ import java.net.URL
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
+    private var placeName: String? = null
+    private var placeId: String? = ""
+    private var latitude: Double? = null
+    private var longitude: Double? = null
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,11 +41,24 @@ class SearchFragment : Fragment() {
             Log.d("SearchFragment", "Flecha para volver pulsada")
             findNavController().navigate(R.id.nav_home) }
 
+        binding.item1.setOnClickListener {
+            Log.d("SearchFragment", "Ruta 1 pulsada")
+            val bundle = Bundle().apply {
+                putString("placeName", placeName)
+                putString("placeId", placeId)
+                latitude?.let { it1 -> putDouble("lat", it1) }
+                longitude?.let { it1 -> putDouble("lng", it1) }
+                putString("placeType", "museum")
+            }
+            findNavController().navigate(R.id.nav_map_search, bundle)
+        }
+
+
         // Obtener el place_id del Bundle de la navegación
-        val placeId = arguments?.getString("place_id") ?: return binding.root // Devuelve la vista si place_id es nulo
+        this.placeId = arguments?.getString("place_id") ?: return binding.root // Devuelve la vista si place_id es nulo
 
         // Llama a la función para buscar detalles del lugar
-        fetchPlaceDetails(placeId)
+        fetchPlaceDetails(this.placeId!!)
 
         return binding.root
     }
@@ -52,7 +70,7 @@ class SearchFragment : Fragment() {
 
     fun fetchPlaceDetails(placeId: String) {
         val apiKey = "AIzaSyAG6Mpf5GzKQbeDXOQQ2NUvPlARMobE_SQ" // Inserta tu clave de API de Google Places aquí
-        val apiUrl = "https://maps.googleapis.com/maps/api/place/details/json?fields=name,photo&place_id=$placeId&key=$apiKey"
+        val apiUrl = "https://maps.googleapis.com/maps/api/place/details/json?fields=name,photo,geometry&place_id=$placeId&key=$apiKey"
 
         Thread {
             try {
@@ -71,7 +89,10 @@ class SearchFragment : Fragment() {
                 val jsonObject = JSONObject(response.toString())
                 if (jsonObject.getString("status") == "OK") {
                     val result = jsonObject.getJSONObject("result")
-                    val name = result.getString("name")
+                    this.placeName = result.getString("name")
+                    val locationObj = result.getJSONObject("geometry").getJSONObject("location")
+                    this.latitude = locationObj.getDouble("lat")
+                    this.longitude = locationObj.getDouble("lng")
                     val photos = if (result.has("photos")) result.getJSONArray("photos") else null
                     val photoReference = if (photos != null && photos.length() > 0) {
                         val photoObj = photos.getJSONObject(0)
@@ -82,7 +103,7 @@ class SearchFragment : Fragment() {
 
                     // Cambiar el texto de destination1 con el nombre del lugar
                     activity?.runOnUiThread {
-                        binding.destination1.text = name
+                        binding.destination1.text = this.placeName
                     }
 
                     // Cargar la foto si hay una referencia de foto
