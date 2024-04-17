@@ -1,16 +1,19 @@
 package com.muei.travelmate.ui
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.muei.travelmate.R
 import com.muei.travelmate.databinding.ActivityMainBinding
-import com.muei.travelmate.ui.home.MapActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -39,8 +42,14 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_map -> {
                     Log.d("MainActivity", "Map pulsado")
-                    val intent = Intent(this@MainActivity, MapActivity::class.java)
-                    startActivity(intent)
+                    if(!checkPermission()){
+                        Log.d("Permisos de geolocalización", "Solicitando")
+                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+                    }else{
+                        Log.d("Permisos de geolocalización", "Concedidos")
+                        navController.navigate(R.id.nav_map)
+                    }
+
                     true
                 }
 
@@ -53,5 +62,12 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+    private fun checkPermission(): Boolean{
+        return (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+    }
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
     }
 }
