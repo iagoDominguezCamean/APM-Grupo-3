@@ -22,7 +22,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.location.Location
+import android.location.LocationManager
+import android.provider.Settings
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 
@@ -50,6 +54,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         val mapView = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapView.getMapAsync(this)
+
+        if(!isGPSenabled())
+            showGPSdisabledAlert()
+
         return binding.root
     }
 
@@ -90,6 +98,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 Toast.makeText(requireContext(), "Unable to get current location", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun isGPSenabled(): Boolean{
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+    }
+
+    private fun showGPSdisabledAlert(){
+        val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+        startActivity(intent)
     }
     companion object {
         private const val DEFAULT_LATITUDE = -33.8688
