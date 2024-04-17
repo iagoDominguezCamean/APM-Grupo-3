@@ -22,6 +22,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import android.Manifest
+import android.location.Location
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 
@@ -46,6 +47,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             Log.d("MapFragment", "Pulsado boton buscar en mapa")
             findNavController().navigate(R.id.nav_route)
         }
+
+        val mapView = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapView.getMapAsync(this)
         return binding.root
     }
 
@@ -53,10 +57,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        val mapView = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapView.getMapAsync { map ->
-            googleMap = map
-        }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()
@@ -64,6 +65,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap){
+        Log.d("MapReady", "Entrando en map ready")
         googleMap = map
 
         if(ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -73,16 +75,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 LOCATION_PERMISSION_REQUEST_CODE)
             return
         }
-
+        Log.d("MapReady", "Tenemos permisos")
         googleMap.uiSettings.isZoomControlsEnabled = true
         googleMap.isMyLocationEnabled = true
-
-        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+        Log.d("MapReady", "ZoomControl true, myLocation true")
+        fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
             if (location != null){
+                Log.d("MapReady", "Location retrieved successfully")
                 val currentLatLng = LatLng(location.latitude, location.longitude)
                 googleMap.addMarker(MarkerOptions().position(currentLatLng).title("Current Position"))
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, DEFAULT_ZOOM_LEVEL))
             }else{
+                Log.d("MapReady", "Unable to get current location")
                 Toast.makeText(requireContext(), "Unable to get current location", Toast.LENGTH_SHORT).show()
             }
         }
