@@ -17,6 +17,10 @@ import com.muei.travelmate.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private var placeName: String? = null
+    private var placeId: String? = ""
+    private var latitude: Double? = null
+    private var longitude: Double? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -47,7 +51,15 @@ class MainActivity : AppCompatActivity() {
                         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
                     }else{
                         Log.d("Permisos de geolocalización", "Concedidos")
-                        navController.navigate(R.id.nav_map)
+                        val bundle = Bundle().apply {
+                            putString("placeName",placeName ?: "Map")
+                            putString("placeId",placeId ?: " ")
+                            putDouble("lat", latitude ?: 0.00000000000)
+                            putDouble("lng", longitude ?: 0.00000000000)
+                            putString("placeType","default")
+                        }
+                        Log.d("ShowBundleMain", bundle.toString())
+                        navController.navigate(R.id.nav_map, bundle)
                     }
 
                     true
