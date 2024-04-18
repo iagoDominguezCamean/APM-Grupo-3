@@ -25,10 +25,6 @@
             android:name=".ui.MainActivity"
             android:exported="false"/>
 
-        <activity
-            android:name=".ui.home.MapActivity"
-            android:exported="false"/>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${API_KEY}"/>
