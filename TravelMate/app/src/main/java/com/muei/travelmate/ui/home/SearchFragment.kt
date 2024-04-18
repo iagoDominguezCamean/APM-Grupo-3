@@ -53,6 +53,42 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.nav_map_search, bundle)
         }
 
+        binding.item2.setOnClickListener {
+            Log.d("SearchFragment", "Ruta 2 pulsada")
+            val bundle = Bundle().apply {
+                putString("placeName", placeName)
+                putString("placeId", placeId)
+                latitude?.let { it1 -> putDouble("lat", it1) }
+                longitude?.let { it1 -> putDouble("lng", it1) }
+                putString("placeType", "natural_feature")
+            }
+            findNavController().navigate(R.id.nav_map_search, bundle)
+        }
+
+        binding.item3.setOnClickListener {
+            Log.d("SearchFragment", "Ruta 3 pulsada")
+            val bundle = Bundle().apply {
+                putString("placeName", placeName)
+                putString("placeId", placeId)
+                latitude?.let { it1 -> putDouble("lat", it1) }
+                longitude?.let { it1 -> putDouble("lng", it1) }
+                putString("placeType", "church")
+            }
+            findNavController().navigate(R.id.nav_map_search, bundle)
+        }
+
+        binding.item4.setOnClickListener {
+            Log.d("SearchFragment", "Ruta 4 pulsada")
+            val bundle = Bundle().apply {
+                putString("placeName", placeName)
+                putString("placeId", placeId)
+                latitude?.let { it1 -> putDouble("lat", it1) }
+                longitude?.let { it1 -> putDouble("lng", it1) }
+                putString("placeType", "restaurant")
+            }
+            findNavController().navigate(R.id.nav_map_search, bundle)
+        }
+
 
         // Obtener el place_id del Bundle de la navegación
         this.placeId = arguments?.getString("place_id") ?: return binding.root // Devuelve la vista si place_id es nulo
@@ -104,6 +140,7 @@ class SearchFragment : Fragment() {
                     // Cambiar el texto de destination1 con el nombre del lugar
                     activity?.runOnUiThread {
                         binding.destination1.text = this.placeName
+                        binding.title2.text = "Love $placeName"
                     }
 
                     // Cargar la foto si hay una referencia de foto
