@@ -34,7 +34,16 @@ class RouteFragment : Fragment() {
         _binding = FragmentRouteBinding.inflate(inflater, container, false)
         binding.arrowIcon.setOnClickListener {
             Log.d("RouteFragment", "Flecha para volver pulsada")
-            findNavController().navigate(R.id.nav_map) }
+            val bundle = Bundle().apply {
+                putString("placeName", "Map")
+                putString("placeId", " ")
+                putDouble("lat", 0.00000000000)
+                putDouble("lng", 0.00000000000)
+                putString("placeType","default")
+            }
+            Log.d("ShowBundleRoute", bundle.toString())
+            findNavController().navigate(R.id.nav_map, bundle)
+        }
 
         // Populo el Recyclerview de la busqueda de ruta
         initRecyclerRouteSearch()

@@ -50,7 +50,8 @@ class SearchFragment : Fragment() {
                 longitude?.let { it1 -> putDouble("lng", it1) }
                 putString("placeType", "museum")
             }
-            findNavController().navigate(R.id.nav_map_search, bundle)
+            Log.d("ShowBundleSearch", bundle.toString())
+            findNavController().navigate(R.id.nav_map, bundle)
         }
 
         binding.item2.setOnClickListener {
@@ -62,7 +63,8 @@ class SearchFragment : Fragment() {
                 longitude?.let { it1 -> putDouble("lng", it1) }
                 putString("placeType", "natural_feature")
             }
-            findNavController().navigate(R.id.nav_map_search, bundle)
+            Log.d("ShowBundleSearch", bundle.toString())
+            findNavController().navigate(R.id.nav_map, bundle)
         }
 
         binding.item3.setOnClickListener {
@@ -74,7 +76,8 @@ class SearchFragment : Fragment() {
                 longitude?.let { it1 -> putDouble("lng", it1) }
                 putString("placeType", "church")
             }
-            findNavController().navigate(R.id.nav_map_search, bundle)
+            Log.d("ShowBundleSearch", bundle.toString())
+            findNavController().navigate(R.id.nav_map, bundle)
         }
 
         binding.item4.setOnClickListener {
@@ -86,7 +89,8 @@ class SearchFragment : Fragment() {
                 longitude?.let { it1 -> putDouble("lng", it1) }
                 putString("placeType", "restaurant")
             }
-            findNavController().navigate(R.id.nav_map_search, bundle)
+            Log.d("ShowBundleSearch", bundle.toString())
+            findNavController().navigate(R.id.nav_map, bundle)
         }
 
 
