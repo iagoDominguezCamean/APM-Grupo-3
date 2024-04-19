@@ -217,3 +217,19 @@ Hace falta actualizar el MapFragment a MapActivity para poder interactuar con el
 **Geolocalización**
 
 Se solicitan permisos de FINE_LOCATION y COARSE_LOCATION, ya que vamos a usar el mapa para guiar al usuario a todos los puntos de la ruta que quiere seguir, si sale y vuelve a entrar a la aplicación tenemos que poder seguir donde se quedó antes de salir. Se solicitarán cuando se intente abrir el **MapFragment**.
+
+**Almacenamiento**
+
+Nuestra aplicación utiliza [Auth0](https://auth0.com/) de Okta para la gestión de identidad y accesos. Este servicio da la opción al usuario de registrar un nuevo usuario o utilizar la identidad de la que dispone en otros servicios como Google, Facebook...
+
+El funcionamiento es sencillo, la primera vez que el usuario accede a la aplicación se le solicita que inicie sesión utilizando alguna de las opciones disponibles. En cuanto finaliza el proceso correctamente la aplicación recibe un JWT (Java Web Token) que contiene los siguientes datos de usuario:
+
+- id
+- name
+- email
+- emailverified
+- picture
+- updatedAt
+- expiresAt
+  
+Esta información se almacena localmente utilizando Shared Preferences, para no solicitar el inicio de sesión mas veces de las necesarias comprobamos si el fichero de preferencias existe y no ha expirado antes de solicitar el inicio de sesión 
