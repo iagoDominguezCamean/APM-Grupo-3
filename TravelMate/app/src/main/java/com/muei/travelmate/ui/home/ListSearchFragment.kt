@@ -6,12 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.common.Feature
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
 import com.muei.travelmate.R
 import com.muei.travelmate.databinding.FragmentListSearchBinding
 import org.json.JSONException
@@ -36,8 +31,14 @@ class ListSearchFragment : Fragment() {
         Log.d("SearchFragment", "Término de búsqueda: $searchTerm")
         binding.titleText.text = "Término de búsqueda: $searchTerm"
 
+        // Inicialización de los TextViews de item{i}
+        val itemTextViews = arrayOf(binding.item1, binding.item2, binding.item3 /* agregar todos los TextViews de item{i} que necesites */)
+
+        // Oculta todos los TextViews de item{i}
+        itemTextViews.forEach { it.visibility = View.INVISIBLE }
+
         // Llamar a la función para obtener los resultados de la API
-        searchTerm?.let { searchMapTilerAPI(it) }
+        searchTerm?.let { searchGooglePlacesAPI(it) }
 
         binding.arrowIcon.setOnClickListener {
             Log.d("SearchFragment", "Flecha para volver pulsada")
@@ -51,37 +52,11 @@ class ListSearchFragment : Fragment() {
         _binding = null
     }
 
-    private fun fetchPlaceNamesFromJson(jsonString: String): List<String> {
-        val placeNames = mutableListOf<String>()
-        try {
-            val jsonObject = JSONObject(jsonString)
-            val featuresJsonArray = jsonObject.getJSONArray("features")
 
-            for (i in 0 until featuresJsonArray.length()) {
-                val featureObject = featuresJsonArray.getJSONObject(i)
-                val placeName = featureObject.getString("place_name")
-                placeNames.add(placeName)
-            }
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-        return placeNames
-    }
+    private fun searchGooglePlacesAPI(query: String) {
+        val apiKey = "AIzaSyAG6Mpf5GzKQbeDXOQQ2NUvPlARMobE_SQ" // Insert your Google Places API key here
+        val apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=$query&type=locality&key=$apiKey"
 
-    private fun updateTextViewsWithPlaceNames(placeNames: List<String>) {
-        val textViewsToUpdate = arrayOf(binding.title1, binding.title2, binding.title3 /* agregar todos los TextViews que necesites */)
-
-        placeNames.forEachIndexed { index, placeName ->
-            if (index < textViewsToUpdate.size) {
-                activity?.runOnUiThread {
-                    textViewsToUpdate[index].text = placeName
-                }
-            }
-        }
-    }
-
-    private fun searchMapTilerAPI(searchTerm: String) {
-        val apiUrl = "https://api.maptiler.com/geocoding/$searchTerm.json?key=gR5hsD5wp8w5wAwyFMPK"
         Thread {
             try {
                 val url = URL(apiUrl)
@@ -96,8 +71,8 @@ class ListSearchFragment : Fragment() {
                 }
                 reader.close()
 
-                val placeNames = fetchPlaceNamesFromJson(response.toString())
-                updateTextViewsWithPlaceNames(placeNames)
+                val places = fetchPlacesFromJson(response.toString())
+                updateTextViewsWithPlaces(places)
 
                 connection.disconnect()
             } catch (e: Exception) {
@@ -108,5 +83,45 @@ class ListSearchFragment : Fragment() {
             }
         }.start()
     }
+
+    private fun fetchPlacesFromJson(jsonString: String): List<Place> {
+        val places = mutableListOf<Place>()
+        try {
+            val jsonObject = JSONObject(jsonString)
+            if (jsonObject.getString("status") == "OK") {
+                val resultsArray = jsonObject.getJSONArray("results")
+                for (i in 0 until resultsArray.length()) {
+                    val resultObj = resultsArray.getJSONObject(i)
+                    val formattedAddress = resultObj.getString("formatted_address")
+                    val placeId = resultObj.getString("place_id")
+                    places.add(Place(formattedAddress, placeId))
+                }
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        return places
+    }
+
+    private fun updateTextViewsWithPlaces(places: List<Place>) {
+        val titleTextViews = arrayOf(binding.title1, binding.title2, binding.title3 /* agregar todos los TextViews de título que necesites */)
+        val itemTextViews = arrayOf(binding.item1, binding.item2, binding.item3 /* agregar todos los TextViews de item{i} que necesites */)
+
+        places.take(titleTextViews.size).forEachIndexed { index, place ->
+            activity?.runOnUiThread {
+                titleTextViews[index].text = place.formattedAddress
+                itemTextViews[index].apply {
+                    visibility = View.VISIBLE
+                    setOnClickListener {
+                        val bundle = Bundle().apply {
+                            putString("place_id", place.placeId)
+                        }
+                        findNavController().navigate(R.id.nav_search, bundle)
+                    }
+                }
+            }
+        }
+    }
+    data class Place(val formattedAddress: String, val placeId: String)
 
 }

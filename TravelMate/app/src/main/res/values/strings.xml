@@ -8,8 +8,8 @@
     <string name="Configuración">Configuración</string>
     <string name="route">route</string>
     <string name="iniciar">Iniciar</string>
-    <string name="m_s_detalles">Más detalles...</string>
-    <string name="route_searh">Route searh</string>
+    <string name="m_s_detalles">Más detalles…</string>
+    <string name="route_search">Route search</string>
     <string name="categor_as">Categorías</string>
     <string name="music_category">Music category</string>
     <string name="m_sica">Música</string>
@@ -32,11 +32,14 @@
     <string name="login_button">LOG IN</string>
     <string name="logout_button">LOG OUT</string>¡
 
-    <string name="login_success_message">Succesfully logged in! %1$s</string>
+    <string name="login_success_message">Successfully logged in! %1$s</string>
     <string name="logout_failure_message">Something went wrong! %1$s</string>
     <string name="logout_success_message">Logged out.---</string>
     <string name="Ajustes">Ajustes</string>
     <string name="edit_profile">Editar Perfil</string>
     <string name="rutas_guardadas">Rutas Guardadas</string>
+    <string name="museums">Museos</string>
+    <string name="churchs">Iglesias</string>
+    <string name="eat_drink">Comer y beber</string>
 
 </resources>
