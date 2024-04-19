@@ -143,7 +143,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     "?location=$lat,$lng" +
                     "&radius=5000" +
                     "&type=$placeType" +
-                    "&key=AIzaSyAG6Mpf5GzKQbeDXOQQ2NUvPlARMobE_SQ"
+                    "&key=${getString(R.string.API_KEY)}"
             val url = URL(urlString)
             val connection = url.openConnection() as HttpURLConnection
             val inputStream = connection.inputStream
