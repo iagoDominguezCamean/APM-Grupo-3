@@ -232,4 +232,4 @@ El funcionamiento es sencillo, la primera vez que el usuario accede a la aplicac
 - updatedAt
 - expiresAt
   
-Esta información se almacena localmente utilizando Shared Preferences, para no solicitar el inicio de sesión mas veces de las necesarias comprobamos si el fichero de preferencias existe y no ha expirado antes de solicitar el inicio de sesión 
+Esta información se almacena localmente utilizando Shared Preferences. Para no solicitar el inicio de sesión mas veces de las necesarias comprobamos si el fichero de preferencias existe y no ha expirado antes de solicitar el inicio de sesión 
