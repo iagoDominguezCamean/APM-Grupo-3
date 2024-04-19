@@ -17,7 +17,6 @@ class RouteAdapter(private val routeList: List<Location>, private val onRemoveLi
     }
 
     override fun onBindViewHolder(holder: RouteViewHolder, position: Int) {
-        val item = routeList[position]
-        holder.render(item, position, routeList.size-1, onRemoveListener)
+        holder.render(routeList, position, onRemoveListener)
     }
 }

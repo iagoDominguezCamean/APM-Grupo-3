@@ -23,6 +23,7 @@ class RouteFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val routeTotalStops: Int = 5
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +53,7 @@ class RouteFragment : Fragment() {
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
         buttonAdd.setOnClickListener {
             LocationProvider.routeList.add(Location(""))
-            println("---------------%%%%%%%%%% "+LocationProvider.routeList)
+            println("%%%%%%%%%% Añade localidad a la lista:"+LocationProvider.routeList)
             //recyclerItemAdded(LocationProvider.routeList.size-1)
             recyclerItemChanged()
 
@@ -63,6 +64,7 @@ class RouteFragment : Fragment() {
         buttonSearch.setOnClickListener {
             recyclerItemChanged()
             val result = LocationProvider.routeList.joinToString(",") { it.toString() }
+            println("%%%%%%%%%% Busqueda con la lista:"+LocationProvider.routeList)
             showToast("Buscar ruta -> "+result)
         }
 
@@ -88,9 +90,12 @@ class RouteFragment : Fragment() {
         // Actualizar adaptador
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
 
-        recyclerView.adapter?.notifyDataSetChanged()
-    }
+        //recyclerView.adapter?.notifyDataSetChanged()
+        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+        recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() })
 
+    }
+    /*
     fun recyclerItemAdded(pos:Int) {
         updateAddButton()
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
@@ -102,13 +107,13 @@ class RouteFragment : Fragment() {
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
         recyclerView.adapter?.notifyItemRemoved(pos)
     }
-
+    */
     fun updateAddButton(){
         // Actualizar bt añadir parada
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
-        val remainingStops = 5-LocationProvider.routeList.size
-        buttonAdd.text = "Añadir parada ("+remainingStops.toString()+")"
-        buttonAdd.isEnabled = remainingStops>=1
+        val routeRemainingStops = routeTotalStops-LocationProvider.routeList.size
+        buttonAdd.text = "Añadir parada ("+routeRemainingStops.toString()+")"
+        buttonAdd.isEnabled = routeRemainingStops>=1
     }
 
     fun showToast(message: String?) {

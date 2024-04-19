@@ -15,7 +15,9 @@ class RouteViewHolder(view:View) : RecyclerView.ViewHolder(view) {
     val delete_button = view.findViewById<ImageButton>(R.id.delete_button)
 
 
-    fun render(location:Location, position: Int, listSize: Int, onRemoveListener:()-> Unit){
+    fun render(routeList: List<Location>, position: Int, onRemoveListener:()-> Unit){
+        val listSize: Int = routeList.size-1
+
         // TODO: Añadir texto como cadena resources
         if(position == 0) {
             location_type.text = "Origen"
@@ -27,7 +29,9 @@ class RouteViewHolder(view:View) : RecyclerView.ViewHolder(view) {
                 location_type.text = "Parada " + position
             }
             location_name.hint = "Introduzca su Destino"
+
         }
+        location_name.text = routeList[position].toString()
 
         // Almacenar las localidades introducidas
         val txtWatcher = object : TextWatcher {
@@ -35,20 +39,21 @@ class RouteViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 LocationProvider.routeList[position]=Location(s.toString())
-                println("---------------%%%%%%%%%% atc"+LocationProvider.routeList+" "+ position)
+                println("%%%%%%%%%% Introduce localidad: "+position+", lista:"+LocationProvider.routeList)
             }
         }
-
         location_name.addTextChangedListener(txtWatcher)
+
 
         // Accion de boton eliminar
         delete_button.setOnClickListener {
             location_name.text=""
             LocationProvider.routeList.removeAt(position)
-            println("---------------%%%%%%%%%% "+LocationProvider.routeList)
+            println("%%%%%%%%%% Elimina posicion: "+position+", lista:"+LocationProvider.routeList)
             onRemoveListener()
         }
 
         delete_button.isEnabled=(listSize >=2)
+
     }
 }
