@@ -52,6 +52,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var placeName: String
     private var lat: Double = 0.0
     private var lng: Double = 0.0
+    private lateinit var bundleType: String
+    private var latlngArray: ArrayList<String> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,17 +67,22 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             findNavController().navigate(R.id.nav_route)
         }
         Log.d("MapCreated","Obteniendo valores")
-        placeName = requireArguments().getString("placeName") ?: throw IllegalArgumentException("Argument 'placeName' not found in bundle")
-        placeType = requireArguments().getString("placeType") ?: throw IllegalArgumentException("Argument 'placeType' not found in bundle")
-        lat = requireArguments().getDouble("lat")
-        lng = requireArguments().getDouble("lng")
+
+        placeName = requireArguments().getString("placeName") ?: ""
+        placeType = requireArguments().getString("placeType") ?: ""
+        lat = requireArguments().getDouble("lat") ?: 0.0
+        lng = requireArguments().getDouble("lng") ?: 0.0
+        bundleType = requireArguments().getString("bundleType") ?: ""
+        latlngArray = requireArguments().getStringArrayList("location_array") ?: arrayListOf()
+        Log.d("CustomRouteMap",latlngArray.toString())
 
         binding.titleText.text = "$placeName: $placeType"
 
         val mapView = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapView.getMapAsync(this)
 
-        if(lat != 0.0 && lng != 0.0)
+
+        if(lat != 0.0 && lng != 0.0 && bundleType != "customRoute")
             FetchPlacesTask().execute()
 
         if(!isGPSenabled())
@@ -88,7 +95,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
     }
     override fun onDestroyView() {
         super.onDestroyView()
@@ -110,6 +116,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         googleMap.uiSettings.isZoomControlsEnabled = true
         googleMap.isMyLocationEnabled = true
         Log.d("MapReady", "ZoomControl true, myLocation true")
+
+        if(bundleType == "customRoute"){
+            Log.d("CustomRouteHandle", "CustomRoute retrieved")
+            handleCustomRoute(latlngArray)
+        }
+
         fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
             if (location != null){
                 Log.d("MapReady", "Location retrieved successfully")
@@ -179,6 +191,21 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             val placeLatLng = LatLng(lat, lng)
             Log.d("LatLngMarker", placeLatLng.toString())
             googleMap.addMarker(MarkerOptions().position(placeLatLng).title(placeName))
+        }
+    }
+
+    private fun handleCustomRoute(latlngList: ArrayList<String>){
+        val pattern = Regex("""\(([-+]?\d*\.?\d+),\s*([-+]?\d*\.?\d+)\)""")
+
+        latlngList.map {
+            val placeLatLng = pattern.find(it)
+            Log.d("CustomRouteHandle", "placeLatLng = $placeLatLng")
+            if (placeLatLng != null){
+                val (lat, lng) = placeLatLng.destructured
+                val latlng = LatLng(lat.toDouble(), lng.toDouble())
+                Log.d("CustomRouteHandle", "LatLng = ${latlng.toString()}")
+                googleMap.addMarker(MarkerOptions().position(latlng))
+            }
         }
     }
 }

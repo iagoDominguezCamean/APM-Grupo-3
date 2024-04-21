@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:text="Origen"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <RelativeLayout
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/imageViewOriginPin"
             android:inputType="text|textCapWords"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
 
