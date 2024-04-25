@@ -16,18 +16,20 @@ import com.google.android.material.snackbar.Snackbar
 import com.muei.travelmate.R
 import com.muei.travelmate.ui.MainActivity
 import com.muei.travelmate.ui.auth.User
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var loginButton: Button
     private lateinit var logoutButton: Button
-    private lateinit var account: Auth0
-    private var userIsAuthenticated: Boolean = false
-    private lateinit var user: User
+
+
+
+
+    companion object {
+        lateinit var account: Auth0
+        var userIsAuthenticated: Boolean = false
+        lateinit var user: User
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +57,7 @@ class AuthActivity : AppCompatActivity() {
         updateViewOnLogAction()
     }
 
-    private fun validateLocalJWT() {
+    fun validateLocalJWT() {
         val _idToken = readFromSharedPreferences(applicationContext, "id_token", "")
         // If there is a JWT id stored
         if (_idToken != "") {
@@ -70,7 +72,7 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun login() {
+    fun login() {
         // Setup the WebAuthProvider, using the custom scheme and scope.
         WebAuthProvider.login(account).withScheme(getString(R.string.auth0_scheme))
             .withScope("openid profile email")
@@ -99,8 +101,8 @@ class AuthActivity : AppCompatActivity() {
             })
     }
 
-    private fun logout() {
-        WebAuthProvider.logout(account).withScheme(getString(R.string.auth0_scheme))
+    fun logout() {
+         WebAuthProvider.logout(account).withScheme(getString(R.string.auth0_scheme))
             .start(this, object : Callback<Void?, AuthenticationException> {
                 // Called when there is a failure
                 override fun onFailure(error: AuthenticationException) {
