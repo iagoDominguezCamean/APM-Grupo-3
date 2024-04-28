@@ -10,13 +10,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationException
 import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
 import com.muei.travelmate.R
 import com.muei.travelmate.databinding.FragmentUserBinding
-import com.muei.travelmate.ui.AuthActivity
 import com.muei.travelmate.ui.auth.User
 import com.muei.travelmate.ui.image.CircleTransform
 import com.squareup.picasso.Picasso
@@ -32,7 +32,11 @@ class UserFragment : Fragment() {
     private lateinit var userName: TextView
     private lateinit var userEmail: TextView
     private lateinit var imgView: ImageView
-
+    companion object {
+        lateinit var account: Auth0
+        var userIsAuthenticated: Boolean = false
+        lateinit var user: User
+    }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -43,15 +47,24 @@ class UserFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(UserViewModel::class.java)
-
+        val homeViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         _binding = FragmentUserBinding.inflate(inflater, container, false)
 
+        //** AUTH0 Setup
+        // Account details
+        account = Auth0(
+            getString(R.string.auth0_client_id),
+            getString(R.string.auth0_domain)
+        )
+
+        validateLocalJWT()
+
+
+        //** UI elementss
         loginButton = binding.root.findViewById(R.id.user_login_button)
         logoutButton = binding.root.findViewById(R.id.user_logout_button)
 
-        userName  = binding.root.findViewById(com.muei.travelmate.R.id.userName)
+        userName = binding.root.findViewById(com.muei.travelmate.R.id.userName)
         userEmail = binding.root.findViewById(com.muei.travelmate.R.id.userMail)
         imgView = binding.root.findViewById(com.muei.travelmate.R.id.imageView2)
 
@@ -63,13 +76,28 @@ class UserFragment : Fragment() {
             logout()
         }
 
-        updateLogin()
+        updateUI()
+
         return binding.root
     }
 
+
+    fun validateLocalJWT() {
+        //applicationContext------------
+        val _idToken = readFromSharedPreferences(binding.root.context, "id_token", "")
+        // If there is a JWT id stored
+        if (_idToken != "") {
+            // check if the token has expired
+            user = User(_idToken)
+            if (!user.expired) {
+                // I can use this local token to login
+                userIsAuthenticated = true
+            }
+        }
+    }
     fun login() {
         // Setup the WebAuthProvider, using the custom scheme and scope.
-        WebAuthProvider.login(AuthActivity.account).withScheme(getString(R.string.auth0_scheme))
+        WebAuthProvider.login(account).withScheme(getString(R.string.auth0_scheme))
             .withScope("openid profile email")
             // Launch the authentication passing the callback where the results will be received
             .start(requireContext(), object : Callback<Credentials, AuthenticationException> {
@@ -80,21 +108,21 @@ class UserFragment : Fragment() {
 
                 // Called when authentication completed successfully
                 override fun onSuccess(credentials: Credentials) {
-                    AuthActivity.userIsAuthenticated = true
+                    userIsAuthenticated = true
 
                     val idToken: String = credentials.idToken
 
                     // store idToken on SharedPreferences
                     writeToSharedPreferences(requireContext(), "id_token", idToken)
 
-                    AuthActivity.user = User(idToken)
-                    updateLogin()
+                    user = User(idToken)
+                    updateUI()
                 }
             })
     }
 
     fun logout() {
-        WebAuthProvider.logout(AuthActivity.account).withScheme(getString(R.string.auth0_scheme))
+        WebAuthProvider.logout(account).withScheme(getString(R.string.auth0_scheme))
             .start(requireContext(), object : Callback<Void?, AuthenticationException> {
                 // Called when there is a failure
                 override fun onFailure(error: AuthenticationException) {
@@ -103,9 +131,9 @@ class UserFragment : Fragment() {
 
                 // Called when authentication completed successfully
                 override fun onSuccess(result: Void?) {
-                    AuthActivity.userIsAuthenticated = false
+                    userIsAuthenticated = false
                     writeToSharedPreferences(requireContext(), "id_token", "")
-                    updateLogin()
+                    updateUI()
                 }
             })
 
@@ -124,17 +152,18 @@ class UserFragment : Fragment() {
         val sharedPref = context.getSharedPreferences("travelmate_prefs", Context.MODE_PRIVATE)
         return sharedPref.getString(key, defaultValue) ?: defaultValue
     }
-    private fun updateLogin() {
 
-        if (AuthActivity.userIsAuthenticated) {
+    private fun updateUI() {
+
+        if (userIsAuthenticated) {
             loginButton.visibility = View.GONE
             logoutButton.visibility = View.VISIBLE
             loginButton.isEnabled = false
             logoutButton.isEnabled = true
 
-            userName.text=AuthActivity.user.name
-            userEmail.text=AuthActivity.user.email
-            Picasso.get().load(AuthActivity.user.picture).transform(CircleTransform()).into(imgView)
+            userName.text = user.name
+            userEmail.text = user.email
+            Picasso.get().load(user.picture).transform(CircleTransform()).into(imgView)
 
         } else {
             logoutButton.visibility = View.GONE
@@ -142,9 +171,11 @@ class UserFragment : Fragment() {
             loginButton.isEnabled = true
             logoutButton.isEnabled = false
 
-            userName.text= "Welcome!!"
-            userEmail.text= ""
-            Picasso.get().load("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Fgeneric-user-icon%2Fgeneric-user-icon-19.jpg").transform(CircleTransform()).into(imgView)
+            userName.text = "Welcome!!"
+            userEmail.text = ""
+            Picasso.get()
+                .load("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ficon-library.com%2Fimages%2Fgeneric-user-icon%2Fgeneric-user-icon-19.jpg")
+                .transform(CircleTransform()).into(imgView)
         }
     }
 

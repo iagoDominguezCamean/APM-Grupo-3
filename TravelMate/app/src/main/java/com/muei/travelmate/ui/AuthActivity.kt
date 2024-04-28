@@ -22,9 +22,6 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
     private lateinit var logoutButton: Button
 
-
-
-
     companion object {
         lateinit var account: Auth0
         var userIsAuthenticated: Boolean = false
