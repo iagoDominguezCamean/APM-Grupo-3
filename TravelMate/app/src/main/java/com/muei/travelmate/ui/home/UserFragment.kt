@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.auth0.android.Auth0
@@ -28,14 +30,21 @@ class UserFragment : Fragment() {
 
     private lateinit var loginButton: Button
     private lateinit var logoutButton: Button
+    private lateinit var toggleButton: ToggleButton
 
     private lateinit var userName: TextView
     private lateinit var userEmail: TextView
     private lateinit var imgView: ImageView
+
+
+
     companion object {
         lateinit var account: Auth0
         var userIsAuthenticated: Boolean = false
         lateinit var user: User
+        var currentNightMode = AppCompatDelegate.getDefaultNightMode()
+
+
     }
 
     // This property is only valid between onCreateView and
@@ -78,6 +87,13 @@ class UserFragment : Fragment() {
 
         updateUI()
 
+        toggleButton = binding.root.findViewById(R.id.toggleButton)
+
+        toggleButton.setOnClickListener{
+            changeMode()
+        }
+        updateMode()
+
         return binding.root
     }
 
@@ -95,6 +111,7 @@ class UserFragment : Fragment() {
             }
         }
     }
+
     fun login() {
         // Setup the WebAuthProvider, using the custom scheme and scope.
         WebAuthProvider.login(account).withScheme(getString(R.string.auth0_scheme))
@@ -183,5 +200,22 @@ class UserFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-}
 
+    fun changeMode() {
+        currentNightMode = AppCompatDelegate.getDefaultNightMode()
+
+        if (currentNightMode == AppCompatDelegate.MODE_NIGHT_NO) {
+            // Currently in day mode, switching to night mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            // Currently in night mode, switching to day mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+        updateMode()
+    }
+
+    fun updateMode(){
+        toggleButton.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+    }
+}
