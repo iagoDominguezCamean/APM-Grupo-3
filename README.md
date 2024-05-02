@@ -239,10 +239,11 @@ Esta información se almacena localmente utilizando Shared Preferences. Para no 
 
 - Mejoras de usabilidad propuestas.
 Tras discutirlo en grupo y solicitar feedback a usuarios, que no participan en el desarrollo del proyecto, hemos detectado los siguientes problemas:
-   - Pantalla de inicio de sesión actua como una barrera para el usuario. Al ser la pantalla inicial de la navegación impide evaluar lo que ofrece la aplicación antes de realizar el registro o iniciar sesión. Hemos valorado que existe contenido que puede ser disfrutado sin necesidad de haber iniciado sesión y hemos movido la acción a la pestaña de usuario.
-   - Mejoras en la legibilidad de los textos, hemos revisado los tamaños de los textos que podian resultar más dificiles de leer, en los grids de imagenes hemos añadido una recuadro de color bajo los textos para mejorar su legibilidad.
+   - **Reducción de la barrera en la pantalla de inicio de sesión:** Hemos observado que la pantalla de inicio de sesión puede ser una barrera para el usuario, ya que es la primera pantalla que encuentra al navegar por la aplicación. Esta pantalla impide evaluar completamente lo que ofrece la aplicación antes de realizar el registro o iniciar sesión. Tras discutirlo en grupo y solicitar feedback a usuarios externos al equipo de desarrollo, hemos decidido mover la acción de inicio de sesión a la pestaña del usuario, permitiendo así que el usuario explore el contenido disponible antes de decidir si desea registrarse o iniciar sesión.
+   - **Mejoras en la legibilidad de los textos:** hemos revisado los tamaños de los textos que podian resultar más dificiles de leer, en los grids de imagenes hemos añadido una recuadro de color bajo los textos para mejorar su legibilidad.
    - Revisión del tamaño de las areas clickables de los todos los botones, prestando especial atención a la zona de busqueda del apartado de rutas para darle mayor importancia.
-   - Dado que asumimos, tras las pruebas realizadas, que el usuario va a utilizar un telefono movil en posición vertical con una sola mano. Hemos revisado el layout de todos los elementos para asegurarnos que resulte comodo para el usuario.
+   - **Optimización del tamaño de las áreas clickeables de los botones:** Se ha llevado a cabo una revisión del tamaño de las áreas clickeables de todos los botones, prestando especial atención a la zona de búsqueda en el apartado de rutas para darle mayor importancia y facilitar su uso
+   - **Adaptación del layout para dispositivos móviles en posición vertical con una sola mano:** Considerando que el usuario probablemente utilizará un teléfono móvil en posición vertical y con una sola mano, hemos revisado el layout de todos los elementos para asegurarnos de que resulten cómodos y accesibles para el usuario en esta configuración.
 
 - Implementación de material design
-  - En la sección de usuario se ha añadido la opción de cambiar de tema.
+  - En la sección de usuario, hemos añadido la opción de cambiar de tema, siguiendo los principios de Material Design para proporcionar una experiencia visualmente atractiva y coherente en toda la aplicación.
