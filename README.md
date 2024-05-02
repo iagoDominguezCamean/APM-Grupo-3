@@ -237,13 +237,13 @@ Esta información se almacena localmente utilizando Shared Preferences. Para no 
 
 **Mejora de usabilidad y experiencia de usuario**
 
-- Mejoras de usabilidad propuestas.
+Mejoras de usabilidad propuestas.
 Tras discutirlo en grupo y solicitar feedback a usuarios, que no participan en el desarrollo del proyecto, hemos detectado los siguientes problemas:
-   - **Reducción de la barrera en la pantalla de inicio de sesión:** Hemos observado que la pantalla de inicio de sesión puede ser una barrera para el usuario, ya que es la primera pantalla que encuentra al navegar por la aplicación. Esta pantalla impide evaluar completamente lo que ofrece la aplicación antes de realizar el registro o iniciar sesión. Tras discutirlo en grupo y solicitar feedback a usuarios externos al equipo de desarrollo, hemos decidido mover la acción de inicio de sesión a la pestaña del usuario, permitiendo así que el usuario explore el contenido disponible antes de decidir si desea registrarse o iniciar sesión.
-   - **Mejoras en la legibilidad de los textos:** hemos revisado los tamaños de los textos que podian resultar más dificiles de leer, en los grids de imagenes hemos añadido una recuadro de color bajo los textos para mejorar su legibilidad.
-   - Revisión del tamaño de las areas clickables de los todos los botones, prestando especial atención a la zona de busqueda del apartado de rutas para darle mayor importancia.
-   - **Optimización del tamaño de las áreas clickeables de los botones:** Se ha llevado a cabo una revisión del tamaño de las áreas clickeables de todos los botones, prestando especial atención a la zona de búsqueda en el apartado de rutas para darle mayor importancia y facilitar su uso
-   - **Adaptación del layout para dispositivos móviles en posición vertical con una sola mano:** Considerando que el usuario probablemente utilizará un teléfono móvil en posición vertical y con una sola mano, hemos revisado el layout de todos los elementos para asegurarnos de que resulten cómodos y accesibles para el usuario en esta configuración.
+- **Reducción de la barrera en la pantalla de inicio de sesión:** Hemos observado que la pantalla de inicio de sesión puede ser una barrera para el usuario, ya que es la primera pantalla que encuentra al navegar por la aplicación. Esta pantalla impide evaluar completamente lo que ofrece la aplicación antes de realizar el registro o iniciar sesión. Tras discutirlo en grupo y solicitar feedback a usuarios externos al equipo de desarrollo, hemos decidido mover la acción de inicio de sesión a la pestaña del usuario, permitiendo así que el usuario explore el contenido disponible antes de decidir si desea registrarse o iniciar sesión.
+- **Mejoras en la legibilidad de los textos:** hemos revisado los tamaños de los textos que podian resultar más dificiles de leer, en los grids de imagenes hemos añadido una recuadro de color bajo los textos para mejorar su legibilidad.
+- Revisión del tamaño de las areas clickables de los todos los botones, prestando especial atención a la zona de busqueda del apartado de rutas para darle mayor importancia.
+- **Optimización del tamaño de las áreas clickeables de los botones:** Se ha llevado a cabo una revisión del tamaño de las áreas clickeables de todos los botones, prestando especial atención a la zona de búsqueda en el apartado de rutas para darle mayor importancia y facilitar su uso
+- **Adaptación del layout para dispositivos móviles en posición vertical con una sola mano:** Considerando que el usuario probablemente utilizará un teléfono móvil en posición vertical y con una sola mano, hemos revisado el layout de todos los elementos para asegurarnos de que resulten cómodos y accesibles para el usuario en esta configuración.
 
-- Implementación de material design
-  - En la sección de usuario, hemos añadido la opción de cambiar de tema, siguiendo los principios de Material Design para proporcionar una experiencia visualmente atractiva y coherente en toda la aplicación.
+Implementación de material design
+- En la sección de usuario, hemos añadido la opción de cambiar de tema, siguiendo los principios de Material Design para proporcionar una experiencia visualmente atractiva y coherente en toda la aplicación.
