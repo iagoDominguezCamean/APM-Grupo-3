@@ -20,7 +20,6 @@
                 android:layout_marginTop="28dp"
                 android:drawablePadding="8dp"
                 android:hint="Buscar ruta o destino..."
-                android:textColorHint="@color/white"
                 android:background="@drawable/search_bar_background"
                 android:drawableEnd="@drawable/ic_search"
                 android:paddingStart="16dp"
@@ -29,7 +28,6 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:gravity="center_vertical|start"
-                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginBottom="24dp"
+                android:background="@color/black"
+                android:textColor="@color/white"
                 android:text="Roma"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/image1"
@@ -83,6 +83,8 @@
                 android:id="@+id/country1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:textColor="@color/white"
                 android:text="Italia"
                 android:textSize="14sp"
                 android:textStyle="italic"
@@ -95,6 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="24dp"
+                android:background="@color/black"
+                android:textColor="@color/white"
                 android:text="Paris"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/image2"
@@ -104,6 +108,8 @@
                 android:id="@+id/country2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:textColor="@color/white"
                 android:text="Francia"
                 android:textSize="14sp"
                 android:textStyle="italic"
@@ -306,6 +312,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
+                        android:background="@color/black"
+                        android:textColor="@color/white"
                         android:text="Senderismo"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@id/route1"
@@ -335,6 +343,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
+                        android:background="@color/black"
+                        android:textColor="@color/white"
                         android:text="Monumentos"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@id/route2"
@@ -343,7 +353,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- Elemento 3 -->
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -353,6 +363,10 @@
                         android:id="@+id/route3"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:src="@drawable/image4" />
 
                     <TextView
@@ -361,14 +375,16 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
+                        android:background="@color/black"
+                        android:textColor="@color/white"
                         android:text="Paris"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@id/route3"
                         app:layout_constraintStart_toStartOf="@id/route3" />
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- Elemento 4 -->
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -378,6 +394,10 @@
                         android:id="@+id/route4"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:src="@drawable/image1" />
 
                     <TextView
@@ -386,11 +406,13 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
+                        android:background="@color/black"
+                        android:textColor="@color/white"
                         android:text="Madrid"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@id/route4"
                         app:layout_constraintStart_toStartOf="@id/route4" />
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </GridLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

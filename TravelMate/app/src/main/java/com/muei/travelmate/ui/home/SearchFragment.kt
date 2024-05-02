@@ -109,7 +109,7 @@ class SearchFragment : Fragment() {
     }
 
     fun fetchPlaceDetails(placeId: String) {
-        val apiKey = "AIzaSyAG6Mpf5GzKQbeDXOQQ2NUvPlARMobE_SQ" // Inserta tu clave de API de Google Places aquí
+        val apiKey = getString(R.string.API_KEY) // Inserta tu clave de API de Google Places aquí
         val apiUrl = "https://maps.googleapis.com/maps/api/place/details/json?fields=name,photo,geometry&place_id=$placeId&key=$apiKey"
 
         Thread {

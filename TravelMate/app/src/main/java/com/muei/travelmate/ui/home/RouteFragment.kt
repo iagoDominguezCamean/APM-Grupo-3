@@ -15,7 +15,12 @@ import com.muei.travelmate.R
 import com.muei.travelmate.databinding.FragmentRouteBinding
 import com.muei.travelmate.ui.route.Location
 import com.muei.travelmate.ui.route.LocationProvider
+import com.muei.travelmate.ui.route.PlaceLatLngAsyncTask
 import com.muei.travelmate.ui.route.RouteAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class RouteFragment : Fragment() {
 
@@ -24,6 +29,7 @@ class RouteFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val routeTotalStops: Int = 5
+    private var latlngArray: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,6 +72,29 @@ class RouteFragment : Fragment() {
             val result = LocationProvider.routeList.joinToString(",") { it.toString() }
             println("%%%%%%%%%% Busqueda con la lista:"+LocationProvider.routeList)
             showToast("Buscar ruta -> "+result)
+
+            val bundle = Bundle()
+            bundle.putInt("numItems", LocationProvider.routeList.size)
+            bundle.putString("bundleType", "customRoute")
+
+            CoroutineScope(Dispatchers.Main).launch {
+                val deferred = async {
+                    LocationProvider.routeList.map { location ->
+                        async {
+                            PlaceLatLngAsyncTask(location.toString(), getString(R.string.API_KEY)) { latLng ->
+                                this@RouteFragment.latlngArray.add(latLng.toString())
+                                Log.d("CustomRoute","location added: $location $latLng")
+                            }.execute().get()
+                        }
+                    }
+                }
+
+                deferred.await()
+
+                Log.d("CustomRouteMap",latlngArray.toString())
+                bundle.putStringArrayList("location_array", latlngArray)
+                findNavController().navigate(R.id.nav_map, bundle)
+            }
         }
 
         updateAddButton()

@@ -217,3 +217,33 @@ Hace falta actualizar el MapFragment a MapActivity para poder interactuar con el
 **Geolocalización**
 
 Se solicitan permisos de FINE_LOCATION y COARSE_LOCATION, ya que vamos a usar el mapa para guiar al usuario a todos los puntos de la ruta que quiere seguir, si sale y vuelve a entrar a la aplicación tenemos que poder seguir donde se quedó antes de salir. Se solicitarán cuando se intente abrir el **MapFragment**.
+
+**Almacenamiento**
+
+Nuestra aplicación utiliza [Auth0](https://auth0.com/) de Okta para la gestión de identidad y accesos. Este servicio da la opción al usuario de registrar un nuevo usuario o utilizar la identidad de la que dispone en otros servicios como Google, Facebook...
+
+El funcionamiento es sencillo, la primera vez que el usuario accede a la aplicación se le solicita que inicie sesión utilizando alguna de las opciones disponibles. En cuanto finaliza el proceso correctamente la aplicación recibe un JWT (Java Web Token) que contiene los siguientes datos de usuario:
+
+- id
+- name
+- email
+- emailverified
+- picture
+- updatedAt
+- expiresAt
+  
+Esta información se almacena localmente utilizando Shared Preferences. Para no solicitar el inicio de sesión mas veces de las necesarias comprobamos si el fichero de preferencias existe y no ha expirado antes de solicitar el inicio de sesión 
+
+
+**Mejora de usabilidad y experiencia de usuario**
+
+Mejoras de usabilidad propuestas.
+Tras discutirlo en grupo y solicitar feedback a usuarios, que no participan en el desarrollo del proyecto, hemos detectado los siguientes problemas:
+- **Reducción de la barrera en la pantalla de inicio de sesión:** Hemos observado que la pantalla de inicio de sesión puede ser una barrera para el usuario, ya que es la primera pantalla que encuentra al navegar por la aplicación. Esta pantalla impide evaluar completamente lo que ofrece la aplicación antes de realizar el registro o iniciar sesión. Tras discutirlo en grupo y solicitar feedback a usuarios externos al equipo de desarrollo, hemos decidido mover la acción de inicio de sesión a la pestaña del usuario, permitiendo así que el usuario explore el contenido disponible antes de decidir si desea registrarse o iniciar sesión.
+- **Mejoras en la legibilidad de los textos:** hemos revisado los tamaños de los textos que podian resultar más dificiles de leer, en los grids de imagenes hemos añadido una recuadro de color bajo los textos para mejorar su legibilidad.
+- Revisión del tamaño de las areas clickables de los todos los botones, prestando especial atención a la zona de busqueda del apartado de rutas para darle mayor importancia.
+- **Optimización del tamaño de las áreas clickables de los botones:** Se ha llevado a cabo una revisión del tamaño de las áreas clickables de todos los botones, prestando especial atención a la zona de búsqueda en el apartado de rutas para darle mayor importancia y facilitar su uso
+- **Adaptación del layout para dispositivos móviles en posición vertical con una sola mano:** Considerando que el usuario probablemente utilizará un teléfono móvil en posición vertical y con una sola mano, hemos revisado el layout de todos los elementos para asegurarnos de que resulten cómodos y accesibles para el usuario en esta configuración.
+
+Implementación de material design
+- En la sección de usuario, hemos añadido la opción de cambiar de tema, siguiendo los principios de Material Design para proporcionar una experiencia visualmente atractiva y coherente en toda la aplicación.
