@@ -247,3 +247,8 @@ Tras discutirlo en grupo y solicitar feedback a usuarios, que no participan en e
 
 Implementación de material design
 - En la sección de usuario, hemos añadido la opción de cambiar de tema, siguiendo los principios de Material Design para proporcionar una experiencia visualmente atractiva y coherente en toda la aplicación.
+- <p align="center">
+   <img src="assets/dark.png" alt="Dark Theme" width="200"/>
+   <img src="assets/toggle.png" alt="Theme toggle" width="200"/>
+   <img src="assets/light.png" alt="Light Them" width="200"/>
+</p>
