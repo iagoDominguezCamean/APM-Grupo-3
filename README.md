@@ -233,3 +233,16 @@ El funcionamiento es sencillo, la primera vez que el usuario accede a la aplicac
 - expiresAt
   
 Esta información se almacena localmente utilizando Shared Preferences. Para no solicitar el inicio de sesión mas veces de las necesarias comprobamos si el fichero de preferencias existe y no ha expirado antes de solicitar el inicio de sesión 
+
+
+**Mejora de usabilidad y experiencia de usuario**
+
+- Mejoras de usabilidad propuestas.
+Tras discutirlo en grupo y solicitar feedback a usuarios, que no participan en el desarrollo del proyecto, hemos detectado los siguientes problemas:
+   - Pantalla de inicio de sesión actua como una barrera para el usuario. Al ser la pantalla inicial de la navegación impide evaluar lo que ofrece la aplicación antes de realizar el registro o iniciar sesión. Hemos valorado que existe contenido que puede ser disfrutado sin necesidad de haber iniciado sesión y hemos movido la acción a la pestaña de usuario.
+   - Mejoras en la legibilidad de los textos, hemos revisado los tamaños de los textos que podian resultar más dificiles de leer, en los grids de imagenes hemos añadido una recuadro de color bajo los textos para mejorar su legibilidad.
+   - Revisión del tamaño de las areas clickables de los todos los botones, prestando especial atención a la zona de busqueda del apartado de rutas para darle mayor importancia.
+   - Dado que asumimos, tras las pruebas realizadas, que el usuario va a utilizar un telefono movil en posición vertical con una sola mano. Hemos revisado el layout de todos los elementos para asegurarnos que resulte comodo para el usuario.
+
+- Implementación de material design
+  - En la sección de usuario se ha añadido la opción de cambiar de tema.
