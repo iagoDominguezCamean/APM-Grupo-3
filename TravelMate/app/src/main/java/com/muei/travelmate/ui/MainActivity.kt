@@ -1,14 +1,11 @@
 package com.muei.travelmate.ui
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Verificar los permisos al iniciar la aplicación
+        if (!checkPermission()) {
+            requestLocationPermissions()
+        }
 
         val navView: BottomNavigationView = binding.bottomNav
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -46,22 +48,15 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_map -> {
                     Log.d("MainActivity", "Map pulsado")
-                    if(!checkPermission()){
-                        Log.d("Permisos de geolocalización", "Solicitando")
-                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
-                    }else{
-                        Log.d("Permisos de geolocalización", "Concedidos")
-                        val bundle = Bundle().apply {
-                            putString("placeName",placeName ?: "Map")
-                            putString("placeId",placeId ?: " ")
-                            putDouble("lat", latitude ?: 0.00000000000)
-                            putDouble("lng", longitude ?: 0.00000000000)
-                            putString("placeType","default")
-                        }
-                        Log.d("ShowBundleMain", bundle.toString())
-                        navController.navigate(R.id.nav_map, bundle)
+                    val bundle = Bundle().apply {
+                        putString("placeName", placeName ?: "Map")
+                        putString("placeId", placeId ?: " ")
+                        putDouble("lat", latitude ?: 0.0)
+                        putDouble("lng", longitude ?: 0.0)
+                        putString("placeType", "default")
                     }
-
+                    Log.d("ShowBundleMain", bundle.toString())
+                    navController.navigate(R.id.nav_map, bundle)
                     true
                 }
 
@@ -75,10 +70,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun checkPermission(): Boolean{
-        return (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+
+    private fun checkPermission(): Boolean {
+        return (ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED)
     }
+
+    private fun requestLocationPermissions() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ),
+            LOCATION_PERMISSION_REQUEST_CODE
+        )
+    }
+
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1001
     }
