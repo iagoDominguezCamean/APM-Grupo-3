@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.libraries.places.api.net.PlacesClient
 import com.muei.travelmate.R
 import com.muei.travelmate.databinding.FragmentRouteBinding
 import com.muei.travelmate.ui.route.Location
@@ -21,6 +22,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.AutocompleteSessionToken
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
 
 class RouteFragment : Fragment() {
 
@@ -30,6 +34,7 @@ class RouteFragment : Fragment() {
     private val binding get() = _binding!!
     private val routeTotalStops: Int = 5
     private var latlngArray: ArrayList<String> = ArrayList()
+    private lateinit var placesClient: PlacesClient
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +56,8 @@ class RouteFragment : Fragment() {
             Log.d("ShowBundleRoute", bundle.toString())
             findNavController().navigate(R.id.nav_map, bundle)
         }
-
+        Places.initialize(requireContext(), getString(R.string.API_KEY))
+        placesClient = Places.createClient(requireContext())
         // Populo el Recyclerview de la busqueda de ruta
         initRecyclerRouteSearch()
 
@@ -110,8 +116,8 @@ class RouteFragment : Fragment() {
     fun initRecyclerRouteSearch(){
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter =
-            RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() })
+        Log.d("Autocompletado", "Route routelist: "+LocationProvider.routeList.toString())
+        recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() }, placesClient)
     }
 
     fun recyclerItemChanged(){
@@ -121,7 +127,7 @@ class RouteFragment : Fragment() {
 
         //recyclerView.adapter?.notifyDataSetChanged()
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() })
+        recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() }, placesClient)
 
     }
     /*

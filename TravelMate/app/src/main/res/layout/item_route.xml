@@ -22,13 +22,14 @@
         app:layout_constraintTop_toBottomOf="@id/location_type">
 
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/location_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/imageViewOriginPin"
             android:inputType="text|textCapWords"
             android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:textSize="18sp" />
 
 
