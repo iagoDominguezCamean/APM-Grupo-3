@@ -5,8 +5,8 @@ class LocationProvider {
         // TODO : Este objeto debe tener como minimo dos elemntos y posiblemente no superar cierta
         // cantidad, replantearse como hacerlo
         val routeList = mutableListOf<Location>(
-            Location(""),
-            Location("")
+            Location("","", LocationType.CITY, ""),
+            Location("","", LocationType.CITY, "")
         )
     }
 

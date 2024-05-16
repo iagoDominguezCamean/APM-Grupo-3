@@ -45,8 +45,8 @@
                 app:layout_constraintHorizontal_bias="0.221"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageView
-                android:id="@+id/image1"
+            <ImageButton
+                android:id="@+id/featured0"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="40dp"
@@ -56,8 +56,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Segunda imagen -->
-            <ImageView
-                android:id="@+id/image2"
+            <ImageButton
+                android:id="@+id/featured1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="116dp"
@@ -76,8 +76,8 @@
                 android:textColor="@color/white"
                 android:text="Roma"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@id/image1"
-                app:layout_constraintStart_toStartOf="@id/image1" />
+                app:layout_constraintBottom_toBottomOf="@id/featured0"
+                app:layout_constraintStart_toStartOf="@id/featured0" />
 
             <TextView
                 android:id="@+id/country1"
@@ -101,8 +101,8 @@
                 android:textColor="@color/white"
                 android:text="Paris"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@id/image2"
-                app:layout_constraintStart_toStartOf="@id/image2" />
+                app:layout_constraintBottom_toBottomOf="@id/featured1"
+                app:layout_constraintStart_toStartOf="@id/featured1" />
 
             <TextView
                 android:id="@+id/country2"
@@ -129,7 +129,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.143"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image1" />
+                app:layout_constraintTop_toBottomOf="@id/featured0" />
 
             <LinearLayout
                 android:id="@+id/category_layout"
@@ -297,8 +297,8 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <ImageView
-                        android:id="@+id/route1"
+                    <ImageButton
+                        android:id="@+id/recommended0"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:src="@drawable/image3"
@@ -316,8 +316,8 @@
                         android:textColor="@color/white"
                         android:text="Senderismo"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@id/route1"
-                        app:layout_constraintStart_toStartOf="@id/route1" />
+                        app:layout_constraintBottom_toBottomOf="@id/recommended0"
+                        app:layout_constraintStart_toStartOf="@id/recommended0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -328,8 +328,8 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <ImageView
-                        android:id="@+id/route2"
+                    <ImageButton
+                        android:id="@+id/recommended1"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -347,8 +347,8 @@
                         android:textColor="@color/white"
                         android:text="Monumentos"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@id/route2"
-                        app:layout_constraintStart_toStartOf="@id/route2" />
+                        app:layout_constraintBottom_toBottomOf="@id/recommended1"
+                        app:layout_constraintStart_toStartOf="@id/recommended1" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -359,8 +359,8 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <ImageView
-                        android:id="@+id/route3"
+                    <ImageButton
+                        android:id="@+id/recommended2"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -379,8 +379,8 @@
                         android:textColor="@color/white"
                         android:text="Paris"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@id/route3"
-                        app:layout_constraintStart_toStartOf="@id/route3" />
+                        app:layout_constraintBottom_toBottomOf="@id/recommended2"
+                        app:layout_constraintStart_toStartOf="@id/recommended2" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- Elemento 4 -->
@@ -390,8 +390,8 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
-                    <ImageView
-                        android:id="@+id/route4"
+                    <ImageButton
+                        android:id="@+id/recommended3"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -410,8 +410,8 @@
                         android:textColor="@color/white"
                         android:text="Madrid"
                         android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@id/route4"
-                        app:layout_constraintStart_toStartOf="@id/route4" />
+                        app:layout_constraintBottom_toBottomOf="@id/recommended3"
+                        app:layout_constraintStart_toStartOf="@id/recommended3" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </GridLayout>
