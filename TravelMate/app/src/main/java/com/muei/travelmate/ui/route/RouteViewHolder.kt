@@ -38,7 +38,7 @@ class RouteViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                LocationProvider.routeList[position]=Location(s.toString(),"", LocationType.CITY, "")
+                LocationProvider.routeList[position]=Location(s.toString(),"", LocationType.CITY, "", "")
                 println("%%%%%%%%%% Introduce localidad: "+position+", lista:"+LocationProvider.routeList)
             }
         }

@@ -7,4 +7,5 @@ enum class LocationType {
     CITY,
     NATURE,
     MISC,
+    ANY,
 }

@@ -40,7 +40,7 @@
                 android:layout_marginBottom="12dp"
                 android:text="Destinos destacados"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@id/image1"
+                app:layout_constraintBottom_toTopOf="@id/featured0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.221"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -329,9 +329,11 @@
                         app:layout_constraintStart_toStartOf="@id/recommended0" />
 
                     <TextView
-                        android:id="@+id/route_name1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+
+                        android:id="@+id/recommended0t"
+                        android:singleLine="true"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
                         android:textColor="@color/white"
@@ -365,9 +367,10 @@
                         app:layout_constraintStart_toStartOf="@id/recommended1" />
 
                     <TextView
-                        android:id="@+id/route_name2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:id="@+id/recommended1t"
+                        android:singleLine="true"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
                         android:textColor="@color/white"
@@ -402,9 +405,10 @@
                         app:layout_constraintStart_toStartOf="@id/recommended2" />
 
                     <TextView
-                        android:id="@+id/route_name3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:id="@+id/recommended2t"
+                        android:singleLine="true"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
                         android:textColor="@color/white"
@@ -438,9 +442,10 @@
                         app:layout_constraintStart_toStartOf="@id/recommended3" />
 
                     <TextView
-                        android:id="@+id/route_name4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:id="@+id/recommended3t"
+                        android:singleLine="true"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
                         android:textColor="@color/white"

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,57 +23,71 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+
+
+
+
+
     val mock_locations = arrayOf(
-        Location("París", "", LocationType.CITY, ""),
-        Location("Barcelona","", LocationType.CITY, ""),
-        Location("Tokio","", LocationType.CITY, ""),
-        Location("Berlín", "", LocationType.CITY, ""),
-        Location("Moscú","", LocationType.CITY, ""),
-        Location("Marrakech","", LocationType.CITY, ""),
+        Location("París", "@drawable/ic_home_par", LocationType.CITY, "", "Francia"),
+        Location("Barcelona","@drawable/ic_home_bcn", LocationType.CITY, "", "España"),
+        Location("Tokio","@drawable/ic_home_tok", LocationType.CITY, "", "Japón"),
+        Location("Berlín", "@drawable/ic_home_ber", LocationType.CITY, "", "Alemania"),
+        Location("Moscú","@drawable/ic_home_mos", LocationType.CITY, "", "Rusia"),
+        Location("Marrakech","@drawable/ic_home_mar", LocationType.CITY, "", "Marruecos"),
 
-        Location("ResurrectionFest","", LocationType.MUSIC, ""),
-        Location("Sonar","", LocationType.MUSIC, ""),
-        Location("Glastonbury Festival","", LocationType.MUSIC, ""),
-        Location("Tomorrowland","", LocationType.MUSIC, ""),
-        Location("Montreux Jazz Festival","", LocationType.MUSIC, ""),
-        Location("Sziget Festival","", LocationType.MUSIC, ""),
 
-        Location("Torre Eiffel", "", LocationType.HISTORIC_SITE, ""),
-        Location("Machu Picchu","", LocationType.HISTORIC_SITE, ""),
-        Location("Gran Muralla China","", LocationType.HISTORIC_SITE, ""),
-        Location("Sagrada Familia", "", LocationType.HISTORIC_SITE, ""),
-        Location("Catedral de Santiago de Compostela","", LocationType.HISTORIC_SITE, ""),
-        Location("Coliseo","", LocationType.HISTORIC_SITE, ""),
+        Location("Resurrection Fest","@drawable/ic_home_res", LocationType.MUSIC, "", ""),
+        Location("Sonar","@drawable/ic_home_son", LocationType.MUSIC, "", ""),
+        Location("Glastonbury","@drawable/ic_home_gla", LocationType.MUSIC, "Glastonbury Festival Site", ""),
+        Location("Tomorrowland","@drawable/ic_home_tom", LocationType.MUSIC, "Tomorrowland Winter", ""),
+        Location("Montreux Jazz Festival","@drawable/ic_home_mon", LocationType.MUSIC, "", ""),
+        Location("Sziget Fest","@drawable/ic_home_szi", LocationType.MUSIC, "Sziget Cultural Management Ltd.", ""),
 
-        Location("Museo del Louvre", "", LocationType.ART, ""),
-        Location("Museo de Arte Moderno (MoMA)","", LocationType.ART, ""),
-        Location("Galería Uffizi","", LocationType.ART, ""),
-        Location("Centro Pompidou", "", LocationType.ART, ""),
-        Location("Museo Nacional de Arte Reina Sofía","", LocationType.ART, ""),
-        Location("Tate Modern","", LocationType.ART, ""),
+        Location("Torre Eiffel", "@drawable/ic_home_eif", LocationType.HISTORIC_SITE, "", ""),
+        Location("Machu Picchu","@drawable/ic_home_mac", LocationType.HISTORIC_SITE, "Machu Picchu, Perú", ""),
+        Location("Gran Muralla China","@drawable/ic_home_mur", LocationType.HISTORIC_SITE, "Muralla China", ""),
+        Location("Sagrada Familia", "@drawable/ic_home_sag", LocationType.HISTORIC_SITE, "Basílica de la Sagrada Família", ""),
+        Location("Catedral de Santiago de Compostela","@drawable/ic_home_san", LocationType.HISTORIC_SITE, "", ""),
+        Location("Coliseo de Roma","@drawable/ic_home_col", LocationType.HISTORIC_SITE, "", ""),
 
-        Location("Parque Nacional de Yellowstone", "", LocationType.NATURE, ""),
-        Location("Parque Nacional Banff","", LocationType.NATURE, ""),
-        Location("Parque Nacional de Jiuzhaigou","", LocationType.NATURE, ""),
-        Location("Fiordos de Noruega", "", LocationType.NATURE, ""),
-        Location("Parque Nacional Kruger","", LocationType.NATURE, ""),
-        Location("Parque Nacional Torres del Paine","", LocationType.NATURE, ""),
+        Location("Museo del Louvre", "@drawable/ic_home_lou", LocationType.ART, "", ""),
+        Location("Museo de Arte Moderno (MoMA)","@drawable/ic_home_mom", LocationType.ART, "MoMA", ""),
+        Location("Galería Uffizi","@drawable/ic_home_ufi", LocationType.ART, "Galeria degli Uffizi", ""),
+        Location("Centro Pompidou", "@drawable/ic_home_pom", LocationType.ART, "Centro Nacional de Arte y Cultura Georges Pompidou", ""),
+        Location("Museo Nacional de Arte Reina Sofía","@drawable/ic_home_sof", LocationType.ART, "Museo Nacional Centro de Arte Reina Sofía", ""),
+        Location("Tate Modern","@drawable/ic_home_tat", LocationType.ART, "", ""),
 
-        Location("Disneyland París","", LocationType.MISC, ""),
-        Location("Nou Camp","", LocationType.MISC, ""),
-        Location("Legoland","", LocationType.MISC, ""),
-        Location("Isla de Sentosa","", LocationType.MISC, ""),
-        Location("Las Vegas","", LocationType.MISC, ""),
-        Location("Costa Amalfitana","", LocationType.MISC, ""),
+        Location("Yellowstone", "@drawable/ic_home_yel", LocationType.NATURE, "Parque Nacional Yellowstone", ""),
+        Location("Parque Banff","@drawable/ic_home_baf", LocationType.NATURE, "Parque Nacional Banff", ""),
+        Location("Parque de Jiuzhaigou","@drawable/ic_home_jiu", LocationType.NATURE, "Jiuzhaigou National Geological Park", ""),
+        Location("Fiordos Noruegos", "@drawable/ic_home_osl", LocationType.NATURE, "Oslofjord", ""),
+        Location("Parque Kruger","@drawable/ic_home_kru", LocationType.NATURE, "Parque nacional Kruger", ""),
+        Location("Torres del Paine","@drawable/ic_home_tor", LocationType.NATURE, "", ""),
+
+        Location("Disneyland París","@drawable/ic_home_dis", LocationType.MISC, "", ""),
+        Location("Nou Camp","@drawable/ic_home_nou", LocationType.MISC, "Spotify Camp Nou", ""),
+        Location("Legoland","@drawable/ic_home_leg", LocationType.MISC, "LEGOLAND Malaysia", ""),
+        Location("Isla de Sentosa","@drawable/ic_home_sen", LocationType.MISC, "Sentosa, Singapur", ""),
+        Location("Las Vegas","@drawable/ic_home_las", LocationType.MISC, "Las Vegas, Nevada", ""),
+        Location("Costa Amalfitana","@drawable/ic_home_ama", LocationType.MISC, "", ""),
 
     )
 
     lateinit var featured0:ImageButton
+    lateinit var featured0City: TextView
+    lateinit var featured0Country:TextView
     lateinit var featured1:ImageButton
+    lateinit var featured1City: TextView
+    lateinit var featured1Country:TextView
     lateinit var recommended0:ImageButton
+    lateinit var recommended0Title:TextView
     lateinit var recommended1:ImageButton
+    lateinit var recommended1Title:TextView
     lateinit var recommended2:ImageButton
+    lateinit var recommended2Title:TextView
     lateinit var recommended3:ImageButton
+    lateinit var recommended3Title:TextView
 
     lateinit var music_chip:ImageButton
     lateinit var history_chip:ImageButton
@@ -112,20 +126,18 @@ class HomeFragment : Fragment() {
        // }
 
 
-        featured_locations = getLocations(2,LocationType.CITY)
-        recommended_locations = getLocations(4,LocationType.MUSIC)
 
         // Destacados
         featured0 = binding.root.findViewById(R.id.featured0)
+        featured0City=binding.root.findViewById(R.id.destination1)
+        featured0Country=binding.root.findViewById(R.id.country1)
+
         featured1 = binding.root.findViewById(R.id.featured1)
+        featured1City=binding.root.findViewById(R.id.destination2)
+        featured1Country=binding.root.findViewById(R.id.country2)
 
-        featured0.setOnClickListener() {
-            Toast.makeText(binding.root.context, "ImageButton clickeado", Toast.LENGTH_SHORT).show()
-        }
+        updateFeatured()
 
-        featured1.setOnClickListener() {
-            Toast.makeText(binding.root.context, "ImageButton clickeado", Toast.LENGTH_SHORT).show()
-        }
 
         // Categorias
         music_chip = binding.root.findViewById(R.id.music_chip)
@@ -135,44 +147,102 @@ class HomeFragment : Fragment() {
         leisure_chip = binding.root.findViewById(R.id.leisure_chip)
 
         music_chip.setOnClickListener(){
-            recommended_locations=getLocations(4, LocationType.MUSIC)
-            updateRecommendatios()
+            updateRecommended(LocationType.MUSIC)
         }
         history_chip.setOnClickListener(){
-            recommended_locations=getLocations(4, LocationType.HISTORIC_SITE)
-            updateRecommendatios()
+            updateRecommended(LocationType.HISTORIC_SITE)
         }
         art_chip.setOnClickListener(){
-            recommended_locations=getLocations(4, LocationType.ART)
-            updateRecommendatios()
+            updateRecommended(LocationType.ART)
         }
         nature_chip.setOnClickListener(){
-            recommended_locations=getLocations(4, LocationType.NATURE)
-            updateRecommendatios()
+            updateRecommended(LocationType.NATURE)
         }
         leisure_chip.setOnClickListener(){
-            recommended_locations=getLocations(4, LocationType.MISC)
-            updateRecommendatios()
+            updateRecommended(LocationType.MISC)
         }
         // recomendados
         recommended0 = binding.root.findViewById(R.id.recommended0)
+        recommended0Title = binding.root.findViewById(R.id.recommended0t)
         recommended1 = binding.root.findViewById(R.id.recommended1)
+        recommended1Title = binding.root.findViewById(R.id.recommended1t)
         recommended2 = binding.root.findViewById(R.id.recommended2)
+        recommended2Title = binding.root.findViewById(R.id.recommended2t)
         recommended3 = binding.root.findViewById(R.id.recommended3)
+        recommended3Title = binding.root.findViewById(R.id.recommended3t)
 
+        updateRecommended(LocationType.ANY)
 
         return binding.root
     }
 
-    fun updateRecommendatios(){
-        for(i in recommended_locations){
-            println(i._searchTerm)
+    fun updateFeatured(){
+        featured_locations = getLocations(2,LocationType.CITY)
+
+        featured0City.text = featured_locations[0].name
+        featured0Country.text = featured_locations[0].country
+        featured0.setImageResource(context?.getResources()!!.getIdentifier(featured_locations[0].image, "drawable", context?.getPackageName()))
+
+
+        featured1City.text =  featured_locations[1].name
+        featured1Country.text =  featured_locations[1].country
+        featured1.setImageResource(context?.getResources()!!.getIdentifier(featured_locations[1].image, "drawable", context?.getPackageName()))
+
+
+        featured0.setOnClickListener() {
+
+        }
+
+        featured1.setOnClickListener() {
+
+        }
+
+    }
+    fun updateRecommended(tag:LocationType){
+
+
+        recommended_locations = getLocations(4,tag)
+
+        recommended0Title.text = recommended_locations[0].name
+        recommended0.setImageResource(context?.getResources()!!.getIdentifier(recommended_locations[0].image, "drawable", context?.getPackageName()))
+
+
+        recommended1Title.text =  recommended_locations[1].name
+        recommended1.setImageResource(context?.getResources()!!.getIdentifier(recommended_locations[1].image, "drawable", context?.getPackageName()))
+
+
+        recommended2Title.text = recommended_locations[2].name
+        recommended2.setImageResource(context?.getResources()!!.getIdentifier(recommended_locations[2].image, "drawable", context?.getPackageName()))
+
+
+        recommended3Title.text =  recommended_locations[3].name
+        recommended3.setImageResource(context?.getResources()!!.getIdentifier(recommended_locations[3].image, "drawable", context?.getPackageName()))
+
+
+        recommended0.setOnClickListener() {
+
+        }
+
+        recommended1.setOnClickListener() {
+
+        }
+        recommended2.setOnClickListener() {
+
+        }
+
+        recommended3.setOnClickListener() {
+
         }
     }
     // Función para elegir n ubicaciones con el tipo coincidente
     fun getLocations(n: Int, tag: LocationType): List<Location> {
         // Filtrar ubicaciones por tipo
-        val filteredLocations = mock_locations.filter { it.type == tag }
+        var filteredLocations:List<Location>
+        if(tag==LocationType.ANY){
+            filteredLocations= mock_locations.filter { it.type != LocationType.CITY }
+        }else{
+            filteredLocations= mock_locations.filter { it.type == tag }
+        }
 
         // Si n es mas grande que la lista original devuelvo toda la lista
         if (n >= filteredLocations.size) {

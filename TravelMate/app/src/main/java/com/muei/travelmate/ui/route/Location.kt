@@ -4,6 +4,7 @@ data class Location (
     val image:String,
     val type:LocationType,
     var _searchTerm:String,
+    var country:String,
 ){
     var searchTerm: String
         get(){

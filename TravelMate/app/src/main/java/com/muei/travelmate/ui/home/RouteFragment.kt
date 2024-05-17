@@ -59,7 +59,7 @@ class RouteFragment : Fragment() {
         // asigno accion al boton de añadir parada
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
         buttonAdd.setOnClickListener {
-            LocationProvider.routeList.add(Location("", "", LocationType.CITY, ""))
+            LocationProvider.routeList.add(Location("", "", LocationType.CITY, "", ""))
             println("%%%%%%%%%% Añade localidad a la lista:"+LocationProvider.routeList)
             //recyclerItemAdded(LocationProvider.routeList.size-1)
             recyclerItemChanged()
