@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         binding.arrowIcon.setOnClickListener {
             Log.d("SearchFragment", "Flecha para volver pulsada")
-            findNavController().navigate(R.id.nav_home) }
+            findNavController().navigateUp() }
 
         binding.item1.setOnClickListener {
             Log.d("SearchFragment", "Ruta 1 pulsada")

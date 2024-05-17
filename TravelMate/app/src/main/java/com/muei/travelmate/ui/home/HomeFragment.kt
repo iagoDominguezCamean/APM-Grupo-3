@@ -147,18 +147,23 @@ class HomeFragment : Fragment() {
         leisure_chip = binding.root.findViewById(R.id.leisure_chip)
 
         music_chip.setOnClickListener(){
+            updateChips(music_chip)
             updateRecommended(LocationType.MUSIC)
         }
         history_chip.setOnClickListener(){
+            updateChips(history_chip)
             updateRecommended(LocationType.HISTORIC_SITE)
         }
         art_chip.setOnClickListener(){
+            updateChips(art_chip)
             updateRecommended(LocationType.ART)
         }
         nature_chip.setOnClickListener(){
+            updateChips(nature_chip)
             updateRecommended(LocationType.NATURE)
         }
         leisure_chip.setOnClickListener(){
+            updateChips(leisure_chip)
             updateRecommended(LocationType.MISC)
         }
         // recomendados
@@ -174,6 +179,19 @@ class HomeFragment : Fragment() {
         updateRecommended(LocationType.ANY)
 
         return binding.root
+    }
+
+    private fun updateChips(activeChip: ImageButton) {
+        val allChips = listOf(music_chip, history_chip, art_chip, nature_chip, leisure_chip)
+        allChips.forEach { chip ->
+            if (chip == activeChip) {
+                chip.isEnabled = false
+                chip.setBackgroundResource(R.drawable.chip_background_pressed) // Asegúrate de tener un recurso para el fondo deshabilitado si es necesario
+            } else {
+                chip.isEnabled = true
+                chip.setBackgroundResource(R.drawable.chip_background) // Vuelve al fondo original
+            }
+        }
     }
 
     fun updateFeatured(){

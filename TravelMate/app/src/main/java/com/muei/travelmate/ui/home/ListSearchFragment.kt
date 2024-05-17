@@ -42,7 +42,7 @@ class ListSearchFragment : Fragment() {
 
         binding.arrowIcon.setOnClickListener {
             Log.d("SearchFragment", "Flecha para volver pulsada")
-            findNavController().navigate(R.id.nav_home)
+            findNavController().navigateUp()
         }
         return binding.root
     }
