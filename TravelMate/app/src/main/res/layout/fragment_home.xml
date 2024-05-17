@@ -11,7 +11,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/search_bar"
@@ -55,6 +55,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="#A8000000"
+                app:layout_constraintBottom_toBottomOf="@id/featured0"
+                app:layout_constraintStart_toStartOf="@id/featured0" />
+
             <!-- Segunda imagen -->
             <ImageButton
                 android:id="@+id/featured1"
@@ -66,13 +73,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:background="#A8000000"
+                app:layout_constraintBottom_toBottomOf="@id/featured1"
+                app:layout_constraintStart_toStartOf="@id/featured1" />
+
             <TextView
                 android:id="@+id/destination1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginBottom="24dp"
-                android:background="@color/black"
                 android:textColor="@color/white"
                 android:text="Roma"
                 android:textSize="20sp"
@@ -83,7 +96,6 @@
                 android:id="@+id/country1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
                 android:textColor="@color/white"
                 android:text="Italia"
                 android:textSize="14sp"
@@ -97,7 +109,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="24dp"
-                android:background="@color/black"
                 android:textColor="@color/white"
                 android:text="Paris"
                 android:textSize="20sp"
@@ -108,7 +119,6 @@
                 android:id="@+id/country2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
                 android:textColor="@color/white"
                 android:text="Francia"
                 android:textSize="14sp"
@@ -305,6 +315,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:background="#A8000000"
+                        app:layout_constraintBottom_toBottomOf="@id/recommended0"
+                        app:layout_constraintStart_toStartOf="@id/recommended0" />
 
                     <TextView
                         android:id="@+id/route_name1"
@@ -312,7 +328,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
-                        android:background="@color/black"
                         android:textColor="@color/white"
                         android:text="Senderismo"
                         android:textSize="20sp"
@@ -336,6 +351,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:src="@drawable/image1" />
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:background="#A8000000"
+                        app:layout_constraintBottom_toBottomOf="@id/recommended1"
+                        app:layout_constraintStart_toStartOf="@id/recommended1" />
 
                     <TextView
                         android:id="@+id/route_name2"
@@ -343,7 +364,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
-                        android:background="@color/black"
                         android:textColor="@color/white"
                         android:text="Monumentos"
                         android:textSize="20sp"
@@ -368,6 +388,12 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:src="@drawable/image4" />
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:background="#A8000000"
+                        app:layout_constraintBottom_toBottomOf="@id/recommended2"
+                        app:layout_constraintStart_toStartOf="@id/recommended2" />
 
                     <TextView
                         android:id="@+id/route_name3"
@@ -375,7 +401,6 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
-                        android:background="@color/black"
                         android:textColor="@color/white"
                         android:text="Paris"
                         android:textSize="20sp"
@@ -399,6 +424,12 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:src="@drawable/image1" />
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:background="#A8000000"
+                        app:layout_constraintBottom_toBottomOf="@id/recommended3"
+                        app:layout_constraintStart_toStartOf="@id/recommended3" />
 
                     <TextView
                         android:id="@+id/route_name4"
@@ -406,16 +437,19 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="12dp"
                         android:layout_marginBottom="2dp"
-                        android:background="@color/black"
                         android:textColor="@color/white"
                         android:text="Madrid"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@id/recommended3"
                         app:layout_constraintStart_toStartOf="@id/recommended3" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"/>
             </GridLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
 

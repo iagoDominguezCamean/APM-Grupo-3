@@ -75,6 +75,12 @@ class HomeFragment : Fragment() {
     lateinit var recommended2:ImageButton
     lateinit var recommended3:ImageButton
 
+    lateinit var music_chip:ImageButton
+    lateinit var history_chip:ImageButton
+    lateinit var art_chip:ImageButton
+    lateinit var nature_chip:ImageButton
+    lateinit var leisure_chip:ImageButton
+
     lateinit var featured_locations:List<Location>
     lateinit var recommended_locations:List<Location>
 
@@ -105,25 +111,63 @@ class HomeFragment : Fragment() {
        //     println(i.searchTerm)
        // }
 
-        // extender el imagebutton para que a partir de location se inicialice
 
         featured_locations = getLocations(2,LocationType.CITY)
         recommended_locations = getLocations(4,LocationType.MUSIC)
 
+        // Destacados
         featured0 = binding.root.findViewById(R.id.featured0)
-        featured1 = binding.root.findViewById(R.id.featured0)
-        recommended0 = binding.root.findViewById(R.id.recommended0)
-        recommended1 = binding.root.findViewById(R.id.recommended1)
-        recommended2 = binding.root.findViewById(R.id.recommended2)
-        recommended3 = binding.root.findViewById(R.id.recommended3)
+        featured1 = binding.root.findViewById(R.id.featured1)
 
         featured0.setOnClickListener() {
             Toast.makeText(binding.root.context, "ImageButton clickeado", Toast.LENGTH_SHORT).show()
         }
 
+        featured1.setOnClickListener() {
+            Toast.makeText(binding.root.context, "ImageButton clickeado", Toast.LENGTH_SHORT).show()
+        }
+
+        // Categorias
+        music_chip = binding.root.findViewById(R.id.music_chip)
+        history_chip = binding.root.findViewById(R.id.history_chip)
+        art_chip = binding.root.findViewById(R.id.art_chip)
+        nature_chip = binding.root.findViewById(R.id.nature_chip)
+        leisure_chip = binding.root.findViewById(R.id.leisure_chip)
+
+        music_chip.setOnClickListener(){
+            recommended_locations=getLocations(4, LocationType.MUSIC)
+            updateRecommendatios()
+        }
+        history_chip.setOnClickListener(){
+            recommended_locations=getLocations(4, LocationType.HISTORIC_SITE)
+            updateRecommendatios()
+        }
+        art_chip.setOnClickListener(){
+            recommended_locations=getLocations(4, LocationType.ART)
+            updateRecommendatios()
+        }
+        nature_chip.setOnClickListener(){
+            recommended_locations=getLocations(4, LocationType.NATURE)
+            updateRecommendatios()
+        }
+        leisure_chip.setOnClickListener(){
+            recommended_locations=getLocations(4, LocationType.MISC)
+            updateRecommendatios()
+        }
+        // recomendados
+        recommended0 = binding.root.findViewById(R.id.recommended0)
+        recommended1 = binding.root.findViewById(R.id.recommended1)
+        recommended2 = binding.root.findViewById(R.id.recommended2)
+        recommended3 = binding.root.findViewById(R.id.recommended3)
 
 
         return binding.root
+    }
+
+    fun updateRecommendatios(){
+        for(i in recommended_locations){
+            println(i._searchTerm)
+        }
     }
     // Función para elegir n ubicaciones con el tipo coincidente
     fun getLocations(n: Int, tag: LocationType): List<Location> {

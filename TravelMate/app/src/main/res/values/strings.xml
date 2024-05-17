@@ -41,5 +41,7 @@
     <string name="museums">Museos</string>
     <string name="churchs">Iglesias</string>
     <string name="eat_drink">Comer y beber</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
