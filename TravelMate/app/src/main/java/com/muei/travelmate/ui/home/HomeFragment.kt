@@ -190,11 +190,17 @@ class HomeFragment : Fragment() {
 
 
         featured0.setOnClickListener() {
-
+            val bundle = Bundle().apply {
+                putString("searchTerm", featured_locations[0].searchTerm)
+            }
+            findNavController().navigate(R.id.nav_list_search, bundle)
         }
 
         featured1.setOnClickListener() {
-
+            val bundle = Bundle().apply {
+                putString("searchTerm", featured_locations[1].searchTerm)
+            }
+            findNavController().navigate(R.id.nav_list_search, bundle)
         }
 
     }
@@ -220,18 +226,30 @@ class HomeFragment : Fragment() {
 
 
         recommended0.setOnClickListener() {
-
+            val bundle = Bundle().apply {
+                putString("searchTerm", recommended_locations[0].searchTerm)
+            }
+            findNavController().navigate(R.id.nav_list_search, bundle)
         }
 
         recommended1.setOnClickListener() {
-
+            val bundle = Bundle().apply {
+                putString("searchTerm", recommended_locations[1].searchTerm)
+            }
+            findNavController().navigate(R.id.nav_list_search, bundle)
         }
         recommended2.setOnClickListener() {
-
+            val bundle = Bundle().apply {
+                putString("searchTerm", recommended_locations[2].searchTerm)
+            }
+            findNavController().navigate(R.id.nav_list_search, bundle)
         }
 
         recommended3.setOnClickListener() {
-
+            val bundle = Bundle().apply {
+                putString("searchTerm", recommended_locations[3].searchTerm)
+            }
+            findNavController().navigate(R.id.nav_list_search, bundle)
         }
     }
     // Función para elegir n ubicaciones con el tipo coincidente

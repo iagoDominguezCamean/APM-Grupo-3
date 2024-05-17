@@ -55,7 +55,9 @@ class ListSearchFragment : Fragment() {
 
     private fun searchGooglePlacesAPI(query: String) {
         val apiKey = "AIzaSyAG6Mpf5GzKQbeDXOQQ2NUvPlARMobE_SQ" // Insert your Google Places API key here
-        val apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=$query&type=locality&key=$apiKey"
+        // Elimino type = locality para que funcionen las busquedas de lugares que no sean ciudades
+        // val apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=$query&type=locality&key=$apiKey"
+        val apiUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=$query&key=$apiKey"
 
         Thread {
             try {
