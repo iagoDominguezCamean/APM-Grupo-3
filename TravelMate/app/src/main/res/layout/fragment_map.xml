@@ -27,7 +27,8 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="arrow_icon" />
 
         <!-- Título -->
         <TextView
@@ -48,7 +49,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/ic_add" />
 
     </RelativeLayout>
 
@@ -63,15 +64,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <TextView
+            android:id="@+id/recommended_route_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ruta_recomendada"
+            android:textColor="@color/design_default_color_primary"
+            android:textSize="20sp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:id="@+id/time_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/recommended_route_text"
+            >
 
             <!-- Texto para el tiempo -->
 
@@ -80,8 +94,8 @@
                 android:id="@+id/time_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30 min"
-                android:textColor="@android:color/black"
+                android:text="@string/min"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -90,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="8dp"
-                android:text="10 km"
+                android:text="@string/km"
                 android:textColor="#808080"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -99,10 +113,10 @@
             android:id="@+id/start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/iniciar"
+            android:text="@string/ruta"
             android:textSize="14sp"
             android:padding="4dp"
-            android:background="@drawable/rounded_background"
+            android:backgroundTint="@color/design_default_color_primary"
             android:textColor="@android:color/white"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"

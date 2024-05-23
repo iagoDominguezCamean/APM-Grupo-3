@@ -68,7 +68,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/ic_add" />
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.Guideline

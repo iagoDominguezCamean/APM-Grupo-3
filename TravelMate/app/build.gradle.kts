@@ -69,4 +69,6 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.auth0.android:auth0:2.10.2")
     implementation("com.auth0.android:jwtdecode:2.+")
+    implementation("com.google.maps.android:android-maps-utils:2.3.0")
+
 }
