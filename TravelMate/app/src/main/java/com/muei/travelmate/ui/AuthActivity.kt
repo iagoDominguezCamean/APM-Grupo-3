@@ -29,9 +29,9 @@ class AuthActivity : AppCompatActivity() {
     private var userIsAuthenticated: Boolean = false
     private lateinit var user: User
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_auth)
 
         // Set up the account object with the Auth0 application details
         account = Auth0(

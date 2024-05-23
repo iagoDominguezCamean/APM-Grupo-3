@@ -23,6 +23,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        manifestPlaceholders += mapOf(
+            "redirectSchemeName" to "spotify-sdk",
+            "redirectHostName" to "auth"
+        )
+
+
     }
 
     buildTypes {
@@ -32,21 +38,39 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField(
+                "String", "client_Id", "\"34e03110e5914b75aafadef83af8e9d1\""
+            )
+            buildConfigField(
+                "String", "redirect_Uri ", "\"spotifyandroidplayground://spotify-auth\""
+            )
+            buildConfigField(
+                "String", "SPOTIFY_REDIRECT_URI_PKCE", "\"spotifyandroidplayground://spotify-pkce\""
+            )
+
+
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        viewBinding = true
-    }
-}
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+        buildFeatures {
+            viewBinding = true
+            buildConfig = true
+        }
+
+
 
 dependencies {
+
+    implementation(fileTree(mapOf(
+        "dir" to "libs",
+        "include" to listOf("*.aar", "*.jar")
+    )))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -65,4 +89,18 @@ dependencies {
 
     implementation("com.auth0.android:auth0:2.10.2")
     implementation("com.auth0.android:jwtdecode:2.+")
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+    //implementation ("com.spotify.android:spotify-auth:1.2.5")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("androidx.browser:browser:1.0.0")
+    //implementation ("com.spotify.sdk:spotify-app-remote:0.7.2") // Versión correcta
+    //implementation ("com.spotify.sdk:spotify-auth:1.2.3") // Otras dependencias de Spotify
+    //implementation("com.spotify.android:auth:2.0.0")
+    //implementation("com.spotify.android.appremote:spotify-app-remote:1.2.0")
+    //implementation("com.spotify.protocol:spotify-protocol:0.7.2")
+    //implementation("com.spotify.sdk:spotify-app-remote:0.7.2")
+    implementation("com.adamratzman:spotify-api-kotlin-android:4.1.3")
+
 }

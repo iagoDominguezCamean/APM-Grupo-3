@@ -5,7 +5,6 @@
     <string name="map">map</string>
     <string name="user">user</string>
     <string name="search">search</string>
-    <string name="Configuración">Configuración</string>
     <string name="route">route</string>
     <string name="iniciar">Iniciar</string>
     <string name="m_s_detalles">Más detalles...</string>
@@ -22,10 +21,6 @@
     <string name="leisure_category">Leisure category</string>
     <string name="ocio">Ocio</string>
     <string name="rutas_recomendadas">Rutas recomendadas</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_Map">Map</string>
     <string name="title_auth">Login</string>
 
     <string name="login_welcome">Welcome to TravelMate</string>
@@ -34,7 +29,6 @@
 
     <string name="login_success_message">Succesfully logged in! %1$s</string>
     <string name="logout_failure_message">Something went wrong! %1$s</string>
-    <string name="logout_success_message">Logged out.---</string>
     <string name="Ajustes">Ajustes</string>
     <string name="edit_profile">Editar Perfil</string>
     <string name="rutas_guardadas">Rutas Guardadas</string>
