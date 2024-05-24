@@ -73,7 +73,7 @@ class RouteViewHolder(view:View, private val placesClient: PlacesClient) : Recyc
                             Log.d("Autcompletado", exception.toString())
                         }
                 }
-                LocationProvider.routeList[position]=Location(s.toString())
+                LocationProvider.routeList[position]=Location(s.toString(), "", LocationType.CITY, "","")
                 println("%%%%%%%%%% Introduce localidad: "+position+", lista:"+LocationProvider.routeList)
             }
         }

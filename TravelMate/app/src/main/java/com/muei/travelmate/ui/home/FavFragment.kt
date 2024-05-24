@@ -122,9 +122,28 @@ class FavFragment : Fragment() {
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
                     val res = response.body?.string()
-                    Log.d("ResponseOnStart", res.toString())
+
+                    if(res != null){
+                        val jsonObject = JSONObject(res)
+                        val tracks = jsonObject.getJSONObject("tracks")
+                        val items = tracks.getJSONArray("items")
+
+                        for (j in 0 until items.length()){
+                            val item = items.getJSONObject(j)
+                            val name = item.getString("name")
+                            val duration = item.getLong("duration_ms")
 
 
+                            val artists = item.getJSONArray("artists")
+                            val artistNames = mutableListOf<String>()
+                            for (k in 0 until artists.length()) {
+                                val artist = artists.getJSONObject(k)
+                                artistNames.add(artist.getString("name"))
+                            }
+
+                            Log.d("ResponseOnStart", artistNames.joinToString(", ") +": "+ name + "; duration (ms): "+duration)
+                        }
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

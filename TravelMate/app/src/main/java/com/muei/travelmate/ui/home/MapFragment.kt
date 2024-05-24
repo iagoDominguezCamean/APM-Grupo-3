@@ -43,7 +43,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var googleMap: GoogleMap
+    private var googleMap: GoogleMap? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var placeType: String
     private lateinit var placeName: String
@@ -91,16 +91,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         // toggle between points and route
         binding.startButton.setOnClickListener {
             // use toggle boolean
-            if (placesResult != null){
+            if (placesResult != null && googleMap != null){
                 if (showingPoints) {
-                    googleMap.clear()
+                    googleMap?.clear()
                     addMarkersFromAPIResults(routePoints)
                     drawRoute(points)
                     binding.startButton.text = "Ruta"
                     showingPoints = false
 
                 } else {
-                    googleMap.clear()
+                    googleMap?.clear()
                     addMarkersFromAPIResults(placesResult!!)
                     binding.startButton.text = "Puntos"
                     showingPoints = true
@@ -149,8 +149,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             return
         }
 
-        googleMap.uiSettings.isZoomControlsEnabled = true
-        googleMap.isMyLocationEnabled = true
+        googleMap?.uiSettings?.isZoomControlsEnabled = true
+        googleMap?.isMyLocationEnabled = true
         Log.d("MapReady", "ZoomControl true, myLocation true")
 
         if(bundleType == "customRoute"){
@@ -162,7 +162,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             if (location != null){
                 Log.d("MapReady", "Location retrieved successfully")
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, DEFAULT_ZOOM_LEVEL))
+                googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, DEFAULT_ZOOM_LEVEL))
             }else{
                 Log.d("MapReady", "Unable to get current location")
                 Toast.makeText(requireContext(), "Unable to get current location", Toast.LENGTH_SHORT).show()
@@ -216,7 +216,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 addMarkersFromAPIResults(results)
                 // Centrar el mapa en las coordenadas lat y lng
                 val location = LatLng(lat, lng)
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13f))
+                googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13f))
                 // Generar ruta entre los puntos importantes
                 val numWaypoints = minOf(results.length(), 5)
                 for (i in 0 until numWaypoints) {
@@ -246,28 +246,36 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun addMarkersFromAPIResults(results: JSONArray) {
-        for (i in 0 until results.length()) {
-            val result = results.getJSONObject(i)
-            val location = result.getJSONObject("geometry").getJSONObject("location")
-            val lat = location.getDouble("lat")
-            val lng = location.getDouble("lng")
-            val placeName = result.getString("name")
-            val placeLatLng = LatLng(lat, lng)
-            Log.d("LatLngMarker", placeLatLng.toString())
-            googleMap.addMarker(MarkerOptions().position(placeLatLng).title(placeName))
+        if(googleMap != null){
+            for (i in 0 until results.length()) {
+                val result = results.getJSONObject(i)
+                val location = result.getJSONObject("geometry").getJSONObject("location")
+                val lat = location.getDouble("lat")
+                val lng = location.getDouble("lng")
+                val placeName = result.getString("name")
+                val placeLatLng = LatLng(lat, lng)
+                Log.d("LatLngMarker", placeLatLng.toString())
+                googleMap?.addMarker(MarkerOptions().position(placeLatLng).title(placeName))
+            }
+        }else{
+            Log.d("MapFragmetn", "GoogleMap Is not Initialized")
         }
     }
 
     private fun handleCustomRoute(latlngList: ArrayList<String>) {
-        val pattern = Regex("""\(([-+]?\d*\.?\d+),\s*([-+]?\d*\.?\d+)\)""")
+        if(googleMap != null){
+            val pattern = Regex("""\(([-+]?\d*\.?\d+),\s*([-+]?\d*\.?\d+)\)""")
 
-        latlngList.map {
-            val placeLatLng = pattern.find(it)
-            if (placeLatLng != null) {
-                val (lat, lng) = placeLatLng.destructured
-                val latlng = LatLng(lat.toDouble(), lng.toDouble())
-                googleMap.addMarker(MarkerOptions().position(latlng))
+            latlngList.map {
+                val placeLatLng = pattern.find(it)
+                if (placeLatLng != null) {
+                    val (lat, lng) = placeLatLng.destructured
+                    val latlng = LatLng(lat.toDouble(), lng.toDouble())
+                    googleMap?.addMarker(MarkerOptions().position(latlng))
+                }
             }
+        }else{
+            Log.d("MapFragmetn", "GoogleMap Is not Initialized")
         }
     }
 
@@ -325,8 +333,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun drawRoute(encodedPoints: String) {
-        val path = PolyUtil.decode(encodedPoints)
-        googleMap.addPolyline(PolylineOptions().addAll(path).color(R.color.purple_700).width(40f))
+        if(googleMap != null){
+            val path = PolyUtil.decode(encodedPoints)
+            googleMap?.addPolyline(PolylineOptions().addAll(path).color(R.color.purple_700).width(40f))
+        }else{
+            Log.d("MapFragmetn", "GoogleMap Is not Initialized")
+        }
     }
 }
 
