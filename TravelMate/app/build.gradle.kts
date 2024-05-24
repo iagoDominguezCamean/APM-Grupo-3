@@ -23,6 +23,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        manifestPlaceholders += mapOf(
+            "redirectSchemeName" to "spotify-sdk",
+            "redirectHostName" to "auth"
+        )
+
+
     }
 
     buildTypes {
@@ -32,20 +38,32 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField(
+                "String", "client_Id", "\"34e03110e5914b75aafadef83af8e9d1\""
+            )
+            buildConfigField(
+                "String", "redirect_Uri ", "\"spotifyandroidplayground://spotify-auth\""
+            )
+            buildConfigField(
+                "String", "SPOTIFY_REDIRECT_URI_PKCE", "\"spotifyandroidplayground://spotify-pkce\""
+            )
+
+
+        }
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+        buildFeatures {
+            viewBinding = true
+            buildConfig = true
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        viewBinding = true
-    }
 }
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -71,4 +89,7 @@ dependencies {
     implementation("com.auth0.android:jwtdecode:2.+")
     implementation("com.google.maps.android:android-maps-utils:2.3.0")
 
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
 }

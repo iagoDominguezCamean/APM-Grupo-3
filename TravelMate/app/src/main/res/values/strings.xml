@@ -48,4 +48,6 @@
     <string name="min">- min</string>
     <string name="km">- km</string>
 
+    <string name="spotifyClientId">bb7d13226325409c831789a26a63d79b</string>
+    <string name="spotifyClientSecret">78b2055442e441a09d80042918d541a3</string>
 </resources>
