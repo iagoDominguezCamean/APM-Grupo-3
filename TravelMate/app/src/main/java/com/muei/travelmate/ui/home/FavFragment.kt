@@ -111,6 +111,7 @@ class FavFragment : Fragment() {
             var s = "a"
 
             withContext(Dispatchers.IO) {
+                // Crear petición a la API de Spotify
                 val request = Request.Builder()
                     .url("https://api.spotify.com/v1/search?q=$s&type=track")
                     .get()
@@ -118,11 +119,13 @@ class FavFragment : Fragment() {
                     .build()
 
                 try {
+                    // Hacer petición
                     val response = client.newCall(request).execute()
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
                     val res = response.body?.string()
 
+                    // Comprobar respuesta y obtener info
                     if(res != null){
                         val jsonObject = JSONObject(res)
                         val tracks = jsonObject.getJSONObject("tracks")
@@ -151,6 +154,7 @@ class FavFragment : Fragment() {
                                     songAdapter = SongAdapter(songs)
                                     recyclerView.adapter = songAdapter
                                 }
+                            }
 
                             Log.d("ResponseOnStart", artistNames.joinToString(", ") +": "+ name + "; duration (ms): "+duration)
                         }
