@@ -35,7 +35,9 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${API_KEY}"/>
+            android:value="${API_KEY}"
+            android:host="callback"
+            android:scheme="travelmate"/>
     </application>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
