@@ -9,35 +9,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.muei.travelmate.R
 import com.squareup.picasso.Picasso
 
-data class SpotifyTrack(val name: String, val artist: String, val imageUrl: String?)
 
+data class Song(val name: String, val artist: String)
 
-class fav_custom_Fragment(private val tracks: List<SpotifyTrack>) : RecyclerView.Adapter<fav_custom_Fragment.ViewHolder>() {
+class SongAdapter(private val songs: List<Song>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.lista_fragment, viewGroup, false)
-        return ViewHolder(v)
+    class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val songName: TextView = itemView.findViewById(R.id.songName)
+        val artistName: TextView = itemView.findViewById(R.id.artistName)
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        val track = tracks[i]
-        viewHolder.itemTitle.text = track.name
-        viewHolder.itemDetail.text = track.artist
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.itemsongadapterfav, parent, false)
+        return SongViewHolder(view)
+    }
 
-        if (track.imageUrl != null) {
-            Picasso.get().load(track.imageUrl).into(viewHolder.itemImage) // Carga la imagen desde URL
-        } else {
-            viewHolder.itemImage.setImageResource(R.drawable.nota_musical) // Imagen por defecto si no hay URL
-        }
+    override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
+        val song = songs[position]
+        holder.songName.text = song.name
+        holder.artistName.text = song.artist
     }
 
     override fun getItemCount(): Int {
-        return tracks.size
-    }
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemImage: ImageView = itemView.findViewById(R.id.item_image)
-        var itemTitle: TextView = itemView.findViewById(R.id.item_title)
-        var itemDetail: TextView = itemView.findViewById(R.id.item_detail)
+        return songs.size
     }
 }

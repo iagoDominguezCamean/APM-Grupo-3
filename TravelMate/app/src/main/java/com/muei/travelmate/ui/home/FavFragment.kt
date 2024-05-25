@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.muei.travelmate.databinding.FragmentFavBinding
 import android.content.SharedPreferences
+import android.media.Spatializer.OnHeadTrackerAvailableListener
 import android.util.Log
 import com.muei.travelmate.R
 import kotlinx.coroutines.CoroutineScope
@@ -22,7 +23,13 @@ import okio.IOException
 import org.json.JSONObject
 import kotlin.random.Random
 
-class FavFragment : Fragment() {
+
+
+interface TrackListener {
+    fun onTrackFetched(name: String, artist: String, duration: Long)
+}
+
+class FavFragment : Fragment(), TrackListener {
 
     private val client = OkHttpClient()
     private lateinit var  client_Id: String
@@ -34,6 +41,8 @@ class FavFragment : Fragment() {
     private var SpotifyTokenExpiryKey: String = ""
     private var SpotifyAccessTokenKey: String = ""
     private var SpotifyRefreshTokenKey: String = ""
+
+    private lateinit var trackListener: TrackListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,11 +62,30 @@ class FavFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setTrackListener(this)
+        performNetworkOperationAndFetchTracks()
     }
     override fun onStart() {
         super.onStart()
         performNetworkOperationAndFetchTracks()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onTrackFetched(name: String, artist: String, duration: Long) {
+        // Aquí puedes utilizar los datos de la canción como desees
+        Log.d("TrackInfo", "Nombre: $name, Artista(s): $artist, Duración: $duration ms")
+    }
+
+
+    private fun setTrackListener(listener: TrackListener){
+        trackListener = listener
+    }
+
 
     private fun performNetworkOperationAndFetchTracks() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -143,18 +171,8 @@ class FavFragment : Fragment() {
                                 val artist = artists.getJSONObject(k)
                                 artistNames.add(artist.getString("name"))
                             }
-                            CoroutineScope(Dispatchers.IO).launch {
-                                // Simula obtener canciones desde la API de Spotify
-                                val songs = listOf(
-                                    Song("Song 1", "Artist 1"),
-                                    Song("Song 2", "Artist 2"),
-                                    Song("Song 3", "Artist 3")
-                                )
-                                withContext(Dispatchers.Main) {
-                                    songAdapter = SongAdapter(songs)
-                                    recyclerView.adapter = songAdapter
-                                }
-                            }
+
+                            trackListener.onTrackFetched(name, artistNames.joinToString(", "), duration)
 
                             Log.d("ResponseOnStart", artistNames.joinToString(", ") +": "+ name + "; duration (ms): "+duration)
                         }
@@ -166,8 +184,7 @@ class FavFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
+
 }
+
