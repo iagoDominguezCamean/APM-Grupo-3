@@ -140,6 +140,17 @@ class FavFragment : Fragment() {
                                 val artist = artists.getJSONObject(k)
                                 artistNames.add(artist.getString("name"))
                             }
+                            CoroutineScope(Dispatchers.IO).launch {
+                                // Simula obtener canciones desde la API de Spotify
+                                val songs = listOf(
+                                    Song("Song 1", "Artist 1"),
+                                    Song("Song 2", "Artist 2"),
+                                    Song("Song 3", "Artist 3")
+                                )
+                                withContext(Dispatchers.Main) {
+                                    songAdapter = SongAdapter(songs)
+                                    recyclerView.adapter = songAdapter
+                                }
 
                             Log.d("ResponseOnStart", artistNames.joinToString(", ") +": "+ name + "; duration (ms): "+duration)
                         }
