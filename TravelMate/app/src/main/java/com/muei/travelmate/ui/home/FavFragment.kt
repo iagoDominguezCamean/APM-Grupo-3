@@ -1,32 +1,26 @@
 package com.muei.travelmate.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.muei.travelmate.databinding.FragmentFavBinding
-import android.content.SharedPreferences
-import android.media.Spatializer.OnHeadTrackerAvailableListener
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.muei.travelmate.R
+import com.muei.travelmate.databinding.FragmentFavBinding
 import com.muei.travelmate.ui.Music.TrackAdapter
-import com.muei.travelmate.ui.route.LocationProvider
-import com.muei.travelmate.ui.route.RouteAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okio.IOException
 import org.json.JSONObject
-import kotlin.random.Random
 
 class FavFragment : Fragment() {
 
@@ -123,8 +117,8 @@ class FavFragment : Fragment() {
         }
     }
 
-    private suspend fun getTracks(): List<Pair<String, String>>? {
-        val tracks = mutableListOf<Pair<String, String>>()
+    private suspend fun getTracks(): List<List<String>>? {
+        val tracks = mutableListOf<List<String>>()
 
         withContext(Dispatchers.IO) {
             val request = Request.Builder()
@@ -150,7 +144,13 @@ class FavFragment : Fragment() {
                         val artistNames = (0 until artists.length()).joinToString(", ") {
                             artists.getJSONObject(it).getString("name")
                         }
-                        tracks.add(Pair(name, artistNames))
+
+                        val album = item.getJSONObject("album")
+                        val images = album.getJSONArray("images")
+                        val imageURL = images.getJSONObject(1).getString("url")
+
+
+                        tracks.add(listOf(name, artistNames,imageURL))
                     }
                 }
             } catch (e: Exception) {
@@ -160,7 +160,7 @@ class FavFragment : Fragment() {
         return tracks
     }
 
-    fun initRecycleView(tracks: List<Pair<String, String>>){
+    fun initRecycleView(tracks: List<List<String>>){
         val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.adapter = TrackAdapter(tracks)
