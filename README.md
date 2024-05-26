@@ -257,7 +257,7 @@ Implementación de material design
 
 - Generación de rutas.
 <p align="center">
-  <img src="assets/map-portrait.png" alt="home" width="200"/>
+  <img src="assets/map-portrait.png" alt="rutas" width="200"/>
 <p>
 - Contenido dinámico sección Home. Se ha preparado la aplicación para cargar contenido dinamico mediante JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias de la pantalla Home
 <p align="center">
@@ -267,7 +267,7 @@ Implementación de material design
 
 - Creación de sección para listado de canciones
 <p align="center">
-  <img src="assets/songlist.png" alt="home" width="200"/>
+  <img src="assets/songlist.png" alt="canciones" width="200"/>
 <p>
 - Solución de bugs:
   - Solucionado error que impedia cargar el tema guardado para la aplicación
