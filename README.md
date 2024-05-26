@@ -252,3 +252,20 @@ Implementación de material design
    <img src="assets/toggle.png" alt="Theme toggle" width="200"/>
    <img src="assets/light.png" alt="Light Them" width="200"/>
 </p>
+
+**Cierre del proyecto**
+
+- Generación de rutas.
+
+- Contenido dinámico sección Home. Se ha preparado la aplicación para cargar contenido dinamico mediante JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias de la pantalla Home-
+  
+- Carga de datos de playlists a traves de API de Spotify. 
+
+- Creación de sección para listado de canciones
+
+- Solución de bugs:
+  - Solucionado error que impedia cargar el tema guardado para la aplicación
+  - 
+ 
+- Creación del video de presentación de la aplicación
+
