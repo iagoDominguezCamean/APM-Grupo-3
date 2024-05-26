@@ -247,7 +247,7 @@ Tras discutirlo en grupo y solicitar feedback a usuarios, que no participan en e
 
 Implementación de material design
 - En la sección de usuario, hemos añadido la opción de cambiar de tema, siguiendo los principios de Material Design para proporcionar una experiencia visualmente atractiva y coherente en toda la aplicación.
-- <p align="center">
+<p align="center">
    <img src="assets/dark.png" alt="Dark Theme" width="200"/>
    <img src="assets/toggle.png" alt="Theme toggle" width="200"/>
    <img src="assets/light.png" alt="Light Them" width="200"/>
@@ -256,13 +256,19 @@ Implementación de material design
 **Cierre del proyecto**
 
 - Generación de rutas.
-
-- Contenido dinámico sección Home. Se ha preparado la aplicación para cargar contenido dinamico mediante JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias de la pantalla Home-
-  
+<p align="center">
+  <img src="assets/map-portrait.png" alt="home" width="200"/>
+<p>
+- Contenido dinámico sección Home. Se ha preparado la aplicación para cargar contenido dinamico mediante JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias de la pantalla Home
+<p align="center">
+  <img src="assets/1destacados.png" alt="home" width="200"/>
+<p>
 - Carga de datos de playlists a traves de API de Spotify. 
 
 - Creación de sección para listado de canciones
-
+<p align="center">
+  <img src="assets/songlist.png" alt="home" width="200"/>
+<p>
 - Solución de bugs:
   - Solucionado error que impedia cargar el tema guardado para la aplicación
   - 
