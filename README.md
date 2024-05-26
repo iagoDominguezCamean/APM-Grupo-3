@@ -271,8 +271,7 @@ Implementación de material design
 <p>
 - Solución de múltiples bugs:
    
-  - Solucionado error que impedia cargar el tema guardado para la aplicación
-  - 
- 
+  1. Solucionado error que impedia cargar el tema guardado para la aplicación
+
 - Creación del video de presentación de la aplicación
 
