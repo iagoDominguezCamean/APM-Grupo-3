@@ -1,5 +1,6 @@
 package com.muei.travelmate.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -121,6 +123,10 @@ class HomeFragment : Fragment() {
             }
         }
 
+
+        val storedTheme = readFromSharedPreferences(requireContext(), "app_theme", "2")
+        AppCompatDelegate.setDefaultNightMode(storedTheme.toInt())
+
        // for(i in getLocations(3,LocationType.NATURE)){
        //     println(i.searchTerm)
        // }
@@ -180,6 +186,12 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
+    fun readFromSharedPreferences(context: Context, key: String, defaultValue: String): String {
+        val sharedPref = context.getSharedPreferences("travelmate_prefs", Context.MODE_PRIVATE)
+        return sharedPref.getString(key, defaultValue) ?: defaultValue
+    }
+
 
     private fun updateChips(activeChip: ImageButton) {
         val allChips = listOf(music_chip, history_chip, art_chip, nature_chip, leisure_chip)
