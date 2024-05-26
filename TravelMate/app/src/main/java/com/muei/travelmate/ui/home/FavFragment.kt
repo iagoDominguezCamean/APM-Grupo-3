@@ -10,7 +10,12 @@ import com.muei.travelmate.databinding.FragmentFavBinding
 import android.content.SharedPreferences
 import android.media.Spatializer.OnHeadTrackerAvailableListener
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.muei.travelmate.R
+import com.muei.travelmate.ui.Music.TrackAdapter
+import com.muei.travelmate.ui.route.LocationProvider
+import com.muei.travelmate.ui.route.RouteAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,13 +28,7 @@ import okio.IOException
 import org.json.JSONObject
 import kotlin.random.Random
 
-
-
-interface TrackListener {
-    fun onTrackFetched(name: String, artist: String, duration: Long)
-}
-
-class FavFragment : Fragment(), TrackListener {
+class FavFragment : Fragment() {
 
     private val client = OkHttpClient()
     private lateinit var  client_Id: String
@@ -41,8 +40,6 @@ class FavFragment : Fragment(), TrackListener {
     private var SpotifyTokenExpiryKey: String = ""
     private var SpotifyAccessTokenKey: String = ""
     private var SpotifyRefreshTokenKey: String = ""
-
-    private lateinit var trackListener: TrackListener
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +60,6 @@ class FavFragment : Fragment(), TrackListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTrackListener(this)
         performNetworkOperationAndFetchTracks()
     }
     override fun onStart() {
@@ -76,21 +72,16 @@ class FavFragment : Fragment(), TrackListener {
         _binding = null
     }
 
-    override fun onTrackFetched(name: String, artist: String, duration: Long) {
-        // Aquí puedes utilizar los datos de la canción como desees
-        Log.d("TrackInfo", "Nombre: $name, Artista(s): $artist, Duración: $duration ms")
-    }
-
-
-    private fun setTrackListener(listener: TrackListener){
-        trackListener = listener
-    }
 
 
     private fun performNetworkOperationAndFetchTracks() {
         CoroutineScope(Dispatchers.IO).launch {
             performNetworkOperation()
-            getTracks("")
+            getTracks()?.let { tracks ->
+                withContext(Dispatchers.Main){
+                    initRecycleView(tracks)
+                }
+            }
         }
     }
 
@@ -132,59 +123,48 @@ class FavFragment : Fragment(), TrackListener {
         }
     }
 
-    private suspend fun getTracks(place: String){
+    private suspend fun getTracks(): List<Pair<String, String>>? {
+        val tracks = mutableListOf<Pair<String, String>>()
 
-        for (i in 1..5){
+        withContext(Dispatchers.IO) {
+            val request = Request.Builder()
+                .url("https://api.spotify.com/v1/search?q=a&type=track")
+                .get()
+                .addHeader("Authorization", "Bearer $SpotifyAccessTokenKey")
+                .build()
 
-            var s = "a"
+            try {
+                val response = client.newCall(request).execute()
+                if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-            withContext(Dispatchers.IO) {
-                // Crear petición a la API de Spotify
-                val request = Request.Builder()
-                    .url("https://api.spotify.com/v1/search?q=$s&type=track")
-                    .get()
-                    .addHeader("Authorization", "Bearer $SpotifyAccessTokenKey")
-                    .build()
+                val res = response.body?.string()
 
-                try {
-                    // Hacer petición
-                    val response = client.newCall(request).execute()
-                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                if (res != null) {
+                    val jsonObject = JSONObject(res)
+                    val items = jsonObject.getJSONObject("tracks").getJSONArray("items")
 
-                    val res = response.body?.string()
-
-                    // Comprobar respuesta y obtener info
-                    if(res != null){
-                        val jsonObject = JSONObject(res)
-                        val tracks = jsonObject.getJSONObject("tracks")
-                        val items = tracks.getJSONArray("items")
-
-                        for (j in 0 until items.length()){
-                            val item = items.getJSONObject(j)
-                            val name = item.getString("name")
-                            val duration = item.getLong("duration_ms")
-
-
-                            val artists = item.getJSONArray("artists")
-                            val artistNames = mutableListOf<String>()
-                            for (k in 0 until artists.length()) {
-                                val artist = artists.getJSONObject(k)
-                                artistNames.add(artist.getString("name"))
-                            }
-
-                            trackListener.onTrackFetched(name, artistNames.joinToString(", "), duration)
-
-                            Log.d("ResponseOnStart", artistNames.joinToString(", ") +": "+ name + "; duration (ms): "+duration)
+                    for (i in 0 until items.length()) {
+                        val item = items.getJSONObject(i)
+                        val name = item.getString("name")
+                        val artists = item.getJSONArray("artists")
+                        val artistNames = (0 until artists.length()).joinToString(", ") {
+                            artists.getJSONObject(it).getString("name")
                         }
+                        tracks.add(Pair(name, artistNames))
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
+        return tracks
+    }
+
+    fun initRecycleView(tracks: List<Pair<String, String>>){
+        val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+        recyclerView.adapter = TrackAdapter(tracks)
     }
 
 
-
 }
-

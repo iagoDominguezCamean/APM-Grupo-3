@@ -5,12 +5,42 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/fragment_dashboard.xml">
+        <config>
+          <theme>@style/Theme.TravelMate</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/fragment_fav.xml">
         <config>
           <theme>@style/Theme.TravelMate</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/fragment_map.xml">
+        <config>
+          <theme>@style/Theme.TravelMate</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/fragment_route.xml">
+        <config>
+          <theme>@style/Theme.TravelMate</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/fragment_search.xml">
+        <config>
+          <theme>@style/Theme.TravelMate</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/fragment_user.xml">
+        <config>
+          <theme>@style/Theme.TravelMate</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/itemsongadapterfav.xml">
+        <config>
+          <theme>@style/Theme.TravelMate</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/TravelMate/app/src/main/res/layout/lista_fragment.xml">
         <config>
           <theme>@style/Theme.TravelMate</theme>
         </config>
@@ -22,7 +52,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22509f79-8468-4155-b567-60c696a15019" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +132,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -106,6 +140,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gilde\Desktop\APM-Grupo-3\TravelMate\app\src\main\java\com\muei\travelmate\ui\Music" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="TravelMate.app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="TravelMate.app.main" />
