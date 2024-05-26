@@ -257,7 +257,7 @@ Implementación de material design
 
 - Generación de rutas.
 <p align="center">
-  <img src="assets/map-portrait.png" alt="rutas" width="200"/>
+  <img src="assets/paradas.png" alt="rutas" width="200"/>
 <p>
 - Contenido dinámico sección Home. Se ha preparado la aplicación para cargar contenido dinamico mediante JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias de la pantalla Home
 <p align="center">
