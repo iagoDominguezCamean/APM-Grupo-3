@@ -269,7 +269,8 @@ Implementación de material design
 <p align="center">
   <img src="assets/songlist.png" alt="canciones" width="200"/>
 <p>
-- Solución de bugs:
+- Solución de múltiples bugs:
+   
   - Solucionado error que impedia cargar el tema guardado para la aplicación
   - 
  
