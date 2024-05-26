@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
         Location("Las Vegas","@drawable/ic_home_las", LocationType.MISC, "Las Vegas, Nevada", ""),
         Location("Costa Amalfitana","@drawable/ic_home_ama", LocationType.MISC, "", ""),
 
-    )
+        )
 
     lateinit var featured0:ImageButton
     lateinit var featured0City: TextView
@@ -127,9 +127,9 @@ class HomeFragment : Fragment() {
         val storedTheme = readFromSharedPreferences(requireContext(), "app_theme", "2")
         AppCompatDelegate.setDefaultNightMode(storedTheme.toInt())
 
-       // for(i in getLocations(3,LocationType.NATURE)){
-       //     println(i.searchTerm)
-       // }
+        // for(i in getLocations(3,LocationType.NATURE)){
+        //     println(i.searchTerm)
+        // }
 
 
 
