@@ -269,9 +269,11 @@ Implementación de material design
 <p align="center">
   <img src="assets/songlist.png" alt="canciones" width="200"/>
 <p>
+- Creación del video de presentación de la aplicación
 - Solución de múltiples bugs:
    
   1. Solucionado error que impedia cargar el tema guardado para la aplicación
 
-- Creación del video de presentación de la aplicación
+
+
 
