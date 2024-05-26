@@ -56,6 +56,11 @@ class UserFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val storedTheme = readFromSharedPreferences(requireContext(), "app_theme", "2")
+        AppCompatDelegate.setDefaultNightMode(storedTheme.toInt())
+
+        println(storedTheme)
+
         val homeViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         _binding = FragmentUserBinding.inflate(inflater, container, false)
 
@@ -211,6 +216,7 @@ class UserFragment : Fragment() {
             // Currently in night mode, switching to day mode
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
+        writeToSharedPreferences(requireContext(), "app_theme", AppCompatDelegate.getDefaultNightMode().toString())
 
         updateMode()
     }
