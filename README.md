@@ -282,6 +282,10 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
   1. Error que impedia cargar el tema guardado para la aplicación al inicio
   2. Comportamiento errático del dialogo de selección de rutas
   3. Necesidad de refrescar sección tras solicitud de permisos para acceder a localización de dispositivo.
+ 
+### Roles efectivos
+
+Los roles asignados inicialmente a los miembros del grupo se mantuvieron con ligeras modificaciones a lo largo del proyecto. Durante el desarrollo, ha sido habitual no poder contar con todos los miembros del grupo, ya sea por motivos laborales o personales. Debido a esta circunstancia, el resto del equipo de desarrollo se ha hecho cargo momentáneamente de la toma de decisiones en los ámbitos del proyecto que era necesario, asegurándose de consensuar las decisiones tomadas.
 
 ### Modificaciones sobre el proyecto original y Tareas Pendientes
 
