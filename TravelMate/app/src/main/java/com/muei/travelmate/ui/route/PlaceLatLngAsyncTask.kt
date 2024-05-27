@@ -7,29 +7,26 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class PlaceLatLngAsyncTask(private val placeName: String, private val apiKey: String, private val callback: (LatLng?) -> Unit) :
-    AsyncTask<Void, Void, LatLng?>() {
+class PlaceLatLngAsyncTask(private val placeName: String, private val apiKey: String, private val callback: (JSONObject?) -> Unit) :
+    AsyncTask<Void, Void, JSONObject?>() {
 
-    override fun doInBackground(vararg params: Void?): LatLng? {
-        var latLng: LatLng? = null
+    override fun doInBackground(vararg params: Void?): JSONObject? {
+        var latLngJson: JSONObject? = null
         try {
             // Step 1: Search for place using Places API
             val placesUrl = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=$placeName&inputtype=textquery&fields=geometry&key=$apiKey"
             val placesJson = getJsonResponse(placesUrl)
 
             // Parse JSON to get latlng
-            val location = JSONObject(placesJson).getJSONArray("candidates").getJSONObject(0).getJSONObject("geometry").getJSONObject("location")
-            val lat = location.getDouble("lat")
-            val lng = location.getDouble("lng")
+            latLngJson = JSONObject(placesJson).getJSONArray("candidates").getJSONObject(0)
 
-            latLng = LatLng(lat, lng)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return latLng
+        return latLngJson
     }
 
-    override fun onPostExecute(result: LatLng?) {
+    override fun onPostExecute(result: JSONObject?) {
         callback(result)
     }
 

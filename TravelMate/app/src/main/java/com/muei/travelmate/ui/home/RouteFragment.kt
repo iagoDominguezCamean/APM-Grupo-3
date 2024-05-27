@@ -18,20 +18,16 @@ import com.muei.travelmate.ui.route.Location
 import com.muei.travelmate.ui.route.LocationProvider
 import com.muei.travelmate.ui.route.LocationType
 import com.muei.travelmate.ui.route.PlaceLatLngAsyncTask
-import com.muei.travelmate.ui.route.RouteAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.AutocompleteSessionToken
-import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
+import com.muei.travelmate.ui.route.RouteAdapter
 
 class RouteFragment : Fragment() {
 
     private var _binding: FragmentRouteBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private val routeTotalStops: Int = 5
     private var latlngArray: ArrayList<String> = ArrayList()
@@ -42,53 +38,46 @@ class RouteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //val homeViewModel = ViewModelProvider(this).get(RouteViewModel::class.java)
-
         _binding = FragmentRouteBinding.inflate(inflater, container, false)
+        val view = binding.root
+
         binding.arrowIcon.setOnClickListener {
-            Log.d("RouteFragment", "Flecha para volver pulsada")
-            val bundle = Bundle().apply {
+            findNavController().navigate(R.id.nav_map, Bundle().apply {
                 putString("placeName", "Map")
                 putString("placeId", " ")
-                putDouble("lat", 0.00000000000)
-                putDouble("lng", 0.00000000000)
-                putString("placeType","default")
-            }
-            Log.d("ShowBundleRoute", bundle.toString())
-            findNavController().navigate(R.id.nav_map, bundle)
+                putDouble("lat", 0.0)
+                putDouble("lng", 0.0)
+                putString("placeType", "default")
+            })
         }
+
         Places.initialize(requireContext(), getString(R.string.API_KEY))
         placesClient = Places.createClient(requireContext())
-        // Populo el Recyclerview de la busqueda de ruta
         initRecyclerRouteSearch()
 
-        // asigno accion al boton de añadir parada
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
         buttonAdd.setOnClickListener {
             LocationProvider.routeList.add(Location("", "", LocationType.CITY, "", ""))
-            println("%%%%%%%%%% Añade localidad a la lista:"+LocationProvider.routeList)
-            //recyclerItemAdded(LocationProvider.routeList.size-1)
             recyclerItemChanged()
-
         }
 
-        // asigno accion al boton de buscar ruta
         val buttonSearch = binding.root.findViewById<Button>(R.id.buttonSearch)
         buttonSearch.setOnClickListener {
             recyclerItemChanged()
             val result = LocationProvider.routeList.joinToString(",") { it.toString() }
-            println("%%%%%%%%%% Busqueda con la lista:"+LocationProvider.routeList)
-            showToast("Buscar ruta -> "+result)
+            showToast("Buscar ruta -> $result")
 
             val bundle = Bundle()
             bundle.putInt("numItems", LocationProvider.routeList.size)
             bundle.putString("bundleType", "customRoute")
+            bundle.putBoolean("routeInfo", true)
 
             CoroutineScope(Dispatchers.Main).launch {
                 val deferred = async {
                     LocationProvider.routeList.map { location ->
                         async {
                             PlaceLatLngAsyncTask(location.toString(), getString(R.string.API_KEY)) { latLng ->
+                                latLng?.put("name", location.name)
                                 this@RouteFragment.latlngArray.add(latLng.toString())
                                 Log.d("CustomRoute","location added: $location $latLng")
                             }.execute().get()
@@ -98,15 +87,14 @@ class RouteFragment : Fragment() {
 
                 deferred.await()
 
-                Log.d("CustomRouteMap",latlngArray.toString())
-                bundle.putStringArrayList("location_array", latlngArray)
+                bundle.putString("latlngArrayString", latlngArray.toString())
                 findNavController().navigate(R.id.nav_map, bundle)
             }
         }
 
         updateAddButton()
 
-        return binding.root
+        return view
     }
 
     override fun onDestroyView() {
@@ -114,46 +102,26 @@ class RouteFragment : Fragment() {
         _binding = null
     }
 
-    fun initRecyclerRouteSearch(){
-        val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
-        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        Log.d("Autocompletado", "Route routelist: "+LocationProvider.routeList.toString())
+    private fun initRecyclerRouteSearch() {
+        val recyclerView: RecyclerView = binding.recyclerRouteSearch
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() }, placesClient)
     }
 
-    fun recyclerItemChanged(){
+    private fun recyclerItemChanged() {
         updateAddButton()
-        // Actualizar adaptador
-        val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
-
-        //recyclerView.adapter?.notifyDataSetChanged()
-        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.adapter = RouteAdapter(LocationProvider.routeList, { recyclerItemChanged() }, placesClient)
-
-    }
-    /*
-    fun recyclerItemAdded(pos:Int) {
-        updateAddButton()
-        val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
-        recyclerView.adapter?.notifyItemInserted(pos)
+        binding.recyclerRouteSearch.adapter?.notifyDataSetChanged()
     }
 
-    fun recyclerItemRemoved(pos:Int) {
-        updateAddButton()
-        val recyclerView: RecyclerView = binding.root.findViewById(R.id.recyclerRouteSearch)
-        recyclerView.adapter?.notifyItemRemoved(pos)
-    }
-    */
-    fun updateAddButton(){
-        // Actualizar bt añadir parada
+    private fun updateAddButton() {
         val buttonAdd = binding.root.findViewById<Button>(R.id.buttonAddStop)
-        val routeRemainingStops = routeTotalStops-LocationProvider.routeList.size
-        buttonAdd.text = "Añadir parada ("+routeRemainingStops.toString()+")"
-        buttonAdd.isEnabled = routeRemainingStops>=1
+        val routeRemainingStops = routeTotalStops - LocationProvider.routeList.size
+        buttonAdd.text = "Añadir parada ($routeRemainingStops)"
+        buttonAdd.isEnabled = routeRemainingStops >= 1
     }
 
-    fun showToast(message: String?) {
-        val context = context ?: return // Check if context is null
+    private fun showToast(message: String?) {
+        val context = context ?: return
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
