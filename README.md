@@ -282,3 +282,17 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
 
 **Modificaciones sobre el proyecto original y Tareas Pendientes**
 
+Esta versión de la aplicación se trata de un producto mínimo viable y por ello han quedado fuera muchas caracteristicas planificadas originalmente:
+- **Notificaciones de POI (puntos de interés) cercanos:**
+- **Sugerencias para crear fotografías de POI:**
+- **Realidad aumentada para orientarse en las rutas:**
+- **Listas de reproducción que se ajustan a la duración del viaje:**
+- **Listas de reproducción que recomiendan artistas locales:**
+- **Función de guía de audio:**
+- **Mapas sin conexión:**
+- **Integración con redes sociales:**
+Seguimos confiando en que añadir estas caracteristicas mejorara la aplicación y permitira distinguirla de la competencia pero las restricciones de tiempo y esfuerzo del proyecto no nos han permitido abordarlas.
+
+ 
+
+
