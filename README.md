@@ -280,5 +280,5 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
    
   1. Solucionado error que impedia cargar el tema guardado para la aplicación
 
-**Modificaciones del proyecto original y Tareas Pendientes**
+**Modificaciones sobre el proyecto original y Tareas Pendientes**
 
