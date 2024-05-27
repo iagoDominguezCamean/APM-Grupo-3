@@ -253,7 +253,7 @@ Implementación de material design
    <img src="assets/light.png" alt="Light Them" width="200"/>
 </p>
 
-### Cierre del proyecto
+## Cierre del proyecto
 
 En este último sprint hemos añadido algunas nuevas caracteristicas a la aplicación que habian quedado pendientes:
 
