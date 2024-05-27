@@ -253,7 +253,8 @@ Implementación de material design
    <img src="assets/light.png" alt="Light Them" width="200"/>
 </p>
 
-**Cierre del proyecto**
+### Cierre del proyecto
+
 En este último sprint hemos añadido algunas nuevas caracteristicas a la aplicación que habian quedado pendientes:
 
 - Generación de rutas.
@@ -280,7 +281,7 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
    
   1. Solucionado error que impedia cargar el tema guardado para la aplicación
 
-**Modificaciones sobre el proyecto original y Tareas Pendientes**
+### Modificaciones sobre el proyecto original y Tareas Pendientes
 
 Esta versión de la aplicación se trata de un producto mínimo viable y por ello han quedado fuera muchas caracteristicas planificadas originalmente:
 - **Notificaciones de POI (puntos de interés) cercanos:**
