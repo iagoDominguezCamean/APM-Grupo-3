@@ -285,17 +285,26 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
 
 ### Modificaciones sobre el proyecto original y Tareas Pendientes
 
-Esta versión de la aplicación se trata de un producto mínimo viable y por ello han quedado fuera muchas caracteristicas planificadas originalmente:
-- **Notificaciones de POI (puntos de interés) cercanos:**
-- **Sugerencias para crear fotografías de POI:**
-- **Realidad aumentada para orientarse en las rutas:**
-- **Listas de reproducción que se ajustan a la duración del viaje:**
-- **Listas de reproducción que recomiendan artistas locales:**
-- **Función de guía de audio:**
-- **Mapas sin conexión:**
-- **Integración con redes sociales:**
+Esta versión de la aplicación se trata de un producto mínimo viable y por ello han quedado fuera muchas características planificadas originalmente.
+Estas características son todas evoluciones naturales de una base diseñada para mejorar la experiencia del usuario en viajes y exploraciones:
+
+- **Notificaciones de POI (puntos de interés) cercanos:** En un futuro se basarán en la ubicación del usuario, accediendo a la infraestructura ya montada de la ubicación.
+
+- **Sugerencias para crear fotografías de POI:** Esta función podría ofrecer consejos sobre cómo tomar las mejores fotografías en puntos de interés específicos. Dado que esa una funcionalidad que depende en buena medida del grado de adopción de la aplicación, y no es algo prioritario, se pospone para próximas evoluciones.
+
+- **Realidad aumentada para orientarse en las rutas:** La realidad aumentada podría integrarse en la aplicación de navegación para superponer información útil sobre el entorno del usuario mientras navega por las rutas, complementando los menús de mapas ya existentes.
+
+- **Listas de reproducción que se ajustan a la duración del viaje:** Se ha superado la fase crítica de integrar y combinar los servicios de Google Maps y Spotify, por lo que es abordable en un futuro sin grandes conflictos.
+
+- **Listas de reproducción que recomiendan artistas locales:** Esta característica sugeriría música de artistas locales basada en la ubicación del usuario.
+
+- **Función de guía de audio:** Pendiente de extracción y generación de textos, así como la generación de audios propias.
+
+- **Mapas sin conexión:** Se ha excluido del MVP, porque y se implementará tras validar la App en muestra de población representativas.
+
+- **Integración con redes sociales**, como Instagram, Facebook o Twitter. Intregación con Spotify ya validada.
   
-Seguimos confiando en que añadir estas caracteristicas mejorara la aplicación y permitira distinguirla de la competencia pero las restricciones de tiempo y esfuerzo del proyecto no nos han permitido abordarlas.
+Seguimos confiando en que añadir estas características mejorara la aplicación y permitirá distinguirla de la competencia, pero las restricciones de tiempo y esfuerzo del proyecto no nos han permitido abordarlas, y se ha construir una base sólida, que permita crecer de forma controlada.
 
  
 
