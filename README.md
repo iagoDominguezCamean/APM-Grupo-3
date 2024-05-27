@@ -279,7 +279,9 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
    
 - Solución de múltiples bugs:
    
-  1. Solucionado error que impedia cargar el tema guardado para la aplicación
+  1. Error que impedia cargar el tema guardado para la aplicación al inicio
+  2. Comportamiento errático del dialogo de selección de rutas
+  3. Necesidad de refrescar sección tras solicitud de permisos para acceder a localización de dispositivo.
 
 ### Modificaciones sobre el proyecto original y Tareas Pendientes
 
