@@ -55,8 +55,10 @@ class MainActivity : AppCompatActivity() {
                         putDouble("lat", latitude ?: 0.0)
                         putDouble("lng", longitude ?: 0.0)
                         putString("placeType", "default")
+                        putBoolean("routeDetails", false)
                     }
                     Log.d("ShowBundleMain", bundle.toString())
+                    //hide
                     navController.navigate(R.id.nav_map, bundle)
                     true
                 }

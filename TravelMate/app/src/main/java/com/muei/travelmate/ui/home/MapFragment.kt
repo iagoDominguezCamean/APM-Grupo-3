@@ -50,11 +50,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private var lat: Double = 0.0
     private var lng: Double = 0.0
     private lateinit var bundleType: String
-    private var latlngArray: ArrayList<String> = arrayListOf()
+    private var latlngArrayString: String = ""
     private var placesResult: JSONArray? = null
     private var points: String = ""
     private var routePoints: JSONArray = JSONArray()
     private var showingPoints = true
+    private var routeInfo = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,8 +75,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         lat = requireArguments().getDouble("lat")
         lng = requireArguments().getDouble("lng")
         bundleType = requireArguments().getString("bundleType") ?: ""
-        latlngArray = requireArguments().getStringArrayList("location_array") ?: arrayListOf()
-        Log.d("CustomRouteMap",latlngArray.toString())
+        latlngArrayString = requireArguments().getString("latlngArrayString") ?: ""
+        routeInfo = requireArguments().getBoolean("routeInfo")?: true
+        Log.d("CustomRouteMap", "Route: $latlngArrayString")
 
         binding.titleText.text = "$placeName: $placeType"
 
@@ -88,10 +90,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
+        if (!routeInfo) {
+            binding.infoLayout.visibility = View.INVISIBLE
+        } else
+            binding.infoLayout.visibility = View.VISIBLE
+
         // toggle between points and route
         binding.startButton.setOnClickListener {
             // use toggle boolean
-            if (placesResult != null && googleMap != null){
+            if ((placesResult != null || latlngArrayString.isNotEmpty()) && googleMap != null){
                 if (showingPoints) {
                     googleMap?.clear()
                     addMarkersFromAPIResults(routePoints)
@@ -153,9 +160,27 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         googleMap?.isMyLocationEnabled = true
         Log.d("MapReady", "ZoomControl true, myLocation true")
 
-        if(bundleType == "customRoute"){
-            Log.d("CustomRouteHandle", "CustomRoute retrieved")
-            handleCustomRoute(latlngArray)
+        if (bundleType == "customRoute") {
+            placesResult = JSONArray(latlngArrayString)
+            Log.d("CustomRouteHandle", "CustomRoute detected")
+            if (placesResult != null) {
+                addMarkersFromAPIResults(placesResult!!)
+                handleRoutePoints(placesResult!!)
+
+                // Obtener la ubicación del primer lugar
+                val firstPlaceLocation = placesResult!!.getJSONObject(0)
+                    .getJSONObject("geometry").getJSONObject("location")
+                val location = LatLng(
+                    firstPlaceLocation.getDouble("lat"),
+                    firstPlaceLocation.getDouble("lng")
+                )
+
+                // Mover la cámara a la ubicación del primer lugar
+                googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13f))
+
+                Log.d("CustomRouteHandle", "CustomRoute retrieved")
+            }
+
         }
 
         fusedLocationClient.lastLocation.addOnSuccessListener { location : Location? ->
@@ -219,25 +244,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 13f))
                 // Generar ruta entre los puntos importantes
                 val numWaypoints = minOf(results.length(), 5)
-                for (i in 0 until numWaypoints) {
-                    routePoints.put(results.getJSONObject(i))
-                }
                 if (numWaypoints >= 2) {
-                    val origin =
-                        results.getJSONObject(0).getJSONObject("geometry").getJSONObject("location")
-                    val originLatLng = LatLng(origin.getDouble("lat"), origin.getDouble("lng"))
-                    val waypoints = mutableListOf<LatLng>()
-                    for (i in 1 until numWaypoints - 1) {
-                        val waypoint =
-                            results.getJSONObject(i).getJSONObject("geometry").getJSONObject("location")
-                        val waypointLatLng = LatLng(waypoint.getDouble("lat"), waypoint.getDouble("lng"))
-                        waypoints.add(waypointLatLng)
-                    }
-                    val destination =
-                        results.getJSONObject(numWaypoints - 1).getJSONObject("geometry").getJSONObject("location")
-                    val destinationLatLng =
-                        LatLng(destination.getDouble("lat"), destination.getDouble("lng"))
-                    FetchRouteTask(originLatLng, destinationLatLng, waypoints).execute()
+                    handleRoutePoints(results)
                 } else {
                     Log.e("MapFragment", "No hay suficientes puntos intermedios disponibles para calcular la ruta.")
                 }
@@ -258,24 +266,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 googleMap?.addMarker(MarkerOptions().position(placeLatLng).title(placeName))
             }
         }else{
-            Log.d("MapFragmetn", "GoogleMap Is not Initialized")
-        }
-    }
-
-    private fun handleCustomRoute(latlngList: ArrayList<String>) {
-        if(googleMap != null){
-            val pattern = Regex("""\(([-+]?\d*\.?\d+),\s*([-+]?\d*\.?\d+)\)""")
-
-            latlngList.map {
-                val placeLatLng = pattern.find(it)
-                if (placeLatLng != null) {
-                    val (lat, lng) = placeLatLng.destructured
-                    val latlng = LatLng(lat.toDouble(), lng.toDouble())
-                    googleMap?.addMarker(MarkerOptions().position(latlng))
-                }
-            }
-        }else{
-            Log.d("MapFragmetn", "GoogleMap Is not Initialized")
+            Log.d("MapFragment", "GoogleMap Is not Initialized")
         }
     }
 
@@ -337,8 +328,34 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             val path = PolyUtil.decode(encodedPoints)
             googleMap?.addPolyline(PolylineOptions().addAll(path).color(R.color.purple_700).width(40f))
         }else{
-            Log.d("MapFragmetn", "GoogleMap Is not Initialized")
+            Log.d("MapFragment", "GoogleMap Is not Initialized")
         }
+    }
+
+    private fun handleRoutePoints(results: JSONArray) {
+        val numWaypoints = minOf(results.length(), 5)
+        for (i in 0 until numWaypoints) {
+            routePoints.put(results.getJSONObject(i))
+        }
+
+        // Obtener el origen
+        val origin = results.getJSONObject(0).getJSONObject("geometry").getJSONObject("location")
+        val originLatLng = LatLng(origin.getDouble("lat"), origin.getDouble("lng"))
+
+        // Obtener los waypoints
+        val waypoints = mutableListOf<LatLng>()
+        for (i in 1 until numWaypoints - 1) {
+            val waypoint = results.getJSONObject(i).getJSONObject("geometry").getJSONObject("location")
+            val waypointLatLng = LatLng(waypoint.getDouble("lat"), waypoint.getDouble("lng"))
+            waypoints.add(waypointLatLng)
+        }
+
+        // Obtener el destino
+        val destination = results.getJSONObject(numWaypoints - 1).getJSONObject("geometry").getJSONObject("location")
+        val destinationLatLng = LatLng(destination.getDouble("lat"), destination.getDouble("lng"))
+
+        // Ejecutar la tarea de búsqueda de ruta
+        FetchRouteTask(originLatLng, destinationLatLng, waypoints).execute()
     }
 }
 
