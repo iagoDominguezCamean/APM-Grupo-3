@@ -254,26 +254,31 @@ Implementación de material design
 </p>
 
 **Cierre del proyecto**
+En este último sprint hemos añadido algunas nuevas caracteristicas a la aplicación que habian quedado pendientes:
 
 - Generación de rutas.
 <p align="center">
   <img src="assets/paradas.png" alt="rutas" width="320"/>
 <p>
-- Contenido dinámico sección Home. Se ha preparado la aplicación para cargar contenido dinamico mediante JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias de la pantalla Home
+   
+- Contenido dinámico en la sección Home. Preparando la aplicación para cargar contenido dinamico almacenadoen formato JSON. Estos datos contienen información de los lugares recomendados y las diferentes categorias que se muestran en la pantalla Home
 <p align="center">
   <img src="assets/1destacados.png" alt="home" width="200"/>
 <p>
-- Carga de datos de playlists a traves de API de Spotify. 
+   
+- Carga de datos de playlists a traves de API de Spotify. Conectamos la aplicación con la API de Spotify para consumir datos sobre playlists que muestra la aplicación. 
 
-- Creación de sección para listado de canciones
+- Creación de sección para listado de canciones. Implementamos una nueva sección en la que se muestran los datos de las playlists.
 <p align="center">
   <img src="assets/songlist.png" alt="canciones" width="200"/>
 <p>
-- Creación del video de presentación de la aplicación
+   
+- Creación del video de presentación de la aplicación. Que muestra las principales características de la aplicación 
+[travelMATE Trailer](https://udcgal.sharepoint.com/:v:/r/sites/APM-PracticaGrupo3/Documentos%20compartidos/General/TRAVELMATE%201.mp4?csf=1&web=1&e=cnGrQ3), para el montaje hemos utilizado los siguientes clips:   [Bill Gates and Steve Ballmer dancing - Windows 95 launch](https://www.youtube.com/watch?v=ojP0BO6H4Qcali), [Steve Ballmer (Microsoft): "Developers, developers, developers!" ](https://www.youtube.com/watch?v=I-u8fo5esYI), [Bag Raiders - Shooting Stars (Official Video)](https://www.youtube.com/watch?v=feA64wXhbjo).
+   
 - Solución de múltiples bugs:
    
   1. Solucionado error que impedia cargar el tema guardado para la aplicación
 
-
-
+**Modificaciones del proyecto original y Tareas Pendientes**
 
