@@ -259,7 +259,7 @@ Implementación de material design
 
 ## Necesidades/funcionalidades de sensorizado.
 
-**TODO**
+**GPS para Geolocalización**
 
 ## Lean canvas de la app.
 
