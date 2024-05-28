@@ -318,7 +318,16 @@ En este último sprint hemos añadido algunas nuevas caracteristicas a la aplica
 
 ### Roles efectivos
 
-Los roles asignados inicialmente a los miembros del grupo se mantuvieron con ligeras modificaciones a lo largo del proyecto. Durante el desarrollo, ha sido habitual no poder contar con todos los miembros del grupo, ya sea por motivos laborales o personales. Debido a esta circunstancia, el resto del equipo de desarrollo se ha hecho cargo momentáneamente de la toma de decisiones en los ámbitos del proyecto que era necesario, asegurándose de consensuar las decisiones tomadas.
+Los roles asignados inicialmente a los miembros del grupo sufrieron modificaciones a lo largo del proyecto. Durante el desarrollo, ha sido habitual no poder contar con todos los miembros del grupo, ya sea por motivos laborales o personales. Debido a esta circunstancia, el resto del equipo de desarrollo se ha hecho cargo momentáneamente de la toma de decisiones en los ámbitos del proyecto que era necesario, asegurándose de consensuar las decisiones tomadas.
+
+Para lograr una distribución eficiente y dinámica de las funcionalidades dentro del equipo, hemos decidido **complementar** nuestros roles específicos con el desarrollo de características completas:
+
+- **Iago**: Resolución de bloqueos, validación de la representación de mapas en las secciones, y la arquitectura diseñada.
+- **Diego**: Diseño de interface de home, implementación de las búsquedas de destinos, trazado y optimización de rutas temáticas, con representación de puntos de interés en destino en el mapa.
+- **Pablo**: Diseño integral del login, gestión de usuario, generación de contenido dinámico, y creación de rutas personalizadas por los usuarios.
+- **Dennimar**: Integración y funcionalidades de las listas de reproducción Spotify.
+
+Con esta asignación, buscamos maximizar la eficiencia y asegurar una coherencia integral en el desarrollo de cada componente del proyecto.
 
 ### Modificaciones sobre el proyecto original y Tareas Pendientes
 
