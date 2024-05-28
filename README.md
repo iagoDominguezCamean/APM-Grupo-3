@@ -263,7 +263,7 @@ Implementación de material design
 
 ## Lean canvas de la app.
 
-**TODO**
+![Lean Canvas](assets/leancanvas.jpg)
 
 ## Cierre del proyecto
 
