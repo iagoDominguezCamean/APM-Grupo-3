@@ -279,7 +279,8 @@ En lo relativo a las principales necesidades y funcionalidades que se abordarán
 ## Necesidades/funcionalidades de sensorizado.
 
 **Uso de GPS para Geolocalización**
-Hemos utilizado el GPS para permitir la navegación y el seguimiento de rutas de modo que la aplicación puede determinar la ubicación del usuario en tiempo real, trazar rutas en un mapa y seguir el movimiento del usuario a lo largo de dichas rutas.
+
+La aplicación utiliza el sensor GPS para permitir la navegación y el seguimiento de rutas. Esto le permite determinar la ubicación del usuario en tiempo real, trazar rutas en un mapa y seguir el movimiento del usuario a lo largo de dichas rutas.
 
 ## Lean canvas de la app.
 
