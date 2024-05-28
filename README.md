@@ -255,7 +255,26 @@ Implementación de material design
 
 ## Necesidades/funcionalidades de elementos multimedia.
 
-**TODO**
+En esta versión del proyecto, se han utilizado elementos multimedia par dar forma a la interfaz gráfica. Estos elementos visuales, esenciales para la presentación y usabilidad del sistema, incluyen:
+
+1. **Elementos visuales de la interfaz gráfica**: Los componentes visuales básicos de la interfaz de usuario, tales como botones, iconos, menús, formularios, y otros controles de interfaz gráfica de usuario (GUI) que facilitan la interacción del usuario con el sistema.
+
+2. **Recursos importados del API de Google Places**: Para mejorar la funcionalidad y la experiencia del usuario, se han incorporado elementos visuales obtenidos a través de la API de Google Places. Esto puede incluir mapas interactivos, ubicaciones destacadas, imágenes de lugares, y otros datos visuales proporcionados por Google.
+
+En lo relativo a las principales necesidades y funcionalidades que se abordarán en el futuro, y que son críticas, se resumen en lo siguiente:
+
+### Necesidades:
+1. **Gran capacidad de almacenamiento** para imágenes de POV y audioguías.
+2. **Acceso rápido y eficiente** para los usuarios a ellas.
+3. **Seguridad y privacidad** de los datos.
+4. **Escalabilidad** para manejar el crecimiento futuro.
+
+### Funcionalidades:
+1. **Almacenamiento en la nube** siendo Google Cloud Storage, al alternativa que mejor se ajusta a nuestras necesidades.
+2. **Gestión de archivos** que incluye la subida, descarga y visualización de imágenes y audioguías al cloud.
+3. **Optimización de archivos** selección de formatos de compresión de imágenes y formatos eficientes para audio.
+4. **Acceso controlado** con autenticación, autorización y encriptación de espacios personales.
+5. **Control de audio** para manejar los procesos en primer y segundo plano, asegurando que las audioguías puedan continuar reproduciéndose sin interrupciones incluso cuando la aplicación esté en segundo plano.
 
 ## Necesidades/funcionalidades de sensorizado.
 
